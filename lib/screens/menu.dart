@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:eyevision/constants/constants.dart';
+import 'package:eyevision/screens/chart-screen-mixed.dart';
 import 'package:eyevision/screens/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -247,6 +248,181 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item3Focus.unfocus();
+                      changeFocus(context, item6Focus);
+                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.of(context).pushNamed('/astig');
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChartScreenMixed(type: 'Alphabets')));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/abc.png",
+                    name: 'ALPHABETS',
+                    focusNode: item3Focus,
+                    image: 'Letters',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, modeFocus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, item5Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, item3Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, item7Focus);
+                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.of(context).pushNamed('/astig');
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChartScreenMixed(type: 'Numbers',)));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/numbers.png",
+                    name: 'NUMERICS',
+                    focusNode: item4Focus,
+                    image: 'Numbers',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item5Focus.unfocus();
+                      changeFocus(context, modeFocus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item5Focus.unfocus();
+                      changeFocus(context, item6Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item5Focus.unfocus();
+                      changeFocus(context, item4Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item5Focus.unfocus();
+                      changeFocus(context, item7Focus);
+                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.of(context).pushNamed('/astig');
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChartScreen(image: 'Tamil')));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/tamil.png",
+                    name: 'TAMIL',
+                    focusNode: item5Focus,
+                    image: 'Tamil',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item6Focus.unfocus();
+                      changeFocus(context, modeFocus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item6Focus.unfocus();
+                      changeFocus(context, item7Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item6Focus.unfocus();
+                      changeFocus(context, item5Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item6Focus.unfocus();
+                      changeFocus(context, item7Focus);
+                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.of(context).pushNamed('/astig');
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChartScreen(image: 'Telugu')));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/telugu.jpg",
+                    name: 'TELUGU',
+                    focusNode: item6Focus,
+                    image: 'Telugu',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item7Focus.unfocus();
+                      changeFocus(context, modeFocus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item7Focus.unfocus();
+                      changeFocus(context, item8Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item7Focus.unfocus();
+                      changeFocus(context, item6Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item7Focus.unfocus();
+                      changeFocus(context, item7Focus);
+                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.of(context).pushNamed('/astig');
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChartScreen(image: 'Hindi')));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/hindi.png",
+                    name: 'HINDI',
+                    focusNode: item7Focus,
+                    image: 'Hindi',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, modeFocus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, item4Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, item3Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
                       changeFocus(context, item7Focus);
                     }),
                     Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
@@ -259,7 +435,7 @@ class _MenuPageState extends State<MenuPage> {
                   child: MenuItem(
                     icon: "assets/icons/astigFan.png",
                     name: 'ASTIG FAN',
-                    focusNode: item3Focus,
+                    focusNode: item8Focus,
                     image: 'assets/icons/astigFan.png',
                   ),
                 ),

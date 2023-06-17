@@ -100,6 +100,15 @@ flutter:
     - family: Sloan
       fonts:
         - asset: assets/fonts/Sloan.otf
+    - family: Tamil
+      fonts:
+        - asset: assets/fonts/BaminiPlain.ttf    
+    - family: Telegu
+      fonts:
+        - asset: assets/fonts/BRHTelugu.ttf    
+    - family: Hindi
+      fonts:
+        - asset: assets/fonts/EditedAMAA_1.ttf    
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

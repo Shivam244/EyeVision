@@ -35,120 +35,139 @@ class _AstigChartScreenState extends State<AstigChartScreen> {
 
   setImage() {
     List<ChartItem> chartItemsList = [
-      ChartItem(
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations: [0],
           image: 'assets/chart/astigFan/1.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations: [0],
           image: 'assets/chart/astigFan/2.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/3.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/4.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/5.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/6.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/7.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/8.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/9.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/10.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/11.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/12.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/13.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/14.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/15.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/16.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/17.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/18.jpg',
-          imageSize: 510),
-      ChartItem(
+          imageSize: 510,
+          language: ''),
+      const ChartItem(
           textLeft: '',
           textRight: '',
-          rotations: const [0],
+          rotations:  [0],
           image: 'assets/chart/astigFan/19.jpg',
-          imageSize: 510),
+          imageSize: 510,
+          language: ''),
     ];
     return chartItemsList;
   }
