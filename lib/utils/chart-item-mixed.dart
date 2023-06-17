@@ -67,7 +67,7 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
   }
 
   Future<void> createChart() async {
-    await checkMode();
+    checkMode();
     chartItems = [];
     print(widget.images);
     for (var i = 0; i < widget.images.length; i++) {

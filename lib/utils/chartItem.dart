@@ -31,7 +31,7 @@ class _ChartItemState extends State<ChartItem> {
 
   @override
   initState() {
-    checkMode();
+     checkMode();
     super.initState();
   }
 
@@ -72,8 +72,7 @@ class _ChartItemState extends State<ChartItem> {
     }
   }
 
-  Future<void> createChart() async {
-    // await checkMode();
+   createChart() {
     chartItems = [];
     for (var i = 0;
         (widget.rotations[0] == -1) ? i < 1 : i < widget.rotations.length;

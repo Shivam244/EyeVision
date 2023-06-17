@@ -19,6 +19,7 @@ class _ChartScreenState extends State<ChartScreen> {
   late ChartItem currentItem;
   FocusNode focus = FocusNode();
   bool enableRotation = true;
+  bool initialState = true;
   changeItem(bool next) {
     if (next) {
       itemIndex++;
@@ -31,58 +32,64 @@ class _ChartScreenState extends State<ChartScreen> {
         itemIndex = 0;
       }
     }
-    setState(() {});
+    setState(() {
+      initialState = true;
+    });
   }
 
   setImage(String image) {
-    List<ChartItem> chartItemsList = [
-      ChartItem(
-          textLeft: '6/60',
-          textRight: '20/200',
-          rotations: enableRotation ? [0] : [-1],
-          image: image,
-          imageSize: 279.139392,
-          language: widget.image),
-      ChartItem(
-          textLeft: '6/36',
-          textRight: '20/120',
-          rotations: enableRotation ? [0, 0] : [-1, -1],
-          image: image,
-          imageSize: 167.5479733848944,
-          language: widget.image),
-      ChartItem(
-          textLeft: '6/24',
-          textRight: '20/80',
-          rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
-          image: image,
-          imageSize: 111.59206787241891,
-          language: widget.image),
-      ChartItem(
-          textLeft: '6/18',
-          textRight: '20/60',
-          rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
-          image: image,
-          imageSize: 83.7739866924472,
-          language: widget.image),
-      ChartItem(
-          textLeft: '6/12',
-          textRight: '20/40',
-          rotations:
-              enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
-          image: image,
-          imageSize: 55.955905512475496,
-          language: widget.image),
-      ChartItem(
-          textLeft: '6/6',
-          textRight: '20/20',
-          rotations: enableRotation
-              ? [0, 15, 270, 180, 90, 0]
-              : [-1, -1, -1, -1, -1, -1],
-          image: image,
-          imageSize: 27.818078130616847,
-          language: widget.image),
-    ];
-    return chartItemsList;
+    if (initialState) {
+      List<ChartItem> chartItemsList = [
+        ChartItem(
+            textLeft: '6/60',
+            textRight: '20/200',
+            rotations: enableRotation ? [0] : [-1],
+            image: image,
+            imageSize: 279.139392,
+            language: widget.image),
+        ChartItem(
+            textLeft: '6/36',
+            textRight: '20/120',
+            rotations: enableRotation ? [0, 0] : [-1, -1],
+            image: image,
+            imageSize: 167.5479733848944,
+            language: widget.image),
+        ChartItem(
+            textLeft: '6/24',
+            textRight: '20/80',
+            rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
+            image: image,
+            imageSize: 111.59206787241891,
+            language: widget.image),
+        ChartItem(
+            textLeft: '6/18',
+            textRight: '20/60',
+            rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
+            image: image,
+            imageSize: 83.7739866924472,
+            language: widget.image),
+        ChartItem(
+            textLeft: '6/12',
+            textRight: '20/40',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+            image: image,
+            imageSize: 55.955905512475496,
+            language: widget.image),
+        ChartItem(
+            textLeft: '6/6',
+            textRight: '20/20',
+            rotations: enableRotation
+                ? [0, 15, 270, 180, 90, 0]
+                : [-1, -1, -1, -1, -1, -1],
+            image: image,
+            imageSize: 27.818078130616847,
+            language: widget.image),
+      ];
+      initialState = false;
+      return chartItemsList;
+    } else
+      return widget.chartItemsList;
   }
 
   final String _chars = 'AaBCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzb';
@@ -124,7 +131,6 @@ class _ChartScreenState extends State<ChartScreen> {
     }
     widget.chartItemsList = setImage(itemImage);
     currentItem = widget.chartItemsList[itemIndex];
-    FocusScope.of(context).requestFocus(focus);
     widget.chartItemsList.forEach((element) {
       print(element.image);
     });
@@ -133,6 +139,7 @@ class _ChartScreenState extends State<ChartScreen> {
   @override
   Widget build(BuildContext context) {
     loadImage();
+    FocusScope.of(context).requestFocus(focus);
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(

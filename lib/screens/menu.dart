@@ -397,7 +397,7 @@ class _MenuPageState extends State<MenuPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ChartScreen(image: 'Hindi')));
+                              builder: (context) => ChartScreenMixed(type: 'Hindi')));
                     }),
                   },
                   child: MenuItem(

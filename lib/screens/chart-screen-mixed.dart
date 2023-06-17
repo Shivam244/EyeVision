@@ -17,7 +17,7 @@ class ChartScreenMixed extends StatefulWidget {
 
 class _ChartScreenMixedState extends State<ChartScreenMixed> {
   int itemIndex = 0;
-  late ChartItemMixed currentItem =  ChartItemMixed(
+  late ChartItemMixed currentItem = ChartItemMixed(
       textLeft: '6/60',
       textRight: '20/200',
       images: ['A'],
@@ -69,14 +69,15 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       for (int i = 0; i < count; i++) {
         images.add(getRandomNumber(1));
       }
+    } else if (widget.type == 'Hindi') {
+      for (int i = 0; i < count; i++) {
+        images.add(getRandomHindi(1));
+      }
     }
     return images;
   }
 
   setImage() {
-    if (widget.chartItemsList.isNotEmpty) {
-      return widget.chartItemsList;
-    }
     List<ChartItemMixed> chartItemsList = [
       ChartItemMixed(
           textLeft: '6/60',
@@ -119,21 +120,13 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   }
 
   loadImage() {
-    widget.chartItemsList.forEach((element) {
-      print(element.images);
-    });
+    widget.chartItemsList = setImage();
+    currentItem = widget.chartItemsList[itemIndex];
   }
 
   @override
   Widget build(BuildContext context) {
-    if (initialState) {
-      initialState = false;
-      setState(() {
-        
-      });
-    }
-    widget.chartItemsList = setImage();
-    currentItem = widget.chartItemsList[itemIndex];
+    loadImage();
     FocusScope.of(context).requestFocus(focus);
     return Scaffold(
         backgroundColor: Colors.white,
