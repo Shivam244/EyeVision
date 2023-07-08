@@ -82,8 +82,26 @@ flutter:
     - assets/images/
     - assets/gif/
     - assets/icons/
+    - assets/icons/educational/
     - assets/chart/
     - assets/chart/astigFan/
+    - assets/chart/ishahra/
+    - assets/chart/pediatric/
+    - assets/chart/educational/anatomy/
+    - assets/chart/educational/Astigmatism/
+    - assets/chart/educational/cataract/
+    - assets/chart/educational/contactlenses/
+    - assets/chart/educational/diabetic/
+    - assets/chart/educational/dryeye/
+    - assets/chart/educational/general/
+    - assets/chart/educational/glaucoma/
+    - assets/chart/educational/iol/
+    - assets/chart/educational/lasik/
+    - assets/chart/educational/macular/
+    - assets/chart/educational/myopia/
+    - assets/chart/educational/opticals/
+    - assets/chart/educational/prakamaya/
+    - assets/chart/educational/retinal/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

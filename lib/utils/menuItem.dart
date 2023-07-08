@@ -46,14 +46,15 @@ class _MenuItemState extends State<MenuItem> {
                   //       Color.fromRGBO(79, 96, 97, 100),
                   //       Colors.black
                   //     ]),
-                  color: Color.fromRGBO(79, 96, 97, 0),
+                  // color: Color.fromRGBO(79, 96, 97, 0),
+                  color: Colors.black
                 ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                 widget.icon,
-                height: 100,
+                height: 80,
                 colorBlendMode: BlendMode.difference,
                 color: Colors.white,
               ),
