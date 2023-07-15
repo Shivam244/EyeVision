@@ -3,8 +3,8 @@ import 'package:eyevision/constants/constants.dart';
 import 'package:eyevision/utils/helper.dart';
 import 'package:flutter/material.dart';
 
-class ChartItem extends StatefulWidget {
-  const ChartItem(
+class ChartItemSnellan extends StatefulWidget {
+  const ChartItemSnellan(
       {super.key,
       required this.textLeft,
       required this.textRight,
@@ -20,12 +20,12 @@ class ChartItem extends StatefulWidget {
   final String language;
 
   @override
-  State<ChartItem> createState() => _ChartItemState();
+  State<ChartItemSnellan> createState() => _ChartItemSnellan();
 }
 
 List<Widget> chartItems = [];
 
-class _ChartItemState extends State<ChartItem> {
+class _ChartItemSnellan extends State<ChartItemSnellan> {
   String mode = 'Normal';
   String distance = '5';
 
@@ -78,7 +78,7 @@ class _ChartItemState extends State<ChartItem> {
   createChart() {
     chartItems = [];
     for (var i = 0;
-        (widget.rotations[0] == -1) ? i < 1 : i < widget.rotations.length;
+         i < widget.rotations.length;
         i++) {
       if (mode == 'Reverse') {
         chartItems.add(Transform(

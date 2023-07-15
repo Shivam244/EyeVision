@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:eyevision/constants/constants.dart';
 import 'package:eyevision/screens/chart-screen-mixed.dart';
 import 'package:eyevision/screens/educational-menu.dart';
+import 'package:eyevision/screens/red-green-screen.dart';
 import 'package:eyevision/screens/settings.dart';
+import 'package:eyevision/screens/snellan-chart-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utils/menuItem.dart';
@@ -50,6 +52,8 @@ class _MenuPageState extends State<MenuPage> {
   FocusNode item10Focus = FocusNode();
   FocusNode item11Focus = FocusNode();
   FocusNode item12Focus = FocusNode();
+  FocusNode item13Focus = FocusNode();
+  FocusNode item14Focus = FocusNode();
   FocusNode modeFocus = FocusNode();
   bool initialFocus = true;
 
@@ -398,7 +402,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item7Focus.unfocus();
-                      changeFocus(context, item7Focus);
+                      changeFocus(context, item13Focus);
                     }),
                     Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.of(context).pushNamed('/astig');
@@ -566,7 +570,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
                       item12Focus.unfocus();
-                      changeFocus(context, item12Focus);
+                      changeFocus(context, item13Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
                       item12Focus.unfocus();
@@ -594,6 +598,78 @@ class _MenuPageState extends State<MenuPage> {
                     image: 'assets/icons/ishihara.jpg',
                   ),
                 ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item13Focus.unfocus();
+                      changeFocus(context, item7Focus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item13Focus.unfocus();
+                      changeFocus(context, item14Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item13Focus.unfocus();
+                      changeFocus(context, item12Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item13Focus.unfocus();
+                      changeFocus(context, item13Focus);
+                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.of(context).pushNamed('/astig');
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SnellanChartScreen(image: 'C',)));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/educational.jpg",
+                    name: 'SNELLAN',
+                    focusNode: item13Focus,
+                    image: 'assets/icons/ishihara.jpg',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item14Focus.unfocus();
+                      changeFocus(context, item8Focus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item14Focus.unfocus();
+                      changeFocus(context, item14Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item14Focus.unfocus();
+                      changeFocus(context, item13Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item14Focus.unfocus();
+                      changeFocus(context, item14Focus);
+                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.of(context).pushNamed('/astig');
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  RedGreenScreen()));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/educational.jpg",
+                    name: 'RED GREEN',
+                    focusNode: item14Focus,
+                    image: 'assets/icons/ishihara.jpg',
+                  ),
+                ),
               ]),
         ));
   }
@@ -612,6 +688,8 @@ class _MenuPageState extends State<MenuPage> {
     item10Focus.dispose();
     item11Focus.dispose();
     item12Focus.dispose();
+    item13Focus.dispose();
+    item14Focus.dispose();
     super.dispose();
   }
 }

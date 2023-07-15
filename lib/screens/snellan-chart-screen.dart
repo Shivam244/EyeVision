@@ -4,34 +4,37 @@ import 'package:eyevision/utils/chartItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../utils/chartItem-snellan.dart';
 import 'login.dart';
 
-class ChartScreen extends StatefulWidget {
-  ChartScreen({super.key, required this.image});
-  final String image;
+class SnellanChartScreen extends StatefulWidget {
+  SnellanChartScreen({super.key, required this.image});
+  String image;
   @override
-  State<ChartScreen> createState() => _ChartScreenState();
-  List<ChartItem> chartItemsList = [];
+  State<SnellanChartScreen> createState() => _SnellanChartScreen();
+  List<ChartItemSnellan> chartItemsList = [];
 }
 
-class _ChartScreenState extends State<ChartScreen> {
+class _SnellanChartScreen extends State<SnellanChartScreen> {
   int itemIndex = 0;
-  late ChartItem currentItem;
+  late ChartItemSnellan currentItem;
   FocusNode focus = FocusNode();
   bool enableRotation = true;
   bool initialState = true;
+  List<String> items = ['C', 'E', 'Letters', 'Numbers'];
   changeItem(bool next) {
     if (next) {
+      if (itemIndex == items.length-1) return;
       itemIndex++;
-      if (itemIndex >= widget.chartItemsList.length) {
-        itemIndex = widget.chartItemsList.length - 1;
-      }
+      widget.image = items[itemIndex];
     } else {
       itemIndex--;
       if (itemIndex < 0) {
         itemIndex = 0;
       }
+      widget.image = items[itemIndex];
     }
+    loadImage();
     setState(() {
       initialState = true;
     });
@@ -44,36 +47,36 @@ class _ChartScreenState extends State<ChartScreen> {
 
   setImage(String image) {
     if (initialState) {
-      List<ChartItem> chartItemsList = [
-        ChartItem(
+      List<ChartItemSnellan> chartItemsList = [
+        ChartItemSnellan(
             textLeft: '6/60',
             textRight: '20/200',
             rotations: enableRotation ? [0] : [-1],
             image: image,
             imageSize: 279.139392,
             language: widget.image),
-        ChartItem(
+        ChartItemSnellan(
             textLeft: '6/36',
             textRight: '20/120',
             rotations: enableRotation ? [0, 0] : [-1, -1],
             image: image,
             imageSize: 167.5479733848944,
             language: widget.image),
-        ChartItem(
+        ChartItemSnellan(
             textLeft: '6/24',
             textRight: '20/80',
             rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
             image: image,
             imageSize: 111.59206787241891,
             language: widget.image),
-        ChartItem(
+        ChartItemSnellan(
             textLeft: '6/18',
             textRight: '20/60',
             rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
             image: image,
             imageSize: 83.7739866924472,
             language: widget.image),
-        ChartItem(
+        ChartItemSnellan(
             textLeft: '6/12',
             textRight: '20/40',
             rotations:
@@ -81,7 +84,7 @@ class _ChartScreenState extends State<ChartScreen> {
             image: image,
             imageSize: 55.955905512475496,
             language: widget.image),
-        ChartItem(
+        ChartItemSnellan(
             textLeft: '6/6',
             textRight: '20/20',
             rotations: enableRotation
@@ -97,7 +100,7 @@ class _ChartScreenState extends State<ChartScreen> {
       return widget.chartItemsList;
   }
 
-  final String _chars = 'AaBCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzb';
+  final String _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   final String _numbers = '1234567890';
   final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
@@ -120,10 +123,10 @@ class _ChartScreenState extends State<ChartScreen> {
     String itemImage = widget.image;
     if (widget.image == 'Letters') {
       itemImage = getRandomString(1);
-      enableRotation = true;
+      enableRotation = false;
     } else if (widget.image == 'Numbers') {
       itemImage = getRandomNumber(1);
-      enableRotation = true;
+      enableRotation = false;
     } else if (widget.image == 'Tamil') {
       itemImage = getRandomTamil(1);
       enableRotation = false;
@@ -163,7 +166,39 @@ class _ChartScreenState extends State<ChartScreen> {
                 LeftButtonIntent: CallbackAction<LeftButtonIntent>(
                     onInvoke: (intent) => changeItem(false)),
               },
-              child: Focus(focusNode: focus, child: currentItem),
+              child: Focus(
+                  focusNode: focus,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        widget.chartItemsList[0],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        widget.chartItemsList[1],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        widget.chartItemsList[2],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        widget.chartItemsList[3],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        widget.chartItemsList[4],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        widget.chartItemsList[5],
+                      ],
+                    ),
+                  )),
             )));
   }
 }

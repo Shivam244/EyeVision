@@ -45,6 +45,7 @@ class _DistanceSettingState extends State<DistanceSetting> {
   setData(value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString('distance', value);
+    setState(() {});
   }
 
   getData() async {
@@ -57,7 +58,7 @@ class _DistanceSettingState extends State<DistanceSetting> {
       String value = await getData() ?? '5';
       print(value);
       distance = int.parse(value);
-      setState(() { });
+      setState(() {});
       initialFocus = false;
     }
   }
@@ -123,7 +124,9 @@ class _DistanceSettingState extends State<DistanceSetting> {
               setState(() {});
             }),
             EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-              setData(distance.toString());
+              // setData(distance.toString());
+              Helper.removeData('distance');
+              Helper.setData('distance', distance.toString());
               Navigator.pop(context);
             }),
           },
@@ -135,14 +138,15 @@ class _DistanceSettingState extends State<DistanceSetting> {
               children: [
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                    height: 100,
+                      height: 100,
                       child: IconButton(
-                          onPressed: () => {if (distance < 20) distance++},
-                          icon: const Icon(
-                            Icons.arrow_upward_outlined,
-                            color: Color.fromARGB(137, 216, 215, 215),
-                          ),
-                          iconSize: 50,)),
+                        onPressed: () => {if (distance < 20) distance++},
+                        icon: const Icon(
+                          Icons.arrow_upward_outlined,
+                          color: Color.fromARGB(137, 216, 215, 215),
+                        ),
+                        iconSize: 50,
+                      )),
                   Container(
                       height: 30,
                       width: 60,
@@ -155,37 +159,15 @@ class _DistanceSettingState extends State<DistanceSetting> {
                         style: const TextStyle(color: Colors.white),
                       )),
                   Container(
-                    height: 100,
+                      height: 100,
                       child: IconButton(
                           onPressed: () => {if (distance > 5) distance--},
-                          icon: const Icon(Icons.arrow_downward,
-                              color: Color.fromARGB(137, 216, 215, 215),),
-                               iconSize: 50)),
+                          icon: const Icon(
+                            Icons.arrow_downward,
+                            color: Color.fromARGB(137, 216, 215, 215),
+                          ),
+                          iconSize: 50)),
                 ]),
-                // const SizedBox(
-                //   width: 40,
-                // ),
-                // Actions(
-                //   actions: <Type, Action<Intent>>{
-                //     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                //       // setData(distance.toString());
-                //       // Navigator.of(context, rootNavigator: true).pop();
-                //     }),
-                //   },
-                //   child: Container(
-                //       child: TextButton(
-                //           onPressed: () {
-                //             setData(distance.toString());
-                //             Navigator.pop(context);
-                //           },
-                //           style: TextButton.styleFrom(
-                //               foregroundColor: Colors.white,
-                //               backgroundColor: backgroundColour,
-                //               shadowColor: Colors.black,
-                //               elevation: 5,
-                //               fixedSize: const Size(40, 20)),
-                //           child: const Text('OK'))),
-                // )
               ],
             )),
           ),
@@ -194,24 +176,4 @@ class _DistanceSettingState extends State<DistanceSetting> {
     );
   }
 
-  // @override
-  // void dispose() {
-  //   item1Focus.dispose();
-  //   item2Focus.dispose();
-  //   item3Focus.dispose();
-  //   item4Focus.dispose();
-  //   item5Focus.dispose();
-  //   item6Focus.dispose();
-  //   item7Focus.dispose();
-  //   item8Focus.dispose();
-  //   item9Focus.dispose();
-  //   item10Focus.dispose();
-  //   item11Focus.dispose();
-  //   item12Focus.dispose();
-  //   item13Focus.dispose();
-  //   item14Focus.dispose();
-  //   item15Focus.dispose();
-  //   item16Focus.dispose();
-  //   super.dispose();
-  // }
 }
