@@ -103,6 +103,7 @@ class _ChartScreenState extends State<ChartScreen> {
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
   final String _hindi =
       'एइईउऊऐओऔअंऋॠकखघएनचछजझटठधऔरथदधएनपफभएमवाईरएलवीशषसहक्षज्ञ';
+  final String _allen = 'EIADFGHJCB';
   final Random _rnd = Random();
 
   String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
@@ -115,6 +116,8 @@ class _ChartScreenState extends State<ChartScreen> {
       length, (_) => _telugu.codeUnitAt(_rnd.nextInt(_telugu.length))));
   String getRandomHindi(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _hindi.codeUnitAt(_rnd.nextInt(_hindi.length))));
+  String getRandomSymbol(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _allen.codeUnitAt(_rnd.nextInt(_allen.length))));
 
   loadImage() {
     String itemImage = widget.image;
@@ -132,6 +135,9 @@ class _ChartScreenState extends State<ChartScreen> {
       enableRotation = false;
     } else if (widget.image == 'Hindi') {
       itemImage = getRandomHindi(1);
+      enableRotation = false;
+    } else if (widget.image == 'Allen') {
+      itemImage = getRandomSymbol(1);
       enableRotation = false;
     }
     widget.chartItemsList = setImage(itemImage);

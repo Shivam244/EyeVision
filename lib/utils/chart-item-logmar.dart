@@ -3,8 +3,8 @@ import 'package:eyevision/constants/constants.dart';
 import 'package:eyevision/utils/helper.dart';
 import 'package:flutter/material.dart';
 
-class ChartItem extends StatefulWidget {
-  const ChartItem(
+class ChartItemLogmar extends StatefulWidget {
+  const ChartItemLogmar(
       {super.key,
       required this.textLeft,
       required this.textRight,
@@ -20,15 +20,14 @@ class ChartItem extends StatefulWidget {
   final String language;
 
   @override
-  State<ChartItem> createState() => _ChartItemState();
+  State<ChartItemLogmar> createState() => _ChartItemSnellan();
 }
 
 List<Widget> chartItems = [];
 
-class _ChartItemState extends State<ChartItem> {
+class _ChartItemSnellan extends State<ChartItemLogmar> {
   String mode = 'Normal';
   String distance = '5';
-
   @override
   initState() {
     checkMode();
@@ -39,24 +38,36 @@ class _ChartItemState extends State<ChartItem> {
     mode = await Helper.getData('mode') ?? '';
     distance = await Helper.getData('distance') ?? '';
     print("mode: " + mode + " distance: " + distance);
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   double calculatePixel(int feat, String type) {
     if (type == "6/60") {
       return feat / 4 * MM_60 * 3.7795275591 * 0.846;
+    } else if (type == "6/48") {
+      return feat / 4 * MM_48 * 3.7795275591 * 0.846;
+    } else if (type == "6/38") {
+      return feat / 4 * MM_38 * 3.7795275591 * 0.846;
     } else if (type == "6/36") {
       return feat / 4 * MM_36 * 3.7795275591 * 0.846;
+    } else if (type == "6/30") {
+      return feat / 4 * MM_30 * 3.7795275591 * 0.846;
     } else if (type == "6/24") {
       return feat / 4 * MM_24 * 3.7795275591 * 0.846;
+    } else if (type == "6/19") {
+      return feat / 4 * MM_19 * 3.7795275591 * 0.846;
     } else if (type == "6/18") {
       return feat / 4 * MM_18 * 3.7795275591 * 0.846;
+    } else if (type == "6/15") {
+      return feat / 4 * MM_15 * 3.7795275591 * 0.846;
     } else if (type == "6/12") {
       return feat / 4 * MM_12 * 3.7795275591 * 0.846;
+    } else if (type == "6/9.5") {
+      return feat / 4 * MM_9_5 * 3.7795275591 * 0.846;
     } else if (type == "6/9") {
       return feat / 4 * MM_9 * 3.7795275591 * 0.846;
+    } else if (type == "6/7.5") {
+      return feat / 4 * MM_7_5 * 3.7795275591 * 0.846;
     } else if (type == "6/6") {
       return feat / 4 * MM_6 * 3.7795275591 * 0.846;
     }
@@ -70,18 +81,44 @@ class _ChartItemState extends State<ChartItem> {
       return 'Telugu';
     } else if (widget.language == 'Hindi') {
       return 'Hindi';
-    } else if (widget.language == 'Allen') {
-      return 'Prototype';
     } else {
       return 'Sloan';
     }
   }
 
+  final String _chars = 'CDHKNORSVZ';
+  final String _numbers = '1234567890';
+  final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
+  final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
+  final String _hindi =
+      'एइईउऊऐओऔअंऋॠकखघएनचछजझटठधऔरथदधएनपफभएमवाईरएलवीशषसहक्षज्ञ';
+  final Random _rnd = Random();
+  String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+  String getRandomNumber(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _numbers.codeUnitAt(_rnd.nextInt(_numbers.length))));
+  String getRandomTamil(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _tamil.codeUnitAt(_rnd.nextInt(_tamil.length))));
+  String getRandomTelugu(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _telugu.codeUnitAt(_rnd.nextInt(_telugu.length))));
+  String getRandomHindi(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _hindi.codeUnitAt(_rnd.nextInt(_hindi.length))));
+
+  generateItems(int count) {
+    if (widget.image == 'Alphabets') {
+      return getRandomString(1);
+    } else if (widget.image == 'Numbers') {
+      return getRandomNumber(1);
+    } else if (widget.image == 'Hindi') {
+      return getRandomHindi(1);
+    } else {
+      return getRandomString(1);
+    }
+  }
+
   createChart() {
     chartItems = [];
-    for (var i = 0;
-        (widget.rotations[0] == -1) ? i < 1 : i < widget.rotations.length;
-        i++) {
+    for (var i = 0; i < widget.rotations.length; i++) {
       if (mode == 'Reverse') {
         chartItems.add(Transform(
           alignment: Alignment.center,
@@ -91,21 +128,16 @@ class _ChartItemState extends State<ChartItem> {
                   ? AlwaysStoppedAnimation(0 / 360)
                   : AlwaysStoppedAnimation(next() / 360),
               // child: Image.asset(widget.image, height: widget.imageSize,)));
-              child: widget.image.length > 1
-                  ? Image.asset(
-                      widget.image,
-                      height: widget.imageSize,
-                    )
-                  : Text(
-                      widget.image,
-                      style: TextStyle(
-                          fontFamily: getFont(),
-                          // fontSize: widget.imageSize,
-                          fontSize: calculatePixel(
-                              int.parse(distance), widget.textLeft),
-                          color: Colors.black),
-                      textScaleFactor: 1.0,
-                    )),
+              child: Text(
+                widget.image,
+                style: TextStyle(
+                    fontFamily: getFont(),
+                    // fontSize: widget.imageSize,
+                    fontSize:
+                        calculatePixel(int.parse(distance), widget.textLeft),
+                    color: Colors.black),
+                textScaleFactor: 1.0,
+              )),
         ));
       } else {
         chartItems.add(RotationTransition(
@@ -113,20 +145,15 @@ class _ChartItemState extends State<ChartItem> {
                 ? AlwaysStoppedAnimation(0 / 360)
                 : AlwaysStoppedAnimation(next() / 360),
             // child: Image.asset(widget.image, height: widget.imageSize,)));
-            child: widget.image.length > 1
-                ? Image.asset(
-                    widget.image,
-                    height: widget.imageSize,
-                  )
-                : Text(
-                    widget.image,
-                    style: TextStyle(
-                        fontFamily: getFont(),
-                        fontSize: calculatePixel(
-                            int.parse(distance), widget.textLeft),
-                        color: Colors.black),
-                    textScaleFactor: 1.0,
-                  )));
+            child: Text(
+              widget.image,
+              style: TextStyle(
+                  fontFamily: getFont(),
+                  fontSize:
+                      calculatePixel(int.parse(distance), widget.textLeft),
+                  color: Colors.black),
+              textScaleFactor: 1.0,
+            )));
       }
       if (i < widget.rotations.length - 1) {
         chartItems.add(const SizedBox(
@@ -148,24 +175,25 @@ class _ChartItemState extends State<ChartItem> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Icon(Icons.keyboard_arrow_left),
             Text(widget.textLeft, style: TextStyle(fontSize: 20)),
           ],
         ),
-        Center(
+        Container(
             child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: chartItems,
         )),
-        Row(children: [
+        Row(mainAxisAlignment: MainAxisAlignment.end, children: [
           Text(
             widget.textRight,
             style: TextStyle(fontSize: 20),
           ),
           const Icon(Icons.keyboard_arrow_right)
-        ])
+        ]),
       ],
     );
   }

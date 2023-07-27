@@ -68,7 +68,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     checkLoggedIn();
-    setData('5');
     super.initState();
   }
 

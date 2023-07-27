@@ -1,68 +1,57 @@
 import 'dart:math';
-
+import 'package:eyevision/constants/constants.dart';
+import 'package:eyevision/utils/helper.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/constants.dart';
-import 'helper.dart';
-
-class ChartItemMixed extends StatefulWidget {
-  const ChartItemMixed(
+class ContastChartItem extends StatefulWidget {
+  const ContastChartItem(
       {super.key,
       required this.textLeft,
       required this.textRight,
+      required this.rotations,
       required this.images,
-      required this.imageSize,
-      required this.type});
+      required this.opacity,
+      required this.language});
   final String textLeft;
   final String textRight;
+  final List<int> rotations;
   final List<String> images;
-  final double imageSize;
-  final String type;
+  final double opacity;
+  final String language;
 
   @override
-  State<ChartItemMixed> createState() => _ChartItemMixedState();
+  State<ContastChartItem> createState() => _ContastChartItemState();
 }
 
 List<Widget> chartItems = [];
 
-class _ChartItemMixedState extends State<ChartItemMixed> {
+class _ContastChartItemState extends State<ContastChartItem> {
   String mode = 'Normal';
   String distance = '5';
-  bool initialState = true;
+  @override
+  initState() {
+    checkMode();
+    super.initState();
+  }
+
   checkMode() async {
     mode = await Helper.getData('mode') ?? '';
     distance = await Helper.getData('distance') ?? '';
     print("mode: " + mode + " distance: " + distance);
+    setState(() {});
   }
 
   double calculatePixel(int feat, String type) {
-    if (type == "6/60") {
-      return feat/4 * MM_60 * 3.7795275591 * 0.846;
-    } else if (type == "6/36") {
-      return feat/4 * MM_36 * 3.7795275591 * 0.846;
-    } else if (type == "6/24") {
-      return feat/4 * MM_24 * 3.7795275591 * 0.846;
-    } else if (type == "6/18") {
-      return feat/4 * MM_18 * 3.7795275591 * 0.846;
-    } else if (type == "6/12") {
-      return feat/4 * MM_12 * 3.7795275591 * 0.846;
-    } else if (type == "6/9") {
-      return feat/4 * MM_9 * 3.7795275591 * 0.846;
-    } else if (type == "6/6") {
-      return feat/4 * MM_6 * 3.7795275591 * 0.846;
-    }
-    return 0;
+    return feat / 4 * MM_60 * 3.7795275591 * 0.846;
   }
 
   getFont() {
-    if (widget.type == 'Tamil') {
+    if (widget.language == 'Tamil') {
       return 'Tamil';
-    } else if (widget.type == 'Telegu') {
+    } else if (widget.language == 'Telegu') {
       return 'Telugu';
-    } else if (widget.type == 'Hindi') {
+    } else if (widget.language == 'Hindi') {
       return 'Hindi';
-    } else if (widget.type == 'Allen') {
-      return 'Prototype';
     } else {
       return 'Sloan';
     }
@@ -84,8 +73,8 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
                     fontSize:
-                        calculatePixel(int.parse(distance), widget.textLeft),
-                    color: Colors.black),
+                        calculatePixel(int.parse('5'), widget.textLeft),
+                    color: Colors.black.withOpacity(widget.opacity)),
                 textScaleFactor: 1.0,
               )),
         );
@@ -98,8 +87,8 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
               widget.images[i],
               style: TextStyle(
                   fontFamily: getFont(),
-                  fontSize: calculatePixel(int.parse(distance), widget.textLeft),
-                  color: Colors.black),
+                  fontSize: calculatePixel(int.parse('5'), widget.textLeft),
+                  color: Colors.black.withOpacity(widget.opacity)),
               textScaleFactor: 1.0,
             ),
           ],
@@ -113,6 +102,11 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
     }
   }
 
+  final _random = Random();
+  var list = [0, 90, 180, 270, 360];
+  // int next() => 0 + _random.nextInt(360 - 0);
+  int next() => list[_random.nextInt(list.length)];
+
   @override
   Widget build(BuildContext context) {
     createChart();
@@ -120,24 +114,25 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Icon(Icons.keyboard_arrow_left),
-            Text(widget.textLeft, style: TextStyle(fontSize: 20)),
+            Text("${widget.textLeft}%", style: TextStyle(fontSize: 20)),
           ],
         ),
-        Center(
+        Container(
             child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: chartItems,
         )),
-        Row(children: [
+        Row(mainAxisAlignment: MainAxisAlignment.end, children: [
           Text(
             widget.textRight,
             style: TextStyle(fontSize: 20),
           ),
           const Icon(Icons.keyboard_arrow_right)
-        ])
+        ]),
       ],
     );
   }

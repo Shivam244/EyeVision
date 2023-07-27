@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:eyevision/utils/chart-item-logmar.dart';
 import 'package:eyevision/utils/chartItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,29 +10,30 @@ import '../utils/chartItem-snellan.dart';
 import '../utils/helper.dart';
 import 'login.dart';
 
-class SnellanChartScreen extends StatefulWidget {
-  SnellanChartScreen({super.key, required this.image});
+class LogmarChartScreen extends StatefulWidget {
+  LogmarChartScreen({super.key, required this.image});
   String image;
+  final ScrollController controller = ScrollController();
   @override
-  State<SnellanChartScreen> createState() => _SnellanChartScreen();
-  List<ChartItemSnellan> chartItemsList = [];
+  State<LogmarChartScreen> createState() => _LogmarChartState();
+  List<ChartItemLogmar> chartItemsList = [];
 }
 
-class _SnellanChartScreen extends State<SnellanChartScreen> {
+class _LogmarChartState extends State<LogmarChartScreen> {
   int itemIndex = 0;
-  late ChartItemSnellan currentItem;
+  late ChartItemLogmar currentItem;
   FocusNode focus = FocusNode();
   bool enableRotation = true;
   bool initialState = true;
-  List<String> items = ['Letters', 'Numbers'];
-  String distance = '5';
   int currentHorizontalPos = 0;
   int currentVerticalPos = 0;
+  String distance = '5';
   final ScrollController scrollController = ScrollController();
   final ScrollController verticalScrollController = ScrollController();
+  List<String> items = ['C', 'E', 'Letters', 'Numbers'];
   changeItem(bool next) {
     if (next) {
-      if (itemIndex == items.length-1) return;
+      if (itemIndex == items.length - 1) return;
       itemIndex++;
       widget.image = items[itemIndex];
     } else {
@@ -60,49 +62,92 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
 
   setImage(String image) {
     if (initialState) {
-      List<ChartItemSnellan> chartItemsList = [
-        ChartItemSnellan(
+      List<ChartItemLogmar> chartItemsList = [
+        ChartItemLogmar(
             textLeft: '6/60',
-            textRight: '20/200',
-            rotations: enableRotation ? [0] : [-1],
+            textRight: '1.0',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: image,
             imageSize: 279.139392,
             language: widget.image),
-        ChartItemSnellan(
-            textLeft: '6/36',
-            textRight: '20/120',
-            rotations: enableRotation ? [0, 0] : [-1, -1],
+        ChartItemLogmar(
+            textLeft: '6/48',
+            textRight: '0.9',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+            image: image,
+            imageSize: 279.139392,
+            language: widget.image),
+        ChartItemLogmar(
+            textLeft: '6/38',
+            textRight: '0.8',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: image,
             imageSize: 167.5479733848944,
             language: widget.image),
-        ChartItemSnellan(
+        ChartItemLogmar(
+            textLeft: '6/30',
+            textRight: '0.7',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+            image: image,
+            imageSize: 167.5479733848944,
+            language: widget.image),
+        ChartItemLogmar(
             textLeft: '6/24',
-            textRight: '20/80',
-            rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
+            textRight: '0.6',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: image,
             imageSize: 111.59206787241891,
             language: widget.image),
-        ChartItemSnellan(
-            textLeft: '6/18',
-            textRight: '20/60',
-            rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
+        ChartItemLogmar(
+            textLeft: '6/19',
+            textRight: '0.5',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: image,
             imageSize: 83.7739866924472,
             language: widget.image),
-        ChartItemSnellan(
+        ChartItemLogmar(
+            textLeft: '6/15',
+            textRight: '0.4',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+            image: image,
+            imageSize: 83.7739866924472,
+            language: widget.image),
+        ChartItemLogmar(
             textLeft: '6/12',
-            textRight: '20/40',
+            textRight: '0.3',
             rotations:
                 enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: image,
             imageSize: 55.955905512475496,
             language: widget.image),
-        ChartItemSnellan(
+        ChartItemLogmar(
+            textLeft: '6/9.5',
+            textRight: '0.2',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+            image: image,
+            imageSize: 27.818078130616847,
+            language: widget.image),
+        ChartItemLogmar(
+            textLeft: '6/7.5',
+            textRight: '0.1',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+            image: image,
+            imageSize: 27.818078130616847,
+            language: widget.image),
+        ChartItemLogmar(
             textLeft: '6/6',
-            textRight: '20/20',
-            rotations: enableRotation
-                ? [0, 15, 270, 180, 90, 0]
-                : [-1, -1, -1, -1, -1, -1],
+            textRight: '0',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: image,
             imageSize: 27.818078130616847,
             language: widget.image),
@@ -113,7 +158,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
       return widget.chartItemsList;
   }
 
-  final String _chars = 'CDEFLOPTZ';
+  final String _chars = 'CDHKNORSVZ';
   final String _numbers = '1234567890';
   final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
@@ -132,14 +177,13 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
   String getRandomHindi(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _hindi.codeUnitAt(_rnd.nextInt(_hindi.length))));
 
-
   loadImage() {
     String itemImage = widget.image;
     if (widget.image == 'Letters') {
-      itemImage = 'Alphabets';
+      itemImage = getRandomString(1);
       enableRotation = false;
     } else if (widget.image == 'Numbers') {
-      itemImage = 'Numbers';
+      itemImage = getRandomNumber(1);
       enableRotation = false;
     } else if (widget.image == 'Tamil') {
       itemImage = getRandomTamil(1);
@@ -150,7 +194,9 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     } else if (widget.image == 'Hindi') {
       itemImage = getRandomHindi(1);
       enableRotation = false;
-    }else{enableRotation = true;}
+    } else {
+      enableRotation = true;
+    }
     widget.chartItemsList = setImage(itemImage);
     currentItem = widget.chartItemsList[itemIndex];
     widget.chartItemsList.forEach((element) {
@@ -158,7 +204,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     });
   }
 
-   scrollHorizontal(bool right) {
+  scrollHorizontal(bool right) {
     if (right) {
       scrollController.animateTo(currentHorizontalPos + 100,
           duration: const Duration(microseconds: 500), curve: Curves.easeIn);
@@ -220,43 +266,86 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
               },
               child: Focus(
                   focusNode: focus,
-                  child: SingleChildScrollView(
+                  child: Expanded(
+                    child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       controller: verticalScrollController,
-                    child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          controller: scrollController,
-                      child: Container(
-                        width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        controller: scrollController,
+                        child: Container(
+                          width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               const SizedBox(
-                                height: 100,
+                                height: 50,
                               ),
-                              widget.chartItemsList[0],
+                              Container(
+                                child: widget.chartItemsList[0],
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              widget.chartItemsList[1],
+                              Container(
+                                child: widget.chartItemsList[1],
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              widget.chartItemsList[2],
+                              Container(
+                                child: widget.chartItemsList[2],
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              widget.chartItemsList[3],
+                              SizedBox(
+                                child: widget.chartItemsList[3],
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              widget.chartItemsList[4],
+                              SizedBox(
+                                child: widget.chartItemsList[4],
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              widget.chartItemsList[5],
+                              SizedBox(
+                                child: widget.chartItemsList[5],
+                              ),
                               const SizedBox(
                                 height: 20,
+                              ),
+                              SizedBox(
+                                child: widget.chartItemsList[6],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              SizedBox(
+                                child: widget.chartItemsList[7],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              SizedBox(
+                                child: widget.chartItemsList[8],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              SizedBox(
+                                child: widget.chartItemsList[9],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              SizedBox(
+                                child: widget.chartItemsList[10],
+                              ),
+                              const SizedBox(
+                                height: 50,
                               ),
                             ],
                           ),
@@ -264,7 +353,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                       ),
                     ),
                   )),
-            ));
+            )));
   }
 
   double calculatePixel(int feat, String type) {

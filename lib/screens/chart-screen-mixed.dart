@@ -28,11 +28,12 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   final String _numbers = '1234567890';
   final String _hindi =
       'एइईउऊऐओऔअंऋॠकखघएनचछजझटठधऔरथदधएनपफभएमवाईरएलवीशषसहक्षज्ञ';
+  final String _allen = 'EIADFGHCB';
   final Random _rnd = Random();
   bool initialState = true;
   @override
   void initState() {
-    // loadImage();
+    loadImage();
     super.initState();
   }
 
@@ -42,6 +43,8 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       length, (_) => _numbers.codeUnitAt(_rnd.nextInt(_numbers.length))));
   String getRandomHindi(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _hindi.codeUnitAt(_rnd.nextInt(_hindi.length))));
+  String getRandomSymbol(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _allen.codeUnitAt(_rnd.nextInt(_allen.length))));
 
   changeItem(bool next) {
     if (next) {
@@ -72,6 +75,10 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     } else if (widget.type == 'Hindi') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomHindi(1));
+      }
+    } else if (widget.type == 'Allen') {
+      for (int i = 0; i < count; i++) {
+        images.add(getRandomSymbol(1));
       }
     }
     return images;
@@ -126,7 +133,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
 
   @override
   Widget build(BuildContext context) {
-    loadImage();
+    // loadImage();
     FocusScope.of(context).requestFocus(focus);
     return Scaffold(
         backgroundColor: Colors.white,
@@ -141,6 +148,10 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
             },
             child: Actions(
               actions: <Type, Action<Intent>>{
+                // UpButtonIntent: CallbackAction<UpButtonIntent>(
+                //     onInvoke: (intent) => changeItem(true)),
+                // DownButtonIntent: CallbackAction<DownButtonIntent>(
+                //     onInvoke: (intent) => changeItem(true)),
                 RightButtonIntent: CallbackAction<RightButtonIntent>(
                     onInvoke: (intent) => changeItem(true)),
                 LeftButtonIntent: CallbackAction<LeftButtonIntent>(
