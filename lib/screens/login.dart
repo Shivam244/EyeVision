@@ -55,6 +55,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   checkLoggedIn() {
+    Helper.getData('distance').then((value) => {
+          if (value == null || value == '') {Helper.setData('distance', '5')}
+        });
     Helper.getData('login').then((value) => {
           if (value == 'true') {Navigator.pushNamed(context, "/menu")}
         });

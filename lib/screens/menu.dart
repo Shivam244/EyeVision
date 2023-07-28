@@ -8,6 +8,7 @@ import 'package:eyevision/screens/pediatric-sub-menu.dart';
 import 'package:eyevision/screens/red-green-screen.dart';
 import 'package:eyevision/screens/settings.dart';
 import 'package:eyevision/screens/snellan-chart-screen.dart';
+import 'package:eyevision/utils/misc-chart-item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utils/menuItem.dart';
@@ -15,6 +16,7 @@ import 'chart-screen.dart';
 import 'contrast-screen.dart';
 import 'ishihara-chart-screen.dart';
 import 'login.dart';
+import 'misc-chart-screen.dart';
 import 'pediatric-chart-screen.dart';
 
 List<String> modeList = ["Normal", "Reversed"];
@@ -475,7 +477,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item9Focus.unfocus();
-                      changeFocus(context, item15Focus);
+                      changeFocus(context, item16Focus);
                     }),
                     Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.of(context).pushNamed('/astig');
@@ -674,7 +676,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/rg.jpg",
+                    icon: "assets/icons/rg.png",
                     name: 'RED GREEN',
                     focusNode: item14Focus,
                     image: 'assets/icons/ishihara.jpg',
@@ -688,7 +690,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
                       item15Focus.unfocus();
-                      changeFocus(context, item15Focus);
+                      changeFocus(context, item16Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
                       item15Focus.unfocus();
@@ -719,20 +721,20 @@ class _MenuPageState extends State<MenuPage> {
                 Actions(
                   actions: <Type, Action<Intent>>{
                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item15Focus.unfocus();
+                      item16Focus.unfocus();
                       changeFocus(context, item9Focus);
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item15Focus.unfocus();
+                      item16Focus.unfocus();
                       changeFocus(context, item15Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item15Focus.unfocus();
-                      changeFocus(context, item14Focus);
+                      item16Focus.unfocus();
+                      changeFocus(context, item15Focus);
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item15Focus.unfocus();
-                      changeFocus(context, item15Focus);
+                      item16Focus.unfocus();
+                      changeFocus(context, item16Focus);
                     }),
                     Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.of(context).pushNamed('/astig');
@@ -742,13 +744,13 @@ class _MenuPageState extends State<MenuPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  LogmarChartScreen(image: 'C')));
+                                  MiscChartScreen()));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/misc.jpg",
-                    name: 'MISCELLANEOUS',
-                    focusNode: item15Focus,
+                    icon: "assets/icons/misc.png",
+                    name: 'MISC',
+                    focusNode: item16Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
                 ),

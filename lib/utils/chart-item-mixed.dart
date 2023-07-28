@@ -63,7 +63,9 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
       return 'Hindi';
     } else if (widget.type == 'Allen') {
       return 'Prototype';
-    } else {
+    } else if (widget.type == 'Numbers') {
+      return 'Russian';
+    }else {
       return 'Sloan';
     }
   }

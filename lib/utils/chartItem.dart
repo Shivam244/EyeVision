@@ -116,7 +116,7 @@ class _ChartItemState extends State<ChartItem> {
             child: widget.image.length > 1
                 ? Image.asset(
                     widget.image,
-                    height: widget.imageSize,
+                    height: MediaQuery.of(context).size.height,
                   )
                 : Text(
                     widget.image,
