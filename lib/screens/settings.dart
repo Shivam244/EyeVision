@@ -1,5 +1,8 @@
+import 'package:eyevision/screens/callibration-screen.dart';
 import 'package:eyevision/screens/distance-setting.dart';
+import 'package:eyevision/screens/language-setting.dart';
 import 'package:eyevision/screens/mode-setting.dart';
+import 'package:eyevision/screens/select-font-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -132,8 +135,8 @@ class _SettingsState extends State<Settings> {
                       changeFocus(context, item2Focus);
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                      // item1Focus.unfocus();
-                      // changeFocus(context, item5Focus);
+                      item1Focus.unfocus();
+                      changeFocus(context, item5Focus);
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       // Navigator.of(context).pushNamed('/chart');
@@ -189,12 +192,76 @@ class _SettingsState extends State<Settings> {
                       // changeFocus(context, item1Focus);
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                      // item2Focus.unfocus();
-                      // changeFocus(context, item3Focus);
+                      item3Focus.unfocus();
+                      changeFocus(context, item4Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
                       item3Focus.unfocus();
                       changeFocus(context, item2Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item2Focus.unfocus();
+                      // changeFocus(context, item6Focus);
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SelectFontScreen()));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/logout.jpg",
+                    name: 'CALLIBRATE',
+                    focusNode: item3Focus,
+                    image: 'assets/chart/logout.jpg',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item3Focus.unfocus();
+                      // changeFocus(context, item1Focus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, item5Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item4Focus.unfocus();
+                      changeFocus(context, item3Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item2Focus.unfocus();
+                      // changeFocus(context, item6Focus);
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LanguageSetting()));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/logout.jpg",
+                    name: 'LANGUAGE',
+                    focusNode: item4Focus,
+                    image: 'assets/chart/logout.jpg',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item3Focus.unfocus();
+                      // changeFocus(context, item1Focus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item2Focus.unfocus();
+                      // changeFocus(context, item3Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item5Focus.unfocus();
+                      changeFocus(context, item4Focus);
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       // item2Focus.unfocus();
@@ -209,7 +276,7 @@ class _SettingsState extends State<Settings> {
                   child: MenuItem(
                     icon: "assets/icons/logout.jpg",
                     name: 'LOGOUT',
-                    focusNode: item3Focus,
+                    focusNode: item5Focus,
                     image: 'assets/chart/logout.jpg',
                   ),
                 ),

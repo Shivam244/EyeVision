@@ -28,7 +28,7 @@ List<Widget> chartItems = [];
 class _ChartItemSingleState extends State<ChartItemSingle> {
   String mode = 'Normal';
   String distance = '5';
-
+  double constant = 0;
   @override
   initState() {
     checkMode();
@@ -38,25 +38,27 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
   checkMode() async {
     mode = await Helper.getData('mode') ?? '';
     distance = await Helper.getData('distance') ?? '';
-    print("mode: " + mode + " distance: " + distance);
+    var cons = await Helper.getData('constant${widget.language}') ?? '0.0';
+    constant = double.parse(cons);
+    print("mode: " + mode + " distance: " + distance + "constant: " + cons);
     setState(() {});
   }
 
   double calculatePixel(int feat, String type) {
     if (type == "6/60") {
-      return feat / 4 * MM_60 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_60 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/36") {
-      return feat / 4 * MM_36 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_36 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/24") {
-      return feat / 4 * MM_24 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_24 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/18") {
-      return feat / 4 * MM_18 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_18 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/12") {
-      return feat / 4 * MM_12 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_12 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/9") {
-      return feat / 4 * MM_9 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_9 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/6") {
-      return feat / 4 * MM_6 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_6 * 3.7795275591 * 0.846 + constant;
     }
     return 0;
   }
@@ -64,10 +66,36 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
   getFont() {
     if (widget.language == 'Tamil') {
       return 'Tamil';
-    } else if (widget.language == 'Telegu') {
+    } else if (widget.language == 'Telugu') {
       return 'Telugu';
     } else if (widget.language == 'Hindi') {
       return 'Hindi';
+    } else if (widget.language == 'Allen') {
+      return 'Prototype';
+    } else if (widget.language == 'Numbers') {
+      return 'Russian';
+    } else if (widget.language == 'Dots') {
+      return 'Dots';
+    } else if (widget.language == 'Arabic') {
+      return 'Arabic';
+    } else if (widget.language == 'Assamese') {
+      return 'Assamese';
+    } else if (widget.language == 'Bengali') {
+      return 'Bengali';
+    } else if (widget.language == 'Gujrati') {
+      return 'Gujrati';
+    } else if (widget.language == 'Kannada') {
+      return 'Kannada';
+    } else if (widget.language == 'Malayalam') {
+      return 'Malyalam';
+    } else if (widget.language == 'Nepali') {
+      return 'Nepali';
+    } else if (widget.language == 'Oriya') {
+      return 'Oriya';
+    } else if (widget.language == 'Punjabi') {
+      return 'Punjabi';
+    } else if (widget.language == 'Urdu') {
+      return 'Urdu';
     } else {
       return 'Sloan';
     }
@@ -75,9 +103,7 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
 
   createChart() {
     chartItems = [];
-    for (var i = 0;
-         i < widget.image.length;
-        i++) {
+    for (var i = 0; i < widget.image.length; i++) {
       if (mode == 'Reverse') {
         chartItems.add(Transform(
           alignment: Alignment.center,

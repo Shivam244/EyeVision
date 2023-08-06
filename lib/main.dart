@@ -2,6 +2,7 @@ import 'package:eyevision/screens/astig-chart-screen.dart';
 import 'package:eyevision/screens/chart-screen.dart';
 import 'package:eyevision/screens/login.dart';
 import 'package:eyevision/screens/menu.dart';
+import 'package:eyevision/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -20,13 +21,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/login',
+      initialRoute: '/splash',
       debugShowCheckedModeBanner: false,
       routes: {
         '/login': (context) => LoginPage(),
         '/menu': (context) =>  MenuPage(),
         // '/chart': (context) =>  ChartScreen(image: ''),
         '/astig': (context) =>  AstigChartScreen(),
+        '/splash': (context) =>  const SpalshScreen(),
       },
     );
   }

@@ -79,6 +79,9 @@ class _ModeSettingState extends State<ModeSetting> {
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Helper.removeData('mode');
                       Helper.setData('mode', 'Normal');
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Mode set to: Normal'),
+                      ));
                       Navigator.pop(context);
                     }),
                   },
@@ -121,6 +124,9 @@ class _ModeSettingState extends State<ModeSetting> {
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Helper.removeData('mode');
                       Helper.setData('mode', 'Reverse');
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Mode set to: Reverse'),
+                      ));
                       Navigator.pop(context);
                     }),
                   },

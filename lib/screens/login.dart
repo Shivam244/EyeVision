@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:animate_gradient/animate_gradient.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:eyevision/utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
   String password = "";
   bool formValid = true;
   String login = 'false';
+  String deviceId = '';
   // FocusNode? userNameFocus;
   // FocusNode? passwordFocus;
   // FocusNode? submitButtonFocus;
@@ -63,6 +67,14 @@ class _LoginPageState extends State<LoginPage> {
         });
   }
 
+  void _getId() async {
+    var deviceInfo = DeviceInfoPlugin();
+    var androidDeviceInfo = await deviceInfo.androidInfo;
+    deviceId = androidDeviceInfo.id;
+    setState(() {   
+    });
+  }
+
   setData(value) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString('distance', value);
@@ -70,7 +82,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    checkLoggedIn();
+    _getId();
+    print("Device id is: $deviceId");
     super.initState();
   }
 
@@ -213,7 +226,13 @@ class _LoginPageState extends State<LoginPage> {
                               // ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
+                            ),
+                            Container(
+                              child: Text(
+                                'Your device id is: ${deviceId}',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                             Actions(
                               actions: <Type, Action<Intent>>{
@@ -267,7 +286,7 @@ class _LoginPageState extends State<LoginPage> {
                               // ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             Actions(
                               actions: <Type, Action<Intent>>{

@@ -14,7 +14,7 @@ class ChartItem extends StatefulWidget {
       required this.language});
   final String textLeft;
   final String textRight;
-  final List<int> rotations;
+  final int rotations;
   final String image;
   final double imageSize;
   final String language;
@@ -28,7 +28,7 @@ List<Widget> chartItems = [];
 class _ChartItemState extends State<ChartItem> {
   String mode = 'Normal';
   String distance = '5';
-
+  double constant = 0;
   @override
   initState() {
     checkMode();
@@ -38,27 +38,27 @@ class _ChartItemState extends State<ChartItem> {
   checkMode() async {
     mode = await Helper.getData('mode') ?? '';
     distance = await Helper.getData('distance') ?? '';
-    print("mode: " + mode + " distance: " + distance);
-    setState(() {
-      
-    });
+    var cons = await Helper.getData('constant${widget.language}') ?? '0.0';
+    constant = double.parse(cons);
+    print("mode: " + mode + " distance: " + distance + "constant: " + cons);
+    setState(() {});
   }
 
   double calculatePixel(int feat, String type) {
     if (type == "6/60") {
-      return feat / 4 * MM_60 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_60 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/36") {
-      return feat / 4 * MM_36 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_36 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/24") {
-      return feat / 4 * MM_24 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_24 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/18") {
-      return feat / 4 * MM_18 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_18 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/12") {
-      return feat / 4 * MM_12 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_12 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/9") {
-      return feat / 4 * MM_9 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_9 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/6") {
-      return feat / 4 * MM_6 * 3.7795275591 * 0.846;
+      return feat / 4 * MM_6 * 3.7795275591 * 0.846 + constant;
     }
     return 0;
   }
@@ -72,6 +72,26 @@ class _ChartItemState extends State<ChartItem> {
       return 'Hindi';
     } else if (widget.language == 'Allen') {
       return 'Prototype';
+    } else if (widget.language == 'Arabic') {
+      return 'Arabic';
+    } else if (widget.language == 'Assamese') {
+      return 'Assamese';
+    } else if (widget.language == 'Bengali') {
+      return 'Bengali';
+    } else if (widget.language == 'Gujrati') {
+      return 'Gujrati';
+    } else if (widget.language == 'Kannad') {
+      return 'Kannad';
+    } else if (widget.language == 'Malayalam') {
+      return 'Malayalam';
+    } else if (widget.language == 'Nepali') {
+      return 'Nepali';
+    } else if (widget.language == 'Oriya') {
+      return 'Oriya';
+    } else if (widget.language == 'Punjabi') {
+      return 'Punjabi';
+    } else if (widget.language == 'Urdu') {
+      return 'Urdu';
     } else {
       return 'Sloan';
     }
@@ -80,21 +100,21 @@ class _ChartItemState extends State<ChartItem> {
   createChart() {
     chartItems = [];
     for (var i = 0;
-        (widget.rotations[0] == -1) ? i < 1 : i < widget.rotations.length;
+        (widget.rotations == -1) ? i < 1 : i < widget.rotations;
         i++) {
       if (mode == 'Reverse') {
         chartItems.add(Transform(
           alignment: Alignment.center,
           transform: Matrix4.rotationY(pi),
           child: RotationTransition(
-              turns: widget.image.length > 1 || widget.rotations[0] == -1
+              turns: widget.image.length > 1 || widget.rotations == -1
                   ? AlwaysStoppedAnimation(0 / 360)
                   : AlwaysStoppedAnimation(next() / 360),
               // child: Image.asset(widget.image, height: widget.imageSize,)));
               child: widget.image.length > 1
                   ? Image.asset(
                       widget.image,
-                      height: widget.imageSize,
+                      height: MediaQuery.of(context).size.height,
                     )
                   : Text(
                       widget.image,
@@ -109,7 +129,7 @@ class _ChartItemState extends State<ChartItem> {
         ));
       } else {
         chartItems.add(RotationTransition(
-            turns: widget.image.length > 1 || widget.rotations[0] == -1
+            turns: widget.image.length > 1 || widget.rotations == -1
                 ? AlwaysStoppedAnimation(0 / 360)
                 : AlwaysStoppedAnimation(next() / 360),
             // child: Image.asset(widget.image, height: widget.imageSize,)));
@@ -128,7 +148,7 @@ class _ChartItemState extends State<ChartItem> {
                     textScaleFactor: 1.0,
                   )));
       }
-      if (i < widget.rotations.length - 1) {
+      if (i < widget.rotations - 1) {
         chartItems.add(const SizedBox(
           width: 70,
         ));

@@ -127,6 +127,9 @@ class _DistanceSettingState extends State<DistanceSetting> {
               // setData(distance.toString());
               Helper.removeData('distance');
               Helper.setData('distance', distance.toString());
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('Distance set to: ${distance.toString()}ft'),
+              ));
               Navigator.pop(context);
             }),
           },
@@ -136,38 +139,41 @@ class _DistanceSettingState extends State<DistanceSetting> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Container(
-                      height: 100,
-                      child: IconButton(
-                        onPressed: () => {if (distance < 20) distance++},
-                        icon: const Icon(
-                          Icons.arrow_upward_outlined,
-                          color: Color.fromARGB(137, 216, 215, 215),
-                        ),
-                        iconSize: 50,
-                      )),
-                  Container(
-                      height: 30,
-                      width: 60,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          color: Color.fromARGB(94, 37, 37, 37)),
-                      child: Text(
-                        "${distance}ft",
-                        style: const TextStyle(color: Colors.white),
-                      )),
-                  Container(
-                      height: 100,
-                      child: IconButton(
-                          onPressed: () => {if (distance > 5) distance--},
+                Container(
+                  decoration: BoxDecoration(color: backgroundColour),
+                  child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Container(
+                        height: 100,
+                        child: IconButton(
+                          onPressed: () => {if (distance < 20) distance++},
                           icon: const Icon(
-                            Icons.arrow_downward,
+                            Icons.arrow_upward_outlined,
                             color: Color.fromARGB(137, 216, 215, 215),
                           ),
-                          iconSize: 50)),
-                ]),
+                          iconSize: 50,
+                        )),
+                    Container(
+                        height: 30,
+                        width: 60,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Color.fromARGB(94, 37, 37, 37)),
+                        child: Text(
+                          "${distance}ft",
+                          style: const TextStyle(color: Colors.white),
+                        )),
+                    Container(
+                        height: 100,
+                        child: IconButton(
+                            onPressed: () => {if (distance > 5) distance--},
+                            icon: const Icon(
+                              Icons.arrow_downward,
+                              color: Color.fromARGB(137, 216, 215, 215),
+                            ),
+                            iconSize: 50)),
+                  ]),
+                ),
               ],
             )),
           ),

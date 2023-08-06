@@ -20,6 +20,7 @@ class _ChartScreenState extends State<ChartScreen> {
   FocusNode focus = FocusNode();
   bool enableRotation = true;
   bool initialState = true;
+  bool chartMode = true;
   changeItem(bool next) {
     if (next) {
       itemIndex++;
@@ -37,6 +38,17 @@ class _ChartScreenState extends State<ChartScreen> {
     });
   }
 
+  switchMode() {
+    chartMode = !chartMode;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: chartMode? const Text('Multiple'): const Text('Single'), duration: const Duration(milliseconds: 500),
+    ));
+    loadImage();
+    setState(() {
+      initialState = true;
+    });
+  }
+
   @override
   initState() {
     super.initState();
@@ -48,36 +60,55 @@ class _ChartScreenState extends State<ChartScreen> {
         ChartItem(
             textLeft: '6/60',
             textRight: '20/200',
-            rotations: enableRotation ? [0] : [-1],
+            rotations: enableRotation
+                ? chartMode
+                    ? 1
+                    : 1
+                : -1,
             image: image,
             imageSize: 279.139392,
             language: widget.image),
         ChartItem(
             textLeft: '6/36',
             textRight: '20/120',
-            rotations: enableRotation ? [0, 0] : [-1, -1],
+            rotations: enableRotation
+                ? chartMode
+                    ? 2
+                    : 1
+                : -1,
             image: image,
             imageSize: 167.5479733848944,
             language: widget.image),
         ChartItem(
             textLeft: '6/24',
             textRight: '20/80',
-            rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
+            rotations: enableRotation
+                ? chartMode
+                    ? 3
+                    : 1
+                : -1,
             image: image,
             imageSize: 111.59206787241891,
             language: widget.image),
         ChartItem(
             textLeft: '6/18',
             textRight: '20/60',
-            rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
+            rotations: enableRotation
+                ? chartMode
+                    ? 4
+                    : 1
+                : -1,
             image: image,
             imageSize: 83.7739866924472,
             language: widget.image),
         ChartItem(
             textLeft: '6/12',
             textRight: '20/40',
-            rotations:
-                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+            rotations: enableRotation
+                ? chartMode
+                    ? 5
+                    : 1
+                : -1,
             image: image,
             imageSize: 55.955905512475496,
             language: widget.image),
@@ -85,8 +116,10 @@ class _ChartScreenState extends State<ChartScreen> {
             textLeft: '6/6',
             textRight: '20/20',
             rotations: enableRotation
-                ? [0, 15, 270, 180, 90, 0]
-                : [-1, -1, -1, -1, -1, -1],
+                ? chartMode
+                    ? 6
+                    : 1
+                : -1,
             image: image,
             imageSize: 27.818078130616847,
             language: widget.image),
@@ -104,6 +137,17 @@ class _ChartScreenState extends State<ChartScreen> {
   final String _hindi =
       'एइईउऊऐओऔअंऋॠकखघएनचछजझटठधऔरथदधएनपफभएमवाईरएलवीशषसहक्षज्ञ';
   final String _allen = 'EIADFGHJCB';
+  final String _arabic = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _asamese = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _bengali = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _gujrati = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _kannad = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _malyalam = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _nepali = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _oriya = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _punjabi = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _urdu = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+
   final Random _rnd = Random();
 
   String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
@@ -118,6 +162,28 @@ class _ChartScreenState extends State<ChartScreen> {
       length, (_) => _hindi.codeUnitAt(_rnd.nextInt(_hindi.length))));
   String getRandomSymbol(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _allen.codeUnitAt(_rnd.nextInt(_allen.length))));
+  String getRandomArabic(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _arabic.codeUnitAt(_rnd.nextInt(_arabic.length))));
+  String getRandomAssamese(int length) =>
+      String.fromCharCodes(Iterable.generate(
+          length, (_) => _asamese.codeUnitAt(_rnd.nextInt(_asamese.length))));
+  String getRandomBengali(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _bengali.codeUnitAt(_rnd.nextInt(_bengali.length))));
+  String getRandomGujrati(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _gujrati.codeUnitAt(_rnd.nextInt(_gujrati.length))));
+  String getRandomKannad(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _kannad.codeUnitAt(_rnd.nextInt(_kannad.length))));
+  String getRandomMalayalam(int length) =>
+      String.fromCharCodes(Iterable.generate(
+          length, (_) => _malyalam.codeUnitAt(_rnd.nextInt(_malyalam.length))));
+  String getRandomNepali(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _nepali.codeUnitAt(_rnd.nextInt(_nepali.length))));
+  String getRandomOriya(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _oriya.codeUnitAt(_rnd.nextInt(_oriya.length))));
+  String getRandomPunjabi(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _punjabi.codeUnitAt(_rnd.nextInt(_punjabi.length))));
+  String getRandomUrdu(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _urdu.codeUnitAt(_rnd.nextInt(_urdu.length))));
 
   loadImage() {
     String itemImage = widget.image;
@@ -168,6 +234,8 @@ class _ChartScreenState extends State<ChartScreen> {
                     onInvoke: (intent) => changeItem(true)),
                 LeftButtonIntent: CallbackAction<LeftButtonIntent>(
                     onInvoke: (intent) => changeItem(false)),
+                EnterButtonIntent: CallbackAction<EnterButtonIntent>(
+                    onInvoke: (intent) => switchMode()),
               },
               child: Focus(focusNode: focus, child: currentItem),
             )));

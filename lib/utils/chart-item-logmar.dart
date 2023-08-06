@@ -129,7 +129,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
                   : AlwaysStoppedAnimation(next() / 360),
               // child: Image.asset(widget.image, height: widget.imageSize,)));
               child: Text(
-                widget.image,
+                getRandomString(1),
                 style: TextStyle(
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
@@ -146,7 +146,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
                 : AlwaysStoppedAnimation(next() / 360),
             // child: Image.asset(widget.image, height: widget.imageSize,)));
             child: Text(
-              widget.image,
+              getRandomString(1),
               style: TextStyle(
                   fontFamily: getFont(),
                   fontSize:

@@ -4,7 +4,8 @@ import 'package:eyevision/utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class ChartItemSnellan extends StatefulWidget {
-  const ChartItemSnellan(
+  const 
+  ChartItemSnellan(
       {super.key,
       required this.textLeft,
       required this.textRight,
