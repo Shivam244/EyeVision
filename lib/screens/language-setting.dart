@@ -53,7 +53,7 @@ class _ModeSettingState extends State<LanguageSetting> {
 
   @override
   initState() {
-    getLanguages();  
+    getLanguages();
     super.initState();
   }
 
@@ -65,7 +65,7 @@ class _ModeSettingState extends State<LanguageSetting> {
         .then((value) => {(value != '') ? (lang2 = value) : lang2 = 'Tamil'});
     await Helper.getData('lang3')
         .then((value) => {(value != '') ? (lang3 = value) : lang3 = 'Telugu'});
-        languageQueue = Queue.from([lang1, lang2, lang3]);
+    languageQueue = Queue.from([lang1, lang2, lang3]);
     reflectLanguage();
   }
 
@@ -106,6 +106,7 @@ class _ModeSettingState extends State<LanguageSetting> {
     Helper.setData('lang1', languageQueue.elementAt(0));
     Helper.setData('lang2', languageQueue.elementAt(1));
     Helper.setData('lang3', languageQueue.elementAt(2));
+    Helper.setData('languageChanged', 'true');
     reflectLanguage();
   }
 
@@ -963,7 +964,6 @@ class _ModeSettingState extends State<LanguageSetting> {
                 //     ),
                 //   ),
                 // ),
-                
               ]),
             ),
           ),

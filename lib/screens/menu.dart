@@ -91,6 +91,16 @@ class _MenuPageState extends State<MenuPage> {
   }
 
   getLanguages() async {
+    Helper.setData('languageChanged', 'false');
+    await Helper.containes('lang1').then((value) => {
+          if (!value) {Helper.setData('lang1', 'Hindi')}
+        });
+    await Helper.containes('lang2').then((value) => {
+          if (!value) {Helper.setData('lang2', 'Tamil')}
+        });
+    await Helper.containes('lang3').then((value) => {
+          if (!value) {Helper.setData('lang3', 'Telugu')}
+        });
     await Helper.getData('lang1').then((value) => {
           (value != '') ? (lang1 = value) : lang1 = 'Hindi',
         });
@@ -99,6 +109,12 @@ class _MenuPageState extends State<MenuPage> {
     await Helper.getData('lang3')
         .then((value) => {(value != '') ? (lang3 = value) : lang3 = 'Telugu'});
     setState(() {});
+  }
+
+  checkLanguageChanged() {
+    Helper.getData('languageChanged').then((value) => {
+          if (value == 'true') {setState(() {})}
+        });
   }
 
   @override
@@ -114,6 +130,7 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
+    // checkLanguageChanged();
     getLanguages();
     if (initialFocus) {
       FocusScope.of(context).requestFocus(item1Focus);
@@ -165,7 +182,7 @@ class _MenuPageState extends State<MenuPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Settings()));
+                                  builder: (context) => const Settings()));
                         }),
                       },
                       child: IconButton(
@@ -370,7 +387,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/tamil.png",
+                    icon: "assets/icons/${lang1.toLowerCase()}.jpg",
                     name: lang1.toUpperCase(),
                     focusNode: item5Focus,
                     image: 'Tamil',
@@ -406,7 +423,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/telugu.png",
+                    icon: "assets/icons/${lang2.toLowerCase()}.jpg",
                     name: lang2.toUpperCase(),
                     focusNode: item6Focus,
                     image: 'Telugu',
@@ -442,7 +459,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/hindi.png",
+                    icon: "assets/icons/${lang3.toLowerCase()}.jpg",
                     name: lang3.toUpperCase(),
                     focusNode: item7Focus,
                     image: 'Hindi',

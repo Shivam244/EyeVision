@@ -22,16 +22,24 @@ class _SpalshScreenState extends State<SpalshScreen> {
           if (value == null || value == '') {Helper.setData('distance', '5')}
         });
     Helper.getData('login').then((value) => {
-          if (value == 'true') {Navigator.popAndPushNamed(context, "/menu")}
-          else {Navigator.popAndPushNamed(context, "/login")}
+          if (value == 'true')
+            {Navigator.popAndPushNamed(context, "/menu")}
+          else
+            {Navigator.popAndPushNamed(context, "/login")}
         });
+    Helper.containes('inversion').then((value) => {
+          if (!value) {Helper.setData('inversion', 'Normal')}
+        });
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColour,
-      body: const CircularProgressIndicator( color: Colors.white,),
+      body: const CircularProgressIndicator(
+        color: Colors.white,
+      ),
     );
   }
 }

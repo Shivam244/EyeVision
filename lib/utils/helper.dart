@@ -20,4 +20,9 @@ static Future getData(key) async {
     return sharedPreferences.remove(key);
   }
 
+  static Future containes(key) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.containsKey(key);
+  }
+
 }

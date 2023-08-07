@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:eyevision/utils/chartItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:invert_colors/invert_colors.dart';
 
+import '../utils/helper.dart';
 import 'login.dart';
 
 class ChartScreen extends StatefulWidget {
@@ -21,6 +23,7 @@ class _ChartScreenState extends State<ChartScreen> {
   bool enableRotation = true;
   bool initialState = true;
   bool chartMode = true;
+  bool inverse = false;
   changeItem(bool next) {
     if (next) {
       itemIndex++;
@@ -41,7 +44,8 @@ class _ChartScreenState extends State<ChartScreen> {
   switchMode() {
     chartMode = !chartMode;
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: chartMode? const Text('Multiple'): const Text('Single'), duration: const Duration(milliseconds: 500),
+      content: chartMode ? const Text('Multiple') : const Text('Single'),
+      duration: const Duration(milliseconds: 500),
     ));
     loadImage();
     setState(() {
@@ -49,8 +53,16 @@ class _ChartScreenState extends State<ChartScreen> {
     });
   }
 
+  checkInvert() async {
+    await Helper.getData('inversion').then((value) => {
+          if (value == "invert") {inverse = true},
+          print(value)
+        });
+  }
+
   @override
   initState() {
+    checkInvert();
     super.initState();
   }
 
@@ -213,10 +225,7 @@ class _ChartScreenState extends State<ChartScreen> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    loadImage();
-    FocusScope.of(context).requestFocus(focus);
+  Widget getWidget() {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(
@@ -239,5 +248,12 @@ class _ChartScreenState extends State<ChartScreen> {
               },
               child: Focus(focusNode: focus, child: currentItem),
             )));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    loadImage();
+    FocusScope.of(context).requestFocus(focus);
+    return inverse ? InvertColors(child: getWidget()) : getWidget();
   }
 }

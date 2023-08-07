@@ -1,5 +1,6 @@
 import 'package:eyevision/screens/callibration-screen.dart';
 import 'package:eyevision/screens/distance-setting.dart';
+import 'package:eyevision/screens/invert-settings.dart';
 import 'package:eyevision/screens/language-setting.dart';
 import 'package:eyevision/screens/mode-setting.dart';
 import 'package:eyevision/screens/select-font-screen.dart';
@@ -211,7 +212,7 @@ class _SettingsState extends State<Settings> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/logout.jpg",
+                    icon: "assets/icons/callibration.jpg",
                     name: 'CALLIBRATE',
                     focusNode: item3Focus,
                     image: 'assets/chart/logout.jpg',
@@ -243,9 +244,41 @@ class _SettingsState extends State<Settings> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/logout.jpg",
+                    icon: "assets/icons/language.jpg",
                     name: 'LANGUAGE',
                     focusNode: item4Focus,
+                    image: 'assets/chart/logout.jpg',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item3Focus.unfocus();
+                      // changeFocus(context, item1Focus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item5Focus.unfocus();
+                      changeFocus(context, item6Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item5Focus.unfocus();
+                      changeFocus(context, item4Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item2Focus.unfocus();
+                      // changeFocus(context, item6Focus);
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InversionSetting()));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/invert.png",
+                    name: 'COLOR MODE',
+                    focusNode: item5Focus,
                     image: 'assets/chart/logout.jpg',
                   ),
                 ),
@@ -260,8 +293,8 @@ class _SettingsState extends State<Settings> {
                       // changeFocus(context, item3Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item5Focus.unfocus();
-                      changeFocus(context, item4Focus);
+                      item6Focus.unfocus();
+                      changeFocus(context, item5Focus);
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       // item2Focus.unfocus();
@@ -276,7 +309,7 @@ class _SettingsState extends State<Settings> {
                   child: MenuItem(
                     icon: "assets/icons/logout.jpg",
                     name: 'LOGOUT',
-                    focusNode: item5Focus,
+                    focusNode: item6Focus,
                     image: 'assets/chart/logout.jpg',
                   ),
                 ),

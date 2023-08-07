@@ -40,6 +40,9 @@ class _ArrowChartItemState extends State<ArrowChartItem> {
     mode = await Helper.getData('mode') ?? '';
     distance = await Helper.getData('distance') ?? '';
     print("mode: " + mode + " distance: " + distance);
+    setState(() {
+      
+    });
   }
 
   double calculatePixel(int feat, String type) {
