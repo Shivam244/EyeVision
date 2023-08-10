@@ -36,6 +36,9 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
     var cons = await Helper.getData('constant${widget.type}') ?? '0.0';
     constant = double.parse(cons);
     print("mode: " + mode + " distance: " + distance + " constant: " + cons);
+    setState(() {
+      
+    });
   }
 
   double calculatePixel(int feat, String type) {

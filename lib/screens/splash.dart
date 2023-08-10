@@ -18,9 +18,12 @@ class _SpalshScreenState extends State<SpalshScreen> {
   }
 
   checkLoggedIn() {
-    Helper.getData('distance').then((value) => {
-          if (value == null || value == '') {Helper.setData('distance', '5')}
+    Helper.containes('distance').then((value) => {
+          if (!value) {Helper.setData('distance', '5')}
         });
+    // Helper.getData('distance').then((value) => {
+    //       if (value == null || value == '') {Helper.setData('distance', '5')}
+    //     });
     Helper.getData('login').then((value) => {
           if (value == 'true')
             {Navigator.popAndPushNamed(context, "/menu")}
@@ -30,7 +33,6 @@ class _SpalshScreenState extends State<SpalshScreen> {
     Helper.containes('inversion').then((value) => {
           if (!value) {Helper.setData('inversion', 'Normal')}
         });
-
   }
 
   @override

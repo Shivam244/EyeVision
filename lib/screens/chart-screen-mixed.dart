@@ -3,8 +3,10 @@ import 'dart:math';
 import 'package:eyevision/utils/chart-item-mixed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:invert_colors/invert_colors.dart';
 
 import '../utils/chartItem.dart';
+import '../utils/helper.dart';
 import 'login.dart';
 
 class ChartScreenMixed extends StatefulWidget {
@@ -44,8 +46,10 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   final Random _rnd = Random();
   bool initialState = true;
   bool chartMode = true;
+  bool inverse = false;
   @override
   void initState() {
+    checkInvert();
     loadImage();
     super.initState();
   }
@@ -58,7 +62,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       length, (_) => _hindi.codeUnitAt(_rnd.nextInt(_hindi.length))));
   String getRandomSymbol(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _allen.codeUnitAt(_rnd.nextInt(_allen.length))));
-      String getRandomArabic(int length) => String.fromCharCodes(Iterable.generate(
+  String getRandomArabic(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _arabic.codeUnitAt(_rnd.nextInt(_arabic.length))));
   String getRandomAssamese(int length) =>
       String.fromCharCodes(Iterable.generate(
@@ -101,10 +105,18 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     setState(() {});
   }
 
+  checkInvert() async {
+    await Helper.getData('inversion').then((value) => {
+          if (value == "invert") {inverse = true},
+          print(value)
+        });
+  }
+
   switchMode() {
     chartMode = !chartMode;
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: chartMode? const Text('Multiple'): const Text('Single'), duration: const Duration(milliseconds: 500),
+      content: chartMode ? const Text('Multiple') : const Text('Single'),
+      duration: const Duration(milliseconds: 500),
     ));
     loadImage();
     setState(() {
@@ -121,6 +133,10 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     } else if (widget.type == 'Numbers') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomNumber(1));
+      }
+    } else if (widget.type == 'Allen') {
+      for (int i = 0; i < count; i++) {
+        images.add(getRandomSymbol(1));
       }
     } else if (widget.type == 'Hindi') {
       for (int i = 0; i < count; i++) {
@@ -154,7 +170,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       for (int i = 0; i < count; i++) {
         images.add(getRandomNepali(1));
       }
-    }else if (widget.type == 'Punjabi') {
+    } else if (widget.type == 'Punjabi') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomPunjabi(1));
       }
@@ -166,13 +182,11 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       for (int i = 0; i < count; i++) {
         images.add(getRandomUrdu(1));
       }
-    }
-    else if (widget.type == 'Tamil') {
+    } else if (widget.type == 'Tamil') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomTamil(1));
       }
-    }
-    else if (widget.type == 'Telugu') {
+    } else if (widget.type == 'Telugu') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomTelugu(1));
       }
@@ -227,10 +241,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     currentItem = widget.chartItemsList[itemIndex];
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // loadImage();
-    FocusScope.of(context).requestFocus(focus);
+  getWidget(){
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(
@@ -257,5 +268,12 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
               },
               child: Focus(focusNode: focus, child: currentItem),
             )));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // loadImage();
+    FocusScope.of(context).requestFocus(focus);
+    return inverse ? InvertColors(child: getWidget()) : getWidget();
   }
 }

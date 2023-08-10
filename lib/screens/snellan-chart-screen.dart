@@ -226,41 +226,44 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                     child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           controller: scrollController,
-                      child: Container(
-                        width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                height: 100,
-                              ),
-                              widget.chartItemsList[0],
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              widget.chartItemsList[1],
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              widget.chartItemsList[2],
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              widget.chartItemsList[3],
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              widget.chartItemsList[4],
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              widget.chartItemsList[5],
-                              const SizedBox(
-                                height: 20,
-                              ),
-                            ],
+                      child: Center(
+                        child: Container(
+                          // width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
+                          width: MediaQuery.of(context).size.width,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(
+                                  height: 100,
+                                ),
+                                widget.chartItemsList[0],
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                widget.chartItemsList[1],
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                widget.chartItemsList[2],
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                widget.chartItemsList[3],
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                widget.chartItemsList[4],
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                widget.chartItemsList[5],
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                      ),
                       ),
                     ),
                   )),

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:animate_gradient/animate_gradient.dart';
@@ -39,8 +40,10 @@ class _LoginPageState extends State<LoginPage> {
   String username = "";
   String password = "";
   bool formValid = true;
+  bool initialFocus = true;
   String login = 'false';
   String deviceId = '';
+  String encodedPassword = '';
   // FocusNode? userNameFocus;
   // FocusNode? passwordFocus;
   // FocusNode? submitButtonFocus;
@@ -54,6 +57,7 @@ class _LoginPageState extends State<LoginPage> {
 
   changeFocus(BuildContext context, FocusNode node) {
     formValid = true;
+    initialFocus = false;
     FocusScope.of(context).requestFocus(node);
     setState(() {});
   }
@@ -71,8 +75,10 @@ class _LoginPageState extends State<LoginPage> {
     var deviceInfo = DeviceInfoPlugin();
     var androidDeviceInfo = await deviceInfo.androidInfo;
     deviceId = androidDeviceInfo.id;
-    setState(() {   
-    });
+    String encodedId = base64.encode(utf8.encode(deviceId));
+    encodedPassword = encodedId.substring(0, 8);
+    print(encodedPassword);
+    setState(() {});
   }
 
   setData(value) async {
@@ -88,16 +94,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   submitForm() {
-    if (username == 'admin' && password == '1234') {
+    // if (username == 'admin' && password == '1234') {
+    //   formValid = true;
+    //   Navigator.pushNamed(context, "/menu");
+    //   Helper.setData('login', 'true');
+    // }
+    if (password == encodedPassword) {
       formValid = true;
       Navigator.pushNamed(context, "/menu");
       Helper.setData('login', 'true');
     } else {
       formValid = false;
       submitButtonFocus.unfocus();
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Incorrect Username or password')));
-      FocusScope.of(context).requestFocus(userNameFocus);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content:
+              Text('Incorrect Password! Please contact your system admin')));
+      FocusScope.of(context).requestFocus(passwordFocus);
     }
   }
 
@@ -111,6 +123,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    // if (initialFocus) {
+    //   FocusScope.of(context).requestFocus(passwordFocus);
+    // }
     print(MediaQuery.of(context).size.height);
     print(MediaQuery.of(context).size.width);
     return Scaffold(
@@ -176,63 +191,68 @@ class _LoginPageState extends State<LoginPage> {
                                 )
                               ],
                             ),
-                            Actions(
-                              actions: <Type, Action<Intent>>{
-                                DownButtonIntent:
-                                    CallbackAction<DownButtonIntent>(
-                                        onInvoke: (intent) => changeFocus(
-                                            context, passwordFocus!)),
-                              },
-                              // child: Focus(
-                              // focusNode: userNameFocus,
-                              child: Container(
-                                // decoration: !(userNameFocus?.hasFocus ?? false)
-                                //     ? null
-                                //     : const BoxDecoration(
-                                //         color: Color.fromARGB(55, 255, 255, 255),
-                                //         borderRadius:
-                                //             BorderRadius.all(Radius.circular(5))),
-                                width: 350,
-                                child: TextFormField(
-                                  controller: usernameController,
-                                  onChanged: (value) => {username = value},
-                                  focusNode: userNameFocus,
-                                  autofocus: true,
-                                  textInputAction: TextInputAction.next,
-                                  onFieldSubmitted: (value) {
-                                    userNameFocus.unfocus();
-                                    changeFocus(context, passwordFocus);
-                                  },
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w300),
-                                  decoration: const InputDecoration(
-                                    hintText: 'Enter Username',
-                                    hintStyle: TextStyle(color: Colors.white),
-                                    labelText: 'Username',
-                                    labelStyle: TextStyle(color: Colors.white),
-                                    focusColor: Colors.blueGrey,
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Color.fromARGB(
-                                                117, 255, 255, 255))),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              // ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            // Actions(
+                            //   actions: <Type, Action<Intent>>{
+                            //     DownButtonIntent:
+                            //         CallbackAction<DownButtonIntent>(
+                            //             onInvoke: (intent) => changeFocus(
+                            //                 context, passwordFocus!)),
+                            //   },
+                            //   // child: Focus(
+                            //   // focusNode: userNameFocus,
+                            //   child: Container(
+                            //     // decoration: !(userNameFocus?.hasFocus ?? false)
+                            //     //     ? null
+                            //     //     : const BoxDecoration(
+                            //     //         color: Color.fromARGB(55, 255, 255, 255),
+                            //     //         borderRadius:
+                            //     //             BorderRadius.all(Radius.circular(5))),
+                            //     width: 350,
+                            //     child: TextFormField(
+                            //       controller: usernameController,
+                            //       onChanged: (value) => {username = value},
+                            //       focusNode: userNameFocus,
+                            //       autofocus: true,
+                            //       textInputAction: TextInputAction.next,
+                            //       onFieldSubmitted: (value) {
+                            //         userNameFocus.unfocus();
+                            //         changeFocus(context, passwordFocus);
+                            //       },
+                            //       style: const TextStyle(
+                            //           color: Colors.white,
+                            //           fontWeight: FontWeight.w300),
+                            //       decoration: const InputDecoration(
+                            //         hintText: 'Enter Username',
+                            //         hintStyle: TextStyle(color: Colors.white),
+                            //         labelText: 'Username',
+                            //         labelStyle: TextStyle(color: Colors.white),
+                            //         focusColor: Colors.blueGrey,
+                            //         focusedBorder: OutlineInputBorder(
+                            //             borderSide: BorderSide(
+                            //                 color: Color.fromARGB(
+                            //                     117, 255, 255, 255))),
+                            //         enabledBorder: UnderlineInputBorder(
+                            //           borderSide:
+                            //               BorderSide(color: Colors.white),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            //   // ),
+                            // ),
+                            // const SizedBox(
+                            //   height: 10,
+                            // ),
                             Container(
                               child: Text(
-                                'Your device id is: ${deviceId}',
-                                style: TextStyle(color: Colors.white),
+                                'DEVICE ID:    ${deviceId}',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
+                            ),
+                            const SizedBox(
+                              height: 40,
                             ),
                             Actions(
                               actions: <Type, Action<Intent>>{
@@ -240,9 +260,9 @@ class _LoginPageState extends State<LoginPage> {
                                     CallbackAction<DownButtonIntent>(
                                         onInvoke: (intent) => changeFocus(
                                             context, submitButtonFocus!)),
-                                UpButtonIntent: CallbackAction<UpButtonIntent>(
-                                    onInvoke: (intent) =>
-                                        changeFocus(context, userNameFocus!)),
+                                // UpButtonIntent: CallbackAction<UpButtonIntent>(
+                                //     onInvoke: (intent) =>
+                                //         changeFocus(context, userNameFocus!)),
                               },
                               // child: Focus(
                               // focusNode: passwordFocus,
@@ -259,6 +279,7 @@ class _LoginPageState extends State<LoginPage> {
                                   controller: passwordController,
                                   onChanged: (value) => {password = value},
                                   focusNode: passwordFocus,
+                                  autofocus: true,
                                   onFieldSubmitted: (value) {
                                     passwordFocus.unfocus();
                                     changeFocus(context, submitButtonFocus);

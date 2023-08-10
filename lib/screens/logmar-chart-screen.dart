@@ -266,7 +266,7 @@ class _LogmarChartState extends State<LogmarChartScreen> {
               },
               child: Focus(
                   focusNode: focus,
-                  child: Expanded(
+                  child: Container(
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       controller: verticalScrollController,
@@ -274,7 +274,8 @@ class _LogmarChartState extends State<LogmarChartScreen> {
                         scrollDirection: Axis.horizontal,
                         controller: scrollController,
                         child: Container(
-                          width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
+                          // width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
+                          width: int.parse(distance)>12? (MediaQuery.of(context).size.width + MediaQuery.of(context).size.width/2):MediaQuery.of(context).size.width,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
