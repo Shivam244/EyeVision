@@ -109,7 +109,7 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
           alignment: Alignment.center,
           transform: Matrix4.rotationY(pi),
           child: RotationTransition(
-              turns: widget.image.length > 1 || widget.rotations[0] == -1
+              turns: widget.image[0].length > 1 || widget.rotations[0] == -1
                   ? AlwaysStoppedAnimation(0 / 360)
                   : AlwaysStoppedAnimation(next() / 360),
               // child: Image.asset(widget.image, height: widget.imageSize,)));
@@ -131,7 +131,7 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
         ));
       } else {
         chartItems.add(RotationTransition(
-            turns: widget.image.length > 1 || widget.rotations[0] == -1
+            turns: widget.image[0].length > 1 || widget.rotations[0] == -1
                 ? AlwaysStoppedAnimation(0 / 360)
                 : AlwaysStoppedAnimation(next() / 360),
             // child: Image.asset(widget.image, height: widget.imageSize,)));

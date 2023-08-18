@@ -29,7 +29,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
       // if (itemIndex == items.length - 1) return;
       // itemIndex++;
       // widget.image = items[itemIndex];
-      if (currentPage < 5) {
+      if (currentPage < 4) {
         currentPage++;
       }
     } else {
@@ -73,7 +73,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
   }
 
   setImage(int list) {
-    List<String> image = generateItems(5);
+    // List<String> image = generateItems(5);
     if (initialState) {
       List<ContastChartItem> chartItemsList = [];
       List<ContastChartItem> chartItemsList1 = [
@@ -83,7 +83,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 1.0,
             language: widget.image),
         ContastChartItem(
@@ -92,7 +92,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.95,
             language: widget.image),
         ContastChartItem(
@@ -101,7 +101,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.9,
             language: widget.image),
         ContastChartItem(
@@ -110,27 +110,28 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.85,
             language: widget.image),
-      ];
-      List<ContastChartItem> chartItemsList2 = [
-        ContastChartItem(
+            ContastChartItem(
             textLeft: '80',
             textRight: '',
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.8,
             language: widget.image),
+      ];
+      List<ContastChartItem> chartItemsList2 = [
+        
         ContastChartItem(
             textLeft: '75',
             textRight: '',
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.75,
             language: widget.image),
         ContastChartItem(
@@ -139,7 +140,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.7,
             language: widget.image),
         ContastChartItem(
@@ -148,18 +149,16 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.65,
             language: widget.image),
-      ];
-      List<ContastChartItem> chartItemsList3 = [
-        ContastChartItem(
+            ContastChartItem(
             textLeft: '50',
             textRight: '',
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.5,
             language: widget.image),
         ContastChartItem(
@@ -168,16 +167,19 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.45,
             language: widget.image),
+      ];
+      List<ContastChartItem> chartItemsList3 = [
+        
         ContastChartItem(
             textLeft: '40',
             textRight: '',
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.4,
             language: widget.image),
         ContastChartItem(
@@ -186,18 +188,16 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.35,
             language: widget.image),
-      ];
-      List<ContastChartItem> chartItemsList4 = [
-        ContastChartItem(
+            ContastChartItem(
             textLeft: '30',
             textRight: '',
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.3,
             language: widget.image),
         ContastChartItem(
@@ -206,7 +206,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.25,
             language: widget.image),
         ContastChartItem(
@@ -215,27 +215,28 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.2,
             language: widget.image),
+      ];
+      List<ContastChartItem> chartItemsList4 = [
+        
         ContastChartItem(
             textLeft: '15',
             textRight: '',
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.15,
             language: widget.image),
-      ];
-      List<ContastChartItem> chartItemsList5 = [
-        ContastChartItem(
+            ContastChartItem(
             textLeft: '10',
             textRight: '',
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.1,
             language: widget.image),
         ContastChartItem(
@@ -244,13 +245,11 @@ class _ContrastScreenState extends State<ContrastScreen> {
             rotations: enableRotation
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
-            images: image,
+            images: generateItems(5),
             opacity: 0.05,
             language: widget.image),
       ];
-      if (list == 5) {
-        chartItemsList = chartItemsList5;
-      } else if (list == 2) {
+       if (list == 2) {
         chartItemsList = chartItemsList2;
       } else if (list == 3) {
         chartItemsList = chartItemsList3;
@@ -325,11 +324,11 @@ class _ContrastScreenState extends State<ContrastScreen> {
                         const SizedBox(
                           height: 20,
                         ),
-                        widget.chartItemsList[0],
+                        widget.chartItemsList.length>0? widget.chartItemsList[0]: Container(),
                         const SizedBox(
                           height: 20,
                         ),
-                        widget.chartItemsList[1],
+                        widget.chartItemsList.length>1? widget.chartItemsList[1]: Container(),
                         const SizedBox(
                           height: 20,
                         ),
@@ -338,6 +337,10 @@ class _ContrastScreenState extends State<ContrastScreen> {
                           height: 20,
                         ),
                         widget.chartItemsList.length>3? widget.chartItemsList[3]: Container(),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        widget.chartItemsList.length>4? widget.chartItemsList[4]: Container(),
                         const SizedBox(
                           height: 20,
                         ),

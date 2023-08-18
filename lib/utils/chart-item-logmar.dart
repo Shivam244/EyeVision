@@ -121,7 +121,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
     for (var i = 0; i < widget.rotations.length; i++) {
       if (mode == 'Reverse') {
         chartItems.add(Transform(
-          alignment: Alignment.center,
+          // alignment: Alignment.center,
           transform: Matrix4.rotationY(pi),
           child: RotationTransition(
               turns: widget.image.length > 1 || widget.rotations[0] == -1
@@ -155,11 +155,15 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
               textScaleFactor: 1.0,
             )));
       }
-      if (i < widget.rotations.length - 1) {
-        chartItems.add(const SizedBox(
-          width: 70,
+      // if (i < widget.rotations.length - 1) {
+      //   chartItems.add(const SizedBox(
+      //     width: 70,
+      //   ));
+      // }else{
+        chartItems.add(SizedBox(
+          width: calculatePixel(int.parse(distance), widget.textLeft),
         ));
-      }
+      // }
     }
   }
 
@@ -183,8 +187,8 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
         ),
         Container(
             child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: chartItems,
         )),
         Row(mainAxisAlignment: MainAxisAlignment.end, children: [

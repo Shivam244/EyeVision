@@ -98,11 +98,28 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
             imageSize: 55.955905512475496,
             language: widget.image),
         ChartItemSnellan(
+            textLeft: '6/9',
+            textRight: '20/30',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0,0] : [-1, -1, -1, -1, -1,-1],
+            image: image,
+            imageSize: 55.955905512475496,
+            language: widget.image),
+        ChartItemSnellan(
             textLeft: '6/6',
             textRight: '20/20',
             rotations: enableRotation
-                ? [0, 15, 270, 180, 90, 0]
-                : [-1, -1, -1, -1, -1, -1],
+                ? [0, 15, 270, 180, 90, 0,0]
+                : [-1, -1, -1, -1, -1, -1,-1],
+            image: image,
+            imageSize: 27.818078130616847,
+            language: widget.image),
+        ChartItemSnellan(
+            textLeft: '6/5',
+            textRight: '20/18',
+            rotations: enableRotation
+                ? [0, 15, 270, 180, 90, 0,0,0]
+                : [-1, -1, -1, -1, -1, -1,-1,-1],
             image: image,
             imageSize: 27.818078130616847,
             language: widget.image),
@@ -234,7 +251,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const SizedBox(
-                                  height: 100,
+                                  height: 50,
                                 ),
                                 widget.chartItemsList[0],
                                 const SizedBox(
@@ -259,6 +276,14 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                                 widget.chartItemsList[5],
                                 const SizedBox(
                                   height: 20,
+                                ),
+                                widget.chartItemsList[6],
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                widget.chartItemsList[7],
+                                const SizedBox(
+                                  height: 50,
                                 ),
                               ],
                             ),

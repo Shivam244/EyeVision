@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 var backgroundColour = const Color.fromRGBO(79, 96, 97, 100);
 
+// 1ft = 1.74mm
+// 6ft  60mm = 60 * 3.7795275591 * 0.846;
+
 double MM_60 = 17.4;
 double MM_48 = 14;
 double MM_38 = 11.3;
@@ -16,4 +19,5 @@ double MM_9_5 = 2.64;
 double MM_9 = 2.62;
 double MM_7_5 = 2.4;
 double MM_6 = 1.74;
+double MM_5 = 1.45;
 

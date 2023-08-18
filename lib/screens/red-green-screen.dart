@@ -53,7 +53,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
         .then((value) => {(value != '') ? (lang2 = value) : lang2 = 'Tamil'});
     await Helper.getData('lang3')
         .then((value) => {(value != '') ? (lang3 = value) : lang3 = 'Telugu'});
-        items = ['C', 'E', 'Letters', 'Numbers', lang1, lang2, lang3];
+    items = ['C', 'E', 'Letters', 'Numbers', lang1, lang2, lang3];
     setState(() {});
   }
 
@@ -78,12 +78,12 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   @override
   initState() {
     getLanguages();
-    
+
     super.initState();
   }
 
   setImage(String image1) {
-    if (initialState) {
+    // if (initialState) {
       List<ChartItemSingle> chartItemsList = [
         ChartItemSingle(
             textLeft: '6/60',
@@ -133,9 +133,9 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
       ];
       initialState = false;
       return chartItemsList;
-    } else {
-      return widget.chartItemsList;
-    }
+    // } else {
+    //   return widget.chartItemsList;
+    // }
   }
 
   final String _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -144,7 +144,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
   final String _hindi =
       'एइईउऊऐओऔअंऋॠकखघएनचछजझटठधऔरथदधएनपफभएमवाईरएलवीशषसहक्षज्ञ';
-      final String _arabic = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+  final String _arabic = 'QWERTYUIOPASDFGHJKLZXCVBNM';
   final String _asamese = 'QWERTYUIOPASDFGHJKLZXCVBNM';
   final String _bengali = 'QWERTYUIOPASDFGHJKLZXCVBNM';
   final String _gujrati = 'QWERTYUIOPASDFGHJKLZXCVBNM';
@@ -166,7 +166,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
       length, (_) => _telugu.codeUnitAt(_rnd.nextInt(_telugu.length))));
   String getRandomHindi(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _hindi.codeUnitAt(_rnd.nextInt(_hindi.length))));
-     String getRandomArabic(int length) => String.fromCharCodes(Iterable.generate(
+  String getRandomArabic(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _arabic.codeUnitAt(_rnd.nextInt(_arabic.length))));
   String getRandomAssamese(int length) =>
       String.fromCharCodes(Iterable.generate(
@@ -187,7 +187,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   String getRandomPunjabi(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _punjabi.codeUnitAt(_rnd.nextInt(_punjabi.length))));
   String getRandomUrdu(int length) => String.fromCharCodes(Iterable.generate(
-      length, (_) => _urdu.codeUnitAt(_rnd.nextInt(_urdu.length)))); 
+      length, (_) => _urdu.codeUnitAt(_rnd.nextInt(_urdu.length))));
 
   getRandomImage() {
     String itemImage = image;
@@ -206,38 +206,32 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     } else if (image == 'Hindi') {
       itemImage = getRandomHindi(1);
       enableRotation = false;
-    }
-    else if (image == 'Assamese') {
+    } else if (image == 'Assamese') {
       itemImage = getRandomAssamese(1);
       enableRotation = false;
-    }
-    else if (image == 'Arabic') {
+    } else if (image == 'Arabic') {
       itemImage = getRandomArabic(1);
       enableRotation = false;
-    }
-    else if (image == 'Bengali') {
+    } else if (image == 'Bengali') {
       itemImage = getRandomBengali(1);
       enableRotation = false;
-    }
-    else if (image == 'Kannada') {
+    } else if (image == 'Kannada') {
       itemImage = getRandomKannad(1);
       enableRotation = false;
-    }
-    else if (image == 'Malayalam') {
+    } else if (image == 'Malayalam') {
       itemImage = getRandomMalayalam(1);
       enableRotation = false;
-    }
-    else if (image == 'Oriya') {
+    } else if (image == 'Oriya') {
       itemImage = getRandomOriya(1);
       enableRotation = false;
-    }
-    else if (image == 'Punjabi') {
+    } else if (image == 'Punjabi') {
       itemImage = getRandomPunjabi(1);
       enableRotation = false;
-    }
-    else if (image == 'Urdu') {
+    } else if (image == 'Urdu') {
       itemImage = getRandomUrdu(1);
       enableRotation = false;
+    } else {
+      enableRotation = true;
     }
     return itemImage;
   }
@@ -252,63 +246,51 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
       for (int i = 0; i < count; i++) {
         images.add(getRandomNumber(1));
       }
-    }
-     else if (image == 'Hindi') {
+    } else if (image == 'Hindi') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomHindi(1));
       }
-    }
-     else if (image == 'Assamese') {
+    } else if (image == 'Assamese') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomAssamese(1));
       }
-    }
-     else if (image == 'Arabic') {
+    } else if (image == 'Arabic') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomArabic(1));
       }
-    }
-     else if (image == 'Bengali') {
+    } else if (image == 'Bengali') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomBengali(1));
       }
-    }
-     else if (image == 'Malayalam') {
+    } else if (image == 'Malayalam') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomMalayalam(1));
       }
-    }
-     else if (image == 'Kannada') {
+    } else if (image == 'Kannada') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomKannad(1));
       }
-    }
-     else if (image == 'Punjabi') {
+    } else if (image == 'Punjabi') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomPunjabi(1));
       }
-    }
-     else if (image == 'Oriya') {
+    } else if (image == 'Oriya') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomOriya(1));
       }
-    }
-     else if (image == 'Urdu') {
+    } else if (image == 'Urdu') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomUrdu(1));
       }
-    }
-     else if (image == 'Tamil') {
+    } else if (image == 'Tamil') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomTamil(1));
       }
-    }
-     else if (image == 'Telugu') {
+    } else if (image == 'Telugu') {
       for (int i = 0; i < count; i++) {
         images.add(getRandomTelugu(1));
       }
-    }
-     else {
+    } else {
       for (int i = 0; i < count; i++) {
         images.add(image);
       }
@@ -333,6 +315,8 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     } else if (image == 'Hindi') {
       itemImage = getRandomHindi(1);
       enableRotation = false;
+    } else if (image == 'C' || image == 'E') {
+      enableRotation = true;
     }
     widget.chartItemsList = setImage(itemImage);
     currentItem = widget.chartItemsList[itemIndex];

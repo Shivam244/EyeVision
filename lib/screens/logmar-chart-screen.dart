@@ -275,9 +275,9 @@ class _LogmarChartState extends State<LogmarChartScreen> {
                         controller: scrollController,
                         child: Container(
                           // width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
-                          width: int.parse(distance)>12? (MediaQuery.of(context).size.width + MediaQuery.of(context).size.width/2):MediaQuery.of(context).size.width,
+                          width: int.parse(distance)>6? (MediaQuery.of(context).size.width * 3.5):MediaQuery.of(context).size.width,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               const SizedBox(
                                 height: 50,
@@ -285,62 +285,62 @@ class _LogmarChartState extends State<LogmarChartScreen> {
                               Container(
                                 child: widget.chartItemsList[0],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft),
                               ),
                               Container(
                                 child: widget.chartItemsList[1],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[1].textLeft),
                               ),
                               Container(
                                 child: widget.chartItemsList[2],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[2].textLeft),
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[3],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[3].textLeft),
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[4],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[4].textLeft),
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[5],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[5].textLeft),
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[6],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[6].textLeft),
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[7],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[7].textLeft),
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[8],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[8].textLeft),
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[9],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance), widget.chartItemsList[9].textLeft),
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[10],
