@@ -33,31 +33,32 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
   checkMode() async {
     mode = await Helper.getData('mode') ?? '';
     distance = await Helper.getData('distance') ?? '';
-    var cons = await Helper.getData('constant${widget.type}') ?? '0.0';
+    var cons = await Helper.getData('constantC') ?? '0.0';
     constant = double.parse(cons);
-    print("mode: " + mode + " distance: " + distance + " constant: " + cons);
-    setState(() {
-      
-    });
+    // constant = 0;
+    print("mode: " + mode + " distance: " + distance);
+    setState(() {});
   }
 
   double calculatePixel(int feat, String type) {
+    double calculatedSize = 0;
     if (type == "6/60") {
-      return feat / 4 * MM_60 * 3.7795275591 * 0.846 + constant;
+      calculatedSize = feat / 4 * MM_60 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/36") {
-      return feat / 4 * MM_36 * 3.7795275591 * 0.846 + constant;
+      calculatedSize = feat / 4 * MM_36 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/24") {
-      return feat / 4 * MM_24 * 3.7795275591 * 0.846 + constant;
+      calculatedSize = feat / 4 * MM_24 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/18") {
-      return feat / 4 * MM_18 * 3.7795275591 * 0.846 + constant;
+      calculatedSize = feat / 4 * MM_18 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/12") {
-      return feat / 4 * MM_12 * 3.7795275591 * 0.846 + constant;
+      calculatedSize = feat / 4 * MM_12 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/9") {
-      return feat / 4 * MM_9 * 3.7795275591 * 0.846 + constant;
+      calculatedSize = feat / 4 * MM_9 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/6") {
-      return feat / 4 * MM_6 * 3.7795275591 * 0.846 + constant;
+      calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 + constant;
     }
-    return 0;
+    double finalSize = getConstant(widget.type, calculatedSize);
+    return finalSize;
   }
 
   getFont() {

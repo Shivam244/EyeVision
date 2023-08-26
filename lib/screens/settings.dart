@@ -208,7 +208,7 @@ class _SettingsState extends State<Settings> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SelectFontScreen()));
+                              builder: (context) => const CallibrationScreen(type: 'C')));
                     }),
                   },
                   child: MenuItem(
@@ -310,6 +310,38 @@ class _SettingsState extends State<Settings> {
                     icon: "assets/icons/logout.jpg",
                     name: 'LOGOUT',
                     focusNode: item6Focus,
+                    image: 'assets/chart/logout.jpg',
+                  ),
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item3Focus.unfocus();
+                      // changeFocus(context, item1Focus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item7Focus.unfocus();
+                      changeFocus(context, item1Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item7Focus.unfocus();
+                      changeFocus(context, item6Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item2Focus.unfocus();
+                      // changeFocus(context, item6Focus);
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SelectFontScreen()));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/callibration.jpg",
+                    name: 'ALL LETTERS',
+                    focusNode: item7Focus,
                     image: 'assets/chart/logout.jpg',
                   ),
                 ),

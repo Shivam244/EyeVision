@@ -21,3 +21,29 @@ double MM_7_5 = 2.4;
 double MM_6 = 1.74;
 double MM_5 = 1.45;
 
+// font constants
+getConstant(String font, double fontSize) {
+  if (font == 'Tamil') {
+    return fontSize + 14;
+  } else if (font == 'Telugu') {
+    return fontSize + 4;
+  } else if (font == 'Arabic') {
+    return fontSize - 4;
+  } else if (font == 'Assamese') {
+    return fontSize + 8;
+  } else if (font == 'Bengali') {
+    return fontSize - 4;
+  } else if (font == 'Kannada') {
+    return fontSize + 22;
+  } else if (font == 'Malayalam') {
+    return fontSize + 16;
+  } else if (font == 'Oriya') {
+    return fontSize + 6;
+  } else if (font == 'Punjabi') {
+    return fontSize + 6;
+  } else if (font == 'Urdu') {
+    return fontSize + 16;
+  } else {
+    return fontSize;
+  }
+}

@@ -192,7 +192,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
                         color: Colors.white,
                         child: Center(
                           child: Text(
-                            widget.type == 'C'? 'C': 'W',
+                            widget.type == 'C' ? 'C' : getRandomString(1),
                             style: TextStyle(
                                 fontFamily: getFont(),
                                 // fontSize: widget.imageSize,

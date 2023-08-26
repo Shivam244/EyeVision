@@ -1,5 +1,6 @@
 import 'dart:collection';
 import 'package:eyevision/constants/constants.dart';
+import 'package:eyevision/screens/allLetters.dart';
 import 'package:eyevision/screens/callibration-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,7 +55,7 @@ class _ModeSettingState extends State<SelectFontScreen> {
 
   @override
   initState() {
-    // getLanguages();  
+    // getLanguages();
     super.initState();
   }
 
@@ -66,7 +67,7 @@ class _ModeSettingState extends State<SelectFontScreen> {
         .then((value) => {(value != '') ? (lang2 = value) : lang2 = 'Tamil'});
     await Helper.getData('lang3')
         .then((value) => {(value != '') ? (lang3 = value) : lang3 = 'Telugu'});
-        languageQueue = Queue.from([lang1, lang2, lang3]);
+    languageQueue = Queue.from([lang1, lang2, lang3]);
     reflectLanguage();
   }
 
@@ -187,9 +188,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'C')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'C')));
                     }),
                   },
                   child: Focus(
@@ -249,9 +251,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Tamil')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Tamil')));
                     }),
                   },
                   child: Focus(
@@ -311,9 +314,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Telugu')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Telugu')));
                     }),
                   },
                   child: Focus(
@@ -373,9 +377,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Arabic')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Arabic')));
                     }),
                   },
                   child: Focus(
@@ -435,9 +440,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Assamese')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Assamese')));
                     }),
                   },
                   child: Focus(
@@ -497,9 +503,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Bengali')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Bengali')));
                     }),
                   },
                   child: Focus(
@@ -559,9 +566,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Punjabi')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Punjabi')));
                     }),
                   },
                   child: Focus(
@@ -621,9 +629,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Kannada')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Kannada')));
                     }),
                   },
                   child: Focus(
@@ -683,9 +692,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Malayalam')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Malayalam')));
                     }),
                   },
                   child: Focus(
@@ -745,9 +755,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Urdu')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Urdu')));
                     }),
                   },
                   child: Focus(
@@ -807,9 +818,10 @@ class _ModeSettingState extends State<SelectFontScreen> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const CallibrationScreen(type: 'Oriya')));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Oriya')));
                     }),
                   },
                   child: Focus(
@@ -857,70 +869,66 @@ class _ModeSettingState extends State<SelectFontScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                // Actions(
-                //   actions: <Type, Action<Intent>>{
-                //     UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                //       item12Focus.unfocus();
-                //       changeFocus(context, item11Focus);
-                //     }),
-                //     DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                //       item12Focus.unfocus();
-                //       changeFocus(context, item13Focus);
-                //     }),
-                //     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                //       selectLanguage('Punjabi');
-
-                //       // Helper.removeData('mode');
-                //       // Helper.setData('mode', 'Reverse');
-                //       // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                //       //     content: Text('Mode set to: Reverse'),
-                //       // ));
-                //       // Navigator.pop(context);
-                //     }),
-                //   },
-                //   child: Focus(
-                //     focusNode: item12Focus,
-                //     child: Container(
-                //       width: 500,
-                //       height: 30,
-                //       alignment: Alignment.center,
-                //       decoration: (item12Focus.hasFocus)
-                //           ? punjabiSelected
-                //               ? const BoxDecoration(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(10)),
-                //                   color: Color.fromARGB(250, 16, 85, 4))
-                //               : const BoxDecoration(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(10)),
-                //                   color: Color.fromARGB(106, 255, 255, 255))
-                //           : punjabiSelected
-                //               ? const BoxDecoration(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(10)),
-                //                   color: Color.fromARGB(251, 4, 22, 1))
-                //               : const BoxDecoration(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(10)),
-                //                   color: Color.fromARGB(88, 0, 0, 0),
-                //                 ),
-                //       child: Row(
-                //         mainAxisAlignment: MainAxisAlignment.center,
-                //         children: [
-                //           const Text(
-                //             "Punjabi",
-                //             style: TextStyle(color: Colors.white),
-                //           ),
-                //           punjabiSelected
-                //               ? const Icon(Icons.check,
-                //                   color: Colors.white, size: 15)
-                //               : const Text('')
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item12Focus.unfocus();
+                      changeFocus(context, item11Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      // item12Focus.unfocus();
+                      // changeFocus(context, item13Focus);
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AllLettersScreen(type: 'Hindi')));
+                    }),
+                  },
+                  child: Focus(
+                    focusNode: item12Focus,
+                    child: Container(
+                      width: 500,
+                      height: 30,
+                      alignment: Alignment.center,
+                      decoration: (item12Focus.hasFocus)
+                          ? punjabiSelected
+                              ? const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(250, 16, 85, 4))
+                              : const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(106, 255, 255, 255))
+                          : punjabiSelected
+                              ? const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(251, 4, 22, 1))
+                              : const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(88, 0, 0, 0),
+                                ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Hindi",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          punjabiSelected
+                              ? const Icon(Icons.check,
+                                  color: Colors.white, size: 15)
+                              : const Text('')
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ]),
             ),
           ),
