@@ -201,8 +201,8 @@ class _SettingsState extends State<Settings> {
                       changeFocus(context, item2Focus);
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                      // item2Focus.unfocus();
-                      // changeFocus(context, item6Focus);
+                      item2Focus.unfocus();
+                      changeFocus(context, item7Focus);
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
@@ -289,8 +289,8 @@ class _SettingsState extends State<Settings> {
                       changeFocus(context, item2Focus);
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                      // item2Focus.unfocus();
-                      // changeFocus(context, item3Focus);
+                      item6Focus.unfocus();
+                      changeFocus(context, item7Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
                       item6Focus.unfocus();
@@ -316,8 +316,8 @@ class _SettingsState extends State<Settings> {
                 Actions(
                   actions: <Type, Action<Intent>>{
                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                      // item3Focus.unfocus();
-                      // changeFocus(context, item1Focus);
+                      item7Focus.unfocus();
+                      changeFocus(context, item3Focus);
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
                       item7Focus.unfocus();
