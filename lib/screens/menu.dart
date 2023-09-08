@@ -14,6 +14,7 @@ import 'package:flutter/services.dart';
 import '../utils/helper.dart';
 import '../utils/menuItem.dart';
 import 'chart-screen.dart';
+import 'contact-us.dart';
 import 'contrast-screen.dart';
 import 'dots-chart-screen.dart';
 import 'ishihara-chart-screen.dart';
@@ -64,6 +65,7 @@ class _MenuPageState extends State<MenuPage> {
   FocusNode item15Focus = FocusNode();
   FocusNode item16Focus = FocusNode();
   FocusNode item17Focus = FocusNode();
+  FocusNode item18Focus = FocusNode();
   FocusNode modeFocus = FocusNode();
   bool initialFocus = true;
 
@@ -625,7 +627,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item12Focus.unfocus();
-                      changeFocus(context, item12Focus);
+                      changeFocus(context, item18Focus);
                     }),
                     Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.of(context).pushNamed('/astig');
@@ -795,7 +797,7 @@ class _MenuPageState extends State<MenuPage> {
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
                       item17Focus.unfocus();
-                      changeFocus(context, item17Focus);
+                      changeFocus(context, item18Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
                       item17Focus.unfocus();
@@ -824,6 +826,42 @@ class _MenuPageState extends State<MenuPage> {
                     image: 'assets/icons/ishihara.jpg',
                   ),
                 ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item18Focus.unfocus();
+                      changeFocus(context, item12Focus);
+                    }),
+                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item18Focus.unfocus();
+                      changeFocus(context, item1Focus);
+                    }),
+                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item18Focus.unfocus();
+                      changeFocus(context, item17Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item18Focus.unfocus();
+                      changeFocus(context, item6Focus);
+                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.of(context).pushNamed('/astig');
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ContactUs(
+                                    )));
+                    }),
+                  },
+                  child: MenuItem(
+                    icon: "assets/icons/contactus.png",
+                    name: 'CONTACT US',
+                    focusNode: item18Focus,
+                    image: 'assets/icons/ishihara.jpg',
+                  ),
+                ),
               ]),
         ));
   }
@@ -847,6 +885,7 @@ class _MenuPageState extends State<MenuPage> {
     item15Focus.dispose();
     item16Focus.dispose();
     item17Focus.dispose();
+    item18Focus.dispose();
     super.dispose();
   }
 }

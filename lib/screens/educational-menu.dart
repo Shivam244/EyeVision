@@ -539,6 +539,38 @@ class _EducationalMenuState extends State<EducationalMenu> {
                     image: 'assets/chart/logout.jpg',
                   ),
                 ),
+                // Actions(
+                //   actions: <Type, Action<Intent>>{
+                //     UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item14Focus.unfocus();
+                //       changeFocus(context, item8Focus);
+                //     }),
+                //     RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item14Focus.unfocus();
+                //       changeFocus(context, item15Focus);
+                //     }),
+                //     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item14Focus.unfocus();
+                //       changeFocus(context, item13Focus);
+                //     }),
+                //     DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       // item2Focus.unfocus();
+                //       // changeFocus(context, item6Focus);
+                //     }),
+                //     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                //        Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => PediatricScreen(name: "prakamaya")));
+                //     }),
+                //   },
+                //   child: MenuItem(
+                //     icon: "assets/icons/educational/prkmaya.jpg",
+                //     name: 'PRAKAMAYA',
+                //     focusNode: item14Focus,
+                //     image: 'assets/chart/logout.jpg',
+                //   ),
+                // ),
                 Actions(
                   actions: <Type, Action<Intent>>{
                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
@@ -546,44 +578,12 @@ class _EducationalMenuState extends State<EducationalMenu> {
                       changeFocus(context, item8Focus);
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item14Focus.unfocus();
-                      changeFocus(context, item15Focus);
-                    }),
-                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item14Focus.unfocus();
-                      changeFocus(context, item13Focus);
-                    }),
-                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                      // item2Focus.unfocus();
-                      // changeFocus(context, item6Focus);
-                    }),
-                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PediatricScreen(name: "prakamaya")));
-                    }),
-                  },
-                  child: MenuItem(
-                    icon: "assets/icons/educational/prkmaya.jpg",
-                    name: 'PRAKAMAYA',
-                    focusNode: item14Focus,
-                    image: 'assets/chart/logout.jpg',
-                  ),
-                ),
-                Actions(
-                  actions: <Type, Action<Intent>>{
-                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item15Focus.unfocus();
-                      changeFocus(context, item9Focus);
-                    }),
-                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
                       // item15Focus.unfocus();
                       // changeFocus(context, item3Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item15Focus.unfocus();
-                      changeFocus(context, item14Focus);
+                      item14Focus.unfocus();
+                      changeFocus(context, item13Focus);
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       // item2Focus.unfocus();
@@ -599,7 +599,7 @@ class _EducationalMenuState extends State<EducationalMenu> {
                   child: MenuItem(
                     icon: "assets/icons/educational/retina.jpg",
                     name: 'RETINAL',
-                    focusNode: item15Focus,
+                    focusNode: item14Focus,
                     image: 'assets/chart/logout.jpg',
                   ),
                 ),

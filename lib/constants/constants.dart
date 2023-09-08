@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 var backgroundColour = const Color.fromRGBO(79, 96, 97, 100);
@@ -47,3 +49,7 @@ getConstant(String font, double fontSize) {
     return fontSize;
   }
 }
+
+//Contact details
+
+String phoneNumber = '+91 1234567890';
