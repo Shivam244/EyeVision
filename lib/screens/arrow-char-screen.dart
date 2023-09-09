@@ -234,9 +234,9 @@ class _ArrowChartScreenState extends State<ArrowChartScreen> {
             child: Actions(
               actions: <Type, Action<Intent>>{
                 UpButtonIntent: CallbackAction<UpButtonIntent>(
-                    onInvoke: (intent) => changeItem(false)),
-                DownButtonIntent: CallbackAction<DownButtonIntent>(
                     onInvoke: (intent) => changeItem(true)),
+                DownButtonIntent: CallbackAction<DownButtonIntent>(
+                    onInvoke: (intent) => changeItem(false)),
                 RightButtonIntent: CallbackAction<RightButtonIntent>(
                     onInvoke: (intent) => changeArrow(true)),
                 LeftButtonIntent: CallbackAction<LeftButtonIntent>(

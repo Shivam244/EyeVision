@@ -255,14 +255,14 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
             },
             child: Actions(
               actions: <Type, Action<Intent>>{
-                // UpButtonIntent: CallbackAction<UpButtonIntent>(
-                //     onInvoke: (intent) => changeItem(true)),
-                // DownButtonIntent: CallbackAction<DownButtonIntent>(
-                //     onInvoke: (intent) => changeItem(true)),
-                RightButtonIntent: CallbackAction<RightButtonIntent>(
+                UpButtonIntent: CallbackAction<UpButtonIntent>(
                     onInvoke: (intent) => changeItem(true)),
-                LeftButtonIntent: CallbackAction<LeftButtonIntent>(
+                DownButtonIntent: CallbackAction<DownButtonIntent>(
                     onInvoke: (intent) => changeItem(false)),
+                // RightButtonIntent: CallbackAction<RightButtonIntent>(
+                //     onInvoke: (intent) => changeItem(true)),
+                // LeftButtonIntent: CallbackAction<LeftButtonIntent>(
+                //     onInvoke: (intent) => changeItem(false)),
                 EnterButtonIntent: CallbackAction<EnterButtonIntent>(
                     onInvoke: (intent) => switchMode()),
               },

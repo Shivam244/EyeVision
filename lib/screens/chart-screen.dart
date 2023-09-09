@@ -239,9 +239,9 @@ class _ChartScreenState extends State<ChartScreen> {
             },
             child: Actions(
               actions: <Type, Action<Intent>>{
-                RightButtonIntent: CallbackAction<RightButtonIntent>(
+                UpButtonIntent: CallbackAction<UpButtonIntent>(
                     onInvoke: (intent) => changeItem(true)),
-                LeftButtonIntent: CallbackAction<LeftButtonIntent>(
+                DownButtonIntent: CallbackAction<DownButtonIntent>(
                     onInvoke: (intent) => changeItem(false)),
                 EnterButtonIntent: CallbackAction<EnterButtonIntent>(
                     onInvoke: (intent) => switchMode()),
