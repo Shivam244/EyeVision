@@ -319,7 +319,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
                   focusNode: focus,
                   child: Center(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const SizedBox(
                           height: 20,
