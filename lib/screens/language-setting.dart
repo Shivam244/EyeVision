@@ -847,13 +847,6 @@ class _ModeSettingState extends State<LanguageSetting> {
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       selectLanguage('Oriya');
-
-                      // Helper.removeData('mode');
-                      // Helper.setData('mode', 'Reverse');
-                      // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      //     content: Text('Mode set to: Reverse'),
-                      // ));
-                      // Navigator.pop(context);
                     }),
                   },
                   child: Focus(
@@ -901,69 +894,62 @@ class _ModeSettingState extends State<LanguageSetting> {
                 const SizedBox(
                   height: 10,
                 ),
-                // Actions(
-                //   actions: <Type, Action<Intent>>{
-                //     UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                //       item12Focus.unfocus();
-                //       changeFocus(context, item11Focus);
-                //     }),
-                //     DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                //       item12Focus.unfocus();
-                //       changeFocus(context, item13Focus);
-                //     }),
-                //     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                //       selectLanguage('Punjabi');
-
-                //       // Helper.removeData('mode');
-                //       // Helper.setData('mode', 'Reverse');
-                //       // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                //       //     content: Text('Mode set to: Reverse'),
-                //       // ));
-                //       // Navigator.pop(context);
-                //     }),
-                //   },
-                //   child: Focus(
-                //     focusNode: item12Focus,
-                //     child: Container(
-                //       width: 500,
-                //       height: 30,
-                //       alignment: Alignment.center,
-                //       decoration: (item12Focus.hasFocus)
-                //           ? punjabiSelected
-                //               ? const BoxDecoration(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(10)),
-                //                   color: Color.fromARGB(250, 16, 85, 4))
-                //               : const BoxDecoration(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(10)),
-                //                   color: Color.fromARGB(106, 255, 255, 255))
-                //           : punjabiSelected
-                //               ? const BoxDecoration(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(10)),
-                //                   color: Color.fromARGB(251, 4, 22, 1))
-                //               : const BoxDecoration(
-                //                   borderRadius:
-                //                       BorderRadius.all(Radius.circular(10)),
-                //                   color: Color.fromARGB(88, 0, 0, 0),
-                //                 ),
-                //       child: Row(
-                //         mainAxisAlignment: MainAxisAlignment.center,
-                //         children: [
-                //           const Text(
-                //             "Punjabi",
-                //             style: TextStyle(color: Colors.white),
-                //           ),
-                //           punjabiSelected
-                //               ? const Icon(Icons.check,
-                //                   color: Colors.white, size: 15)
-                //               : const Text('')
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item12Focus.unfocus();
+                      changeFocus(context, item11Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item12Focus.unfocus();
+                      changeFocus(context, item13Focus);
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      selectLanguage('Gujrati');
+                    }),
+                  },
+                  child: Focus(
+                    focusNode: item12Focus,
+                    child: Container(
+                      width: 500,
+                      height: 30,
+                      alignment: Alignment.center,
+                      decoration: (item12Focus.hasFocus)
+                          ? gujratiSelected
+                              ? const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(250, 16, 85, 4))
+                              : const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(106, 255, 255, 255))
+                          : gujratiSelected
+                              ? const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(251, 4, 22, 1))
+                              : const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(88, 0, 0, 0),
+                                ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Gujrati",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          punjabiSelected
+                              ? const Icon(Icons.check,
+                                  color: Colors.white, size: 15)
+                              : const Text('')
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ]),
             ),
           ),

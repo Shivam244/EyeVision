@@ -101,7 +101,7 @@ class _CallibrationScreenState extends State<AllLettersScreen> {
         backgroundColor: Colors.white,
         body: Center(
           child: Text(
-            'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z',
+            'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z',
             style: TextStyle(
                 fontFamily: getFont(),
                 fontSize: calculatePixel(int.parse('5'), "6/60"),

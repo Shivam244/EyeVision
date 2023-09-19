@@ -485,18 +485,18 @@ class _MenuPageState extends State<MenuPage> {
                       item8Focus.unfocus();
                       changeFocus(context, item14Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PediatricSubMenu()));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/astigfan.jpg",
-                    name: 'ASTIG FAN',
+                    icon: "assets/icons/pediatric.jpg",
+                    name: 'PEDIATRIC',
                     focusNode: item8Focus,
-                    image: 'assets/icons/astigFan.png',
+                    image: 'assets/icons/ishihara.jpg',                    
                   ),
                 ),
                 Actions(
@@ -517,19 +517,18 @@ class _MenuPageState extends State<MenuPage> {
                       item9Focus.unfocus();
                       changeFocus(context, item15Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => IshiharaScreen()));
+                              builder: (context) => SnellanChartScreen(
+                                    image: 'Letters',
+                                  )));                            
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/ishara.jpg",
-                    name: 'ISHIHARA',
+                    icon: "assets/icons/snellan.jpg",
+                    name: 'SNELLAN',
                     focusNode: item9Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
@@ -552,24 +551,17 @@ class _MenuPageState extends State<MenuPage> {
                       item10Focus.unfocus();
                       changeFocus(context, item16Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const PediatricSubMenu()));
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) =>
-                      //             PediatricScreen(name: "Pediatric",)));
+                              builder: (context) =>
+                                  LogmarChartScreen(image: 'Letters')));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/pediatric.jpg",
-                    name: 'PEDIATRIC',
+                    icon: "assets/icons/logmar.jpg",
+                    name: 'LOGMAR',
                     focusNode: item10Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
@@ -599,14 +591,14 @@ class _MenuPageState extends State<MenuPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ContrastScreen(
-                                    image: 'C',
+                              builder: (context) => DotsChartScreen(
+                                    type: 'Dots',
                                   )));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/contrast.jpg",
-                    name: 'CONTRAST',
+                    icon: "assets/icons/dots.jpg",
+                    name: 'DOTS',
                     focusNode: item11Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
@@ -629,19 +621,16 @@ class _MenuPageState extends State<MenuPage> {
                       item12Focus.unfocus();
                       changeFocus(context, item18Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EducationalMenu()));
+                              builder: (context) => RedGreenScreen()));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/educational.jpg",
-                    name: 'EDUCATIONAL',
+                    icon: "assets/icons/rg.png",
+                    name: 'RED GREEN',
                     focusNode: item12Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
@@ -671,14 +660,14 @@ class _MenuPageState extends State<MenuPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SnellanChartScreen(
-                                    image: 'Letters',
+                              builder: (context) => ContrastScreen(
+                                    image: 'C',
                                   )));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/snellan.jpg",
-                    name: 'SNELLAN',
+                    icon: "assets/icons/contrast.jpg",
+                    name: 'CONTRAST',
                     focusNode: item13Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
@@ -702,18 +691,17 @@ class _MenuPageState extends State<MenuPage> {
                       changeFocus(context, item14Focus);
                     }),
                     Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RedGreenScreen()));
+                              builder: (context) => MiscChartScreen()));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/rg.png",
-                    name: 'RED GREEN',
+                    icon: "assets/icons/misc.png",
+                    name: 'MISC',
                     focusNode: item14Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
@@ -736,20 +724,16 @@ class _MenuPageState extends State<MenuPage> {
                       item15Focus.unfocus();
                       changeFocus(context, item15Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  LogmarChartScreen(image: 'Letters')));
+                              builder: (context) => IshiharaScreen()));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/logmar.jpg",
-                    name: 'LOGMAR',
+                    icon: "assets/icons/ishara.jpg",
+                    name: 'ISHIHARA',
                     focusNode: item15Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
@@ -772,21 +756,15 @@ class _MenuPageState extends State<MenuPage> {
                       item16Focus.unfocus();
                       changeFocus(context, item16Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MiscChartScreen()));
+                      Navigator.of(context).pushNamed('/astig');
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/misc.png",
-                    name: 'MISC',
+                    icon: "assets/icons/astigfan.jpg",
+                    name: 'ASTIG FAN',
                     focusNode: item16Focus,
-                    image: 'assets/icons/ishihara.jpg',
+                    image: 'assets/icons/astigFan.png',
                   ),
                 ),
                 Actions(
@@ -814,14 +792,12 @@ class _MenuPageState extends State<MenuPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => DotsChartScreen(
-                                    type: 'Dots',
-                                  )));
+                              builder: (context) => const EducationalMenu()));
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/dots.jpg",
-                    name: 'DOTS',
+                    icon: "assets/icons/educational.jpg",
+                    name: 'EDUCATIONAL',
                     focusNode: item17Focus,
                     image: 'assets/icons/ishihara.jpg',
                   ),
@@ -844,14 +820,11 @@ class _MenuPageState extends State<MenuPage> {
                       item18Focus.unfocus();
                       changeFocus(context, item6Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ContactUs(
+                              builder: (context) => const ContactUs(
                                     )));
                     }),
                   },

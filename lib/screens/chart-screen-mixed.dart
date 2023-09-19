@@ -26,23 +26,23 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       imageSize: 279.139392,
       type: widget.type);
   FocusNode focus = FocusNode();
-  final String _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  final String _numbers = '1234567890';
+  final String _chars = 'NRKDZHS';
+  final String _numbers = '2345679';
   final String _hindi =
-      'एइईउऊऐओऔअंऋॠकखघएनचछजझटठधऔरथदधएनपफभएमवाईरएलवीशषसहक्षज्ञ';
-  final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
-  final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
+      'nmpPTgq';
+  final String _tamil = 'trlfagk';
+  final String _telugu = 'vYLEndg';
   final String _allen = 'EIADFGHCB';
-  final String _arabic = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _asamese = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _bengali = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _gujrati = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _kannad = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _malyalam = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _nepali = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _oriya = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _punjabi = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _urdu = 'qwertyuiopasdfghjklzxcvbnm';
+  final String _arabic = 'axhPkVX';
+  final String _asamese = 'PhAWonj';
+  final String _bengali = 'AicWofk';
+  final String _gujrati = 'Jmhvldf';
+  final String _kannad = 'MLCtJYD';
+  final String _malyalam = 'pmaiUbk';
+  final String _nepali = 'bQPhksy';
+  final String _oriya = 'WnOMbeN';
+  final String _punjabi = 'NHlfZoE';
+  final String _urdu = 'xmtqaek';
   final Random _rnd = Random();
   bool initialState = true;
   bool chartMode = true;
@@ -102,7 +102,9 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       }
     }
     currentItem = widget.chartItemsList[itemIndex];
-    setState(() {});
+    setState(() {
+      loadImage();
+    });
   }
 
   checkInvert() async {
@@ -241,7 +243,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     currentItem = widget.chartItemsList[itemIndex];
   }
 
-  getWidget(){
+  getWidget() {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(

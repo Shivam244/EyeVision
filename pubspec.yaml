@@ -166,6 +166,9 @@ flutter:
     - family: Urdu
       fonts:
         - asset: assets/fonts/Urdu.ttf        
+    - family: Gujrati
+      fonts:
+        - asset: assets/fonts/Gopika.ttf        
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -26,30 +26,33 @@ double MM_5 = 1.45;
 // font constants
 getConstant(String font, double fontSize) {
   if (font == 'Tamil') {
-    return fontSize + 14;
+    return fontSize + 28;
   } else if (font == 'Telugu') {
-    return fontSize + 4;
+    return fontSize + 24;
   } else if (font == 'Arabic') {
-    return fontSize - 4;
+    return fontSize + 18;
   } else if (font == 'Assamese') {
-    return fontSize + 8;
+    return fontSize + 26;
   } else if (font == 'Bengali') {
-    return fontSize - 4;
-  } else if (font == 'Kannada') {
     return fontSize + 22;
+  } else if (font == 'Kannada') {
+    return fontSize + 32;
   } else if (font == 'Malayalam') {
-    return fontSize + 16;
+    return fontSize + 32;
   } else if (font == 'Oriya') {
-    return fontSize + 6;
+    return fontSize + 26;
   } else if (font == 'Punjabi') {
-    return fontSize + 6;
+    return fontSize + 24;
   } else if (font == 'Urdu') {
-    return fontSize + 16;
+    return fontSize + 36;
+  } else if (font == 'Gujrati') {
+    return fontSize + 28;
   } else {
     return fontSize;
   }
 }
 
 //Contact details
-
 String phoneNumber = '+91 1234567890';
+String email = 'test@gmail.com';
+String address = '111 Kolar, Bhopal, MP';

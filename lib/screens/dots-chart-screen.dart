@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:eyevision/utils/chart-item-mixed.dart';
+import 'package:eyevision/utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:invert_colors/invert_colors.dart';
 
 import '../utils/chartItem.dart';
 import '../utils/dots-item.dart';
@@ -29,8 +31,10 @@ class _ChartScreenMixedState extends State<DotsChartScreen> {
   final Random _rnd = Random();
   bool initialState = true;
   bool chartMode = true;
+  bool inverse = false;
   @override
   void initState() {
+    checkInvert();
     loadImage();
     super.initState();
   }
@@ -60,6 +64,13 @@ class _ChartScreenMixedState extends State<DotsChartScreen> {
     }
     currentItem = widget.chartItemsList[itemIndex];
     setState(() {});
+  }
+
+  checkInvert() async {
+    await Helper.getData('inversion').then((value) => {
+          if (value == "invert") {inverse = true},
+          print(value)
+        });
   }
 
   switchMode() {
@@ -146,10 +157,7 @@ class _ChartScreenMixedState extends State<DotsChartScreen> {
     currentItem = widget.chartItemsList[itemIndex];
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // loadImage();
-    FocusScope.of(context).requestFocus(focus);
+  getWidget(){
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(
@@ -176,5 +184,12 @@ class _ChartScreenMixedState extends State<DotsChartScreen> {
               },
               child: Focus(focusNode: focus, child: currentItem),
             )));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // loadImage();
+    FocusScope.of(context).requestFocus(focus);
+    return inverse ? InvertColors(child: getWidget()) : getWidget();
   }
 }
