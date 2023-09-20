@@ -223,10 +223,10 @@ class _LoginPageState extends State<ContactUs> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                  Container(
+                                Container(
                                   child: const Text(
                                     'DEVICE ID:    ',
-                                    style:  TextStyle(
+                                    style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -243,7 +243,7 @@ class _LoginPageState extends State<ContactUs> {
                             ),
 
                             const SizedBox(
-                              height: 40,
+                              height: 25,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -258,11 +258,69 @@ class _LoginPageState extends State<ContactUs> {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                Text(phoneNumber,
-                                    style: const TextStyle(
-                                        color: Colors.greenAccent,
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.bold))
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.phone,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(phoneNumber,
+                                        style: const TextStyle(
+                                            color:
+                                                Colors.greenAccent,
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.email,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(email,
+                                        style: const TextStyle(
+                                            color: Colors.greenAccent,
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.pin_drop,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Flexible(
+                                      child: Text(address, softWrap: true,
+                                          style: const TextStyle(
+                                              color: Colors.greenAccent,
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                  ],
+                                ),
                               ],
                             )
                           ],

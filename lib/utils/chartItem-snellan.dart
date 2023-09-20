@@ -180,7 +180,7 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Icon(Icons.keyboard_arrow_left),
+            widget.image == 'Alphabets' ? const Text('') :const Icon(Icons.keyboard_arrow_left),
             Text(widget.textLeft, style: TextStyle(fontSize: 20)),
           ],
         ),
@@ -195,7 +195,7 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
             widget.textRight,
             style: TextStyle(fontSize: 20),
           ),
-          const Icon(Icons.keyboard_arrow_right)
+          widget.image == 'Numbers' ? const Text('') :const Icon(Icons.keyboard_arrow_right)
         ]),
       ],
     );

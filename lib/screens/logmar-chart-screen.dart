@@ -274,10 +274,11 @@ class _LogmarChartState extends State<LogmarChartScreen> {
                         scrollDirection: Axis.horizontal,
                         controller: scrollController,
                         child: Container(
+                          width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft) * 13.8,
                           // width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
-                          width: int.parse(distance)>6? (MediaQuery.of(context).size.width * 3.5):MediaQuery.of(context).size.width,
+                          // width: int.parse(distance)>6? (MediaQuery.of(context).size.width * 3.5):MediaQuery.of(context).size.width,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               const SizedBox(
                                 height: 50,

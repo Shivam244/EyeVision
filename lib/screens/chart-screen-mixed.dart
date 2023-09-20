@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:eyevision/screens/chart-screen.dart';
 import 'package:eyevision/utils/chart-item-mixed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,8 +29,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   FocusNode focus = FocusNode();
   final String _chars = 'NRKDZHS';
   final String _numbers = '2345679';
-  final String _hindi =
-      'nmpPTgq';
+  final String _hindi = 'nmpPTgq';
   final String _tamil = 'trlfagk';
   final String _telugu = 'vYLEndg';
   final String _allen = 'EIADFGHCB';
@@ -47,6 +47,9 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   bool initialState = true;
   bool chartMode = true;
   bool inverse = false;
+  String lang1 = 'Hindi';
+  String lang2 = 'Tamil';
+  String lang3 = 'Telugu';
   @override
   void initState() {
     checkInvert();
@@ -121,9 +124,84 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       duration: const Duration(milliseconds: 500),
     ));
     loadImage();
+    getLanguages();
     setState(() {
       initialState = true;
     });
+  }
+
+  getLanguages() async {
+    Helper.setData('languageChanged', 'false');
+    await Helper.containes('lang1').then((value) => {
+          if (!value) {Helper.setData('lang1', 'Hindi')}
+        });
+    await Helper.containes('lang2').then((value) => {
+          if (!value) {Helper.setData('lang2', 'Tamil')}
+        });
+    await Helper.containes('lang3').then((value) => {
+          if (!value) {Helper.setData('lang3', 'Telugu')}
+        });
+    await Helper.getData('lang1').then((value) => {
+          (value != '') ? (lang1 = value) : lang1 = 'Hindi',
+        });
+    await Helper.getData('lang2')
+        .then((value) => {(value != '') ? (lang2 = value) : lang2 = 'Tamil'});
+    await Helper.getData('lang3')
+        .then((value) => {(value != '') ? (lang3 = value) : lang3 = 'Telugu'});
+    // setState(() {});
+  }
+
+  switchChart(bool right) {
+    if (right) {
+      if (widget.type == 'Alphabets') {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: 'Numbers')));
+      } else if (widget.type == 'Numbers') {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: lang1)));
+      } else if(widget.type == lang1){
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: lang2)));
+      } else if(widget.type == lang2){
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: lang3)));
+      }
+    } else {
+      if (widget.type == 'Numbers') {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: 'Alphabets')));
+      } else if(widget.type == lang1){
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: 'Numbers')));
+      } else if(widget.type == lang2){
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: lang1)));
+      } else if(widget.type == lang3){
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: lang2)));
+      } else if (widget.type == 'Alphabets') {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreen(image: 'E')));
+      }
+    }
   }
 
   generateItems(int count) {
@@ -261,10 +339,10 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
                     onInvoke: (intent) => changeItem(true)),
                 DownButtonIntent: CallbackAction<DownButtonIntent>(
                     onInvoke: (intent) => changeItem(false)),
-                // RightButtonIntent: CallbackAction<RightButtonIntent>(
-                //     onInvoke: (intent) => changeItem(true)),
-                // LeftButtonIntent: CallbackAction<LeftButtonIntent>(
-                //     onInvoke: (intent) => changeItem(false)),
+                RightButtonIntent: CallbackAction<RightButtonIntent>(
+                    onInvoke: (intent) => switchChart(true)),
+                LeftButtonIntent: CallbackAction<LeftButtonIntent>(
+                    onInvoke: (intent) => switchChart(false)),
                 EnterButtonIntent: CallbackAction<EnterButtonIntent>(
                     onInvoke: (intent) => switchMode()),
               },

@@ -233,9 +233,6 @@ class _MenuPageState extends State<MenuPage> {
                       item1Focus.unfocus();
                       changeFocus(context, item7Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       // Navigator.of(context).pushNamed('/chart');
                       Navigator.push(
@@ -269,9 +266,6 @@ class _MenuPageState extends State<MenuPage> {
                       item2Focus.unfocus();
                       changeFocus(context, item8Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
@@ -303,9 +297,6 @@ class _MenuPageState extends State<MenuPage> {
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item3Focus.unfocus();
                       changeFocus(context, item9Focus);
-                    }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
@@ -339,9 +330,6 @@ class _MenuPageState extends State<MenuPage> {
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item4Focus.unfocus();
                       changeFocus(context, item10Focus);
-                    }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
@@ -377,9 +365,6 @@ class _MenuPageState extends State<MenuPage> {
                       item5Focus.unfocus();
                       changeFocus(context, item11Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
@@ -413,9 +398,6 @@ class _MenuPageState extends State<MenuPage> {
                       item6Focus.unfocus();
                       changeFocus(context, item12Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
@@ -448,9 +430,6 @@ class _MenuPageState extends State<MenuPage> {
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item7Focus.unfocus();
                       changeFocus(context, item13Focus);
-                    }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
@@ -584,9 +563,6 @@ class _MenuPageState extends State<MenuPage> {
                       item11Focus.unfocus();
                       changeFocus(context, item17Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
-                    }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
@@ -652,9 +628,6 @@ class _MenuPageState extends State<MenuPage> {
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item13Focus.unfocus();
                       changeFocus(context, item13Focus);
-                    }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
@@ -742,7 +715,7 @@ class _MenuPageState extends State<MenuPage> {
                   actions: <Type, Action<Intent>>{
                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
                       item16Focus.unfocus();
-                      changeFocus(context, item9Focus);
+                      changeFocus(context, item10Focus);
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
                       item16Focus.unfocus();
@@ -771,7 +744,7 @@ class _MenuPageState extends State<MenuPage> {
                   actions: <Type, Action<Intent>>{
                     UpButtonIntent: CallbackAction(onInvoke: (intent) {
                       item17Focus.unfocus();
-                      changeFocus(context, item10Focus);
+                      changeFocus(context, item11Focus);
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
                       item17Focus.unfocus();
@@ -784,9 +757,6 @@ class _MenuPageState extends State<MenuPage> {
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item17Focus.unfocus();
                       changeFocus(context, item17Focus);
-                    }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.of(context).pushNamed('/astig');
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(

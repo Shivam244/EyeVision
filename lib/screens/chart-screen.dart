@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:eyevision/screens/chart-screen-mixed.dart';
 import 'package:eyevision/utils/chartItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -64,6 +65,25 @@ class _ChartScreenState extends State<ChartScreen> {
   initState() {
     checkInvert();
     super.initState();
+  }
+
+  switchChart(bool right) {
+    if (right) {
+      if (widget.image == 'C') {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => ChartScreen(image: 'E')));
+      } else {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChartScreenMixed(type: 'Alphabets')));
+      }
+    } else{
+      if (widget.image == 'E') {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => ChartScreen(image: 'C')));
+      }
+    }
   }
 
   setImage(String image) {
@@ -243,6 +263,10 @@ class _ChartScreenState extends State<ChartScreen> {
                     onInvoke: (intent) => changeItem(true)),
                 DownButtonIntent: CallbackAction<DownButtonIntent>(
                     onInvoke: (intent) => changeItem(false)),
+                RightButtonIntent: CallbackAction<RightButtonIntent>(
+                    onInvoke: (intent) => switchChart(true)),
+                LeftButtonIntent: CallbackAction<LeftButtonIntent>(
+                    onInvoke: (intent) => switchChart(false)),
                 EnterButtonIntent: CallbackAction<EnterButtonIntent>(
                     onInvoke: (intent) => switchMode()),
               },

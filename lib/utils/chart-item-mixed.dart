@@ -153,7 +153,7 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
       children: [
         Row(
           children: [
-            const Icon(Icons.keyboard_arrow_left),
+            widget.textLeft == "6/6" ? const Icon(Icons.keyboard_arrow_left): const Text(''),
             Text(widget.textLeft, style: TextStyle(fontSize: 20)),
           ],
         ),
@@ -168,7 +168,7 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
             widget.textRight,
             style: TextStyle(fontSize: 20),
           ),
-          const Icon(Icons.keyboard_arrow_right)
+          widget.textLeft == "6/60" ? const Icon(Icons.keyboard_arrow_right): const Text('')
         ])
       ],
     );

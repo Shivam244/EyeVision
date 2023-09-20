@@ -31,7 +31,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
   final ScrollController verticalScrollController = ScrollController();
   changeItem(bool next) {
     if (next) {
-      if (itemIndex == items.length-1) return;
+      if (itemIndex == items.length - 1) return;
       itemIndex++;
       widget.image = items[itemIndex];
     } else {
@@ -100,8 +100,9 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
         ChartItemSnellan(
             textLeft: '6/9',
             textRight: '20/30',
-            rotations:
-                enableRotation ? [0, 180, 180, 90, 0,0] : [-1, -1, -1, -1, -1,-1],
+            rotations: enableRotation
+                ? [0, 180, 180, 90, 0, 0]
+                : [-1, -1, -1, -1, -1, -1],
             image: image,
             imageSize: 55.955905512475496,
             language: widget.image),
@@ -109,8 +110,8 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
             textLeft: '6/6',
             textRight: '20/20',
             rotations: enableRotation
-                ? [0, 15, 270, 180, 90, 0,0]
-                : [-1, -1, -1, -1, -1, -1,-1],
+                ? [0, 15, 270, 180, 90, 0, 0]
+                : [-1, -1, -1, -1, -1, -1, -1],
             image: image,
             imageSize: 27.818078130616847,
             language: widget.image),
@@ -118,8 +119,8 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
             textLeft: '6/5',
             textRight: '20/18',
             rotations: enableRotation
-                ? [0, 15, 270, 180, 90, 0,0,0]
-                : [-1, -1, -1, -1, -1, -1,-1,-1],
+                ? [0, 15, 270, 180, 90, 0, 0, 0]
+                : [-1, -1, -1, -1, -1, -1, -1, -1],
             image: image,
             imageSize: 27.818078130616847,
             language: widget.image),
@@ -149,6 +150,23 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
   String getRandomHindi(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _hindi.codeUnitAt(_rnd.nextInt(_hindi.length))));
 
+  switchChart(bool right) {
+    if (right) {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SnellanChartScreen(
+                    image: 'Numbers',
+                  )));
+    } else{
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SnellanChartScreen(
+                    image: 'Letters',
+                  )));
+    }
+  }
 
   loadImage() {
     String itemImage = widget.image;
@@ -167,7 +185,9 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     } else if (widget.image == 'Hindi') {
       itemImage = getRandomHindi(1);
       enableRotation = false;
-    }else{enableRotation = true;}
+    } else {
+      enableRotation = true;
+    }
     widget.chartItemsList = setImage(itemImage);
     currentItem = widget.chartItemsList[itemIndex];
     widget.chartItemsList.forEach((element) {
@@ -175,7 +195,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     });
   }
 
-   scrollHorizontal(bool right) {
+  scrollHorizontal(bool right) {
     if (right) {
       scrollController.animateTo(currentHorizontalPos + 100,
           duration: const Duration(microseconds: 500), curve: Curves.easeIn);
@@ -195,9 +215,8 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     if (up) {
       verticalScrollController.animateTo(currentVerticalPos + 50,
           duration: const Duration(microseconds: 500), curve: Curves.easeIn);
- 
-        currentVerticalPos += 50;
-      
+
+      currentVerticalPos += 50;
     } else {
       verticalScrollController.animateTo(currentVerticalPos - 50,
           duration: const Duration(microseconds: 500), curve: Curves.easeIn);
@@ -216,83 +235,83 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(
-            shortcuts: <LogicalKeySet, Intent>{
-              LogicalKeySet(LogicalKeyboardKey.select): EnterButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.arrowUp): UpButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.arrowDown): DownButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.arrowLeft): LeftButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.arrowRight): RightButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.goBack): AbortButtonIntent()
-            },
-            child: Actions(
+          shortcuts: <LogicalKeySet, Intent>{
+            LogicalKeySet(LogicalKeyboardKey.select): EnterButtonIntent(),
+            LogicalKeySet(LogicalKeyboardKey.arrowUp): UpButtonIntent(),
+            LogicalKeySet(LogicalKeyboardKey.arrowDown): DownButtonIntent(),
+            LogicalKeySet(LogicalKeyboardKey.arrowLeft): LeftButtonIntent(),
+            LogicalKeySet(LogicalKeyboardKey.arrowRight): RightButtonIntent(),
+            LogicalKeySet(LogicalKeyboardKey.goBack): AbortButtonIntent()
+          },
+          child: Actions(
               actions: <Type, Action<Intent>>{
                 RightButtonIntent: CallbackAction<RightButtonIntent>(
-                    onInvoke: (intent) => {scrollHorizontal(true)}),
+                    onInvoke: (intent) => {switchChart(true)}),
                 LeftButtonIntent: CallbackAction<LeftButtonIntent>(
-                    onInvoke: (intent) => {scrollHorizontal(false)}),
+                    onInvoke: (intent) => {switchChart(false)}),
                 UpButtonIntent: CallbackAction<UpButtonIntent>(
                     onInvoke: (intent) => {scrollVertical(false)}),
                 DownButtonIntent: CallbackAction<DownButtonIntent>(
                     onInvoke: (intent) => {scrollVertical(true)}),
               },
               child: Focus(
-                  focusNode: focus,
+                focusNode: focus,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  controller: verticalScrollController,
                   child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      controller: verticalScrollController,
-                    child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          controller: scrollController,
-                      child: Center(
-                        child: Container(
-                          // width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
-                          width: MediaQuery.of(context).size.width,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(
-                                  height: 50,
-                                ),
-                                widget.chartItemsList[0],
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                widget.chartItemsList[1],
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                widget.chartItemsList[2],
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                widget.chartItemsList[3],
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                widget.chartItemsList[4],
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                widget.chartItemsList[5],
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                widget.chartItemsList[6],
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                widget.chartItemsList[7],
-                                const SizedBox(
-                                  height: 50,
-                                ),
-                              ],
+                    scrollDirection: Axis.horizontal,
+                    controller: scrollController,
+                    child: Center(
+                      child: Container(
+                        // width: calculatePixel(int.parse(distance), widget.chartItemsList[0].textLeft)*13.8,
+                        width: MediaQuery.of(context).size.width,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 50,
                             ),
-                          ),
-                      ),
+                            widget.chartItemsList[0],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            widget.chartItemsList[1],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            widget.chartItemsList[2],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            widget.chartItemsList[3],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            widget.chartItemsList[4],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            widget.chartItemsList[5],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            widget.chartItemsList[6],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            widget.chartItemsList[7],
+                            const SizedBox(
+                              height: 50,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  )),
-            ));
+                  ),
+                ),
+              )),
+        ));
   }
 
   double calculatePixel(int feat, String type) {

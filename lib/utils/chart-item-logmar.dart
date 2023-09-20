@@ -181,7 +181,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Icon(Icons.keyboard_arrow_left, size: calculatePixel(int.parse(distance), widget.textLeft) > 20 ? 20: calculatePixel(int.parse(distance), widget.textLeft)),
+            // Icon(Icons.keyboard_arrow_left, size: calculatePixel(int.parse(distance), widget.textLeft) > 20 ? 20: calculatePixel(int.parse(distance), widget.textLeft)),
             Text(widget.textLeft, style: TextStyle(fontSize: calculatePixel(int.parse(distance), widget.textLeft) > 20 ? 20: calculatePixel(int.parse(distance), widget.textLeft))),
           ],
         ),
@@ -196,7 +196,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
             widget.textRight,
             style: TextStyle(fontSize: calculatePixel(int.parse(distance), widget.textLeft) > 20 ? 20: calculatePixel(int.parse(distance), widget.textLeft)),
           ),
-          Icon(Icons.keyboard_arrow_right, size: calculatePixel(int.parse(distance), widget.textLeft) > 20 ? 20: calculatePixel(int.parse(distance), widget.textLeft))
+          // Icon(Icons.keyboard_arrow_right, size: calculatePixel(int.parse(distance), widget.textLeft) > 20 ? 20: calculatePixel(int.parse(distance), widget.textLeft))
         ]),
       ],
     );

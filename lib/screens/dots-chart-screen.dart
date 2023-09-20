@@ -188,7 +188,7 @@ class _ChartScreenMixedState extends State<DotsChartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // loadImage();
+    loadImage();
     FocusScope.of(context).requestFocus(focus);
     return inverse ? InvertColors(child: getWidget()) : getWidget();
   }
