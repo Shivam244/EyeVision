@@ -133,10 +133,10 @@ class _ChartItemState extends State<MiscChartItem> {
         children: [
           Row(
             children: [
-              Icon(Icons.keyboard_arrow_left,
-                  color: widget.background == 'black'
-                      ? Colors.white
-                      : Colors.black),
+              // Icon(Icons.keyboard_arrow_left,
+              //     color: widget.background == 'black'
+              //         ? Colors.white
+              //         : Colors.black),
               Text(widget.textLeft,
                   style: TextStyle(
                       fontSize: 20,
@@ -156,9 +156,9 @@ class _ChartItemState extends State<MiscChartItem> {
               widget.textRight,
               style: TextStyle(fontSize: 20),
             ),
-            Icon(Icons.keyboard_arrow_right,
-                color:
-                    widget.background == 'black' ? Colors.white : Colors.black)
+            // Icon(Icons.keyboard_arrow_right,
+            //     color:
+            //         widget.background == 'black' ? Colors.white : Colors.black)
           ])
         ],
       ),

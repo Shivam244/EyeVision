@@ -193,29 +193,31 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: chartItems,
     ));
-    // return Row(
-    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //   children: [
-    //     Row(
-    //       children: [
-    //         const Icon(Icons.keyboard_arrow_left),
-    //         Text(widget.textLeft, style: TextStyle(fontSize: 20)),
-    //       ],
-    //     ),
-    //     Center(
-    //         child: Row(
-    //       crossAxisAlignment: CrossAxisAlignment.center,
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       children: chartItems,
-    //     )),
-    //     Row(children: [
-    //       Text(
-    //         widget.textRight,
-    //         style: TextStyle(fontSize: 20),
+    // return Center(
+    //   child: Row(
+    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //     children: [
+    //       Row(
+    //         children: [
+    //           // const Icon(Icons.keyboard_arrow_left),
+    //           Text(widget.textLeft, style: TextStyle(fontSize: 20)),
+    //         ],
     //       ),
-    //       const Icon(Icons.keyboard_arrow_right)
-    //     ])
-    //   ],
+    //       Center(
+    //           child: Row(
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         mainAxisAlignment: MainAxisAlignment.center,
+    //         children: chartItems,
+    //       )),
+    //       Row(children: [
+    //         Text(
+    //           widget.textRight,
+    //           style: TextStyle(fontSize: 20),
+    //         ),
+    //         // const Icon(Icons.keyboard_arrow_right)
+    //       ])
+    //     ],
+    //   ),
     // );
   }
 }

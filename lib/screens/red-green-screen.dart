@@ -139,7 +139,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   }
 
   final String _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  final String _numbers = '1234567890';
+  final String _numbers = '2345679';
   final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
   final String _hindi =
@@ -347,9 +347,9 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
                   LeftButtonIntent: CallbackAction<LeftButtonIntent>(
                       onInvoke: (intent) => changeItemType(false)),
                   UpButtonIntent: CallbackAction<UpButtonIntent>(
-                      onInvoke: (intent) => changeItem(false)),
-                  DownButtonIntent: CallbackAction<DownButtonIntent>(
                       onInvoke: (intent) => changeItem(true)),
+                  DownButtonIntent: CallbackAction<DownButtonIntent>(
+                      onInvoke: (intent) => changeItem(false)),
                 },
                 child: Focus(
                   focusNode: focus,
@@ -361,14 +361,28 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
                           height: constraints.maxHeight,
                           width: MediaQuery.of(context).size.width / 2,
                           color: const Color.fromARGB(255, 248, 16, 0),
-                          child: currentItem,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(currentItem.textLeft),
+                              currentItem,
+                              const Text(''),
+                            ],
+                          ),
                         ),
                         Container(
                           height: constraints.maxHeight,
                           width: MediaQuery.of(context).size.width / 2,
                           color: const Color.fromARGB(255, 0, 255, 8),
-                          child: currentItem,
-                        )
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(''),
+                              currentItem,
+                              Text(currentItem.textRight),
+                            ],
+                          ),
+                        ),
                       ],
                     );
                   }),
