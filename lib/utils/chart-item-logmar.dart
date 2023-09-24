@@ -160,9 +160,11 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
       //     width: 70,
       //   ));
       // }else{
-        chartItems.add(SizedBox(
+        if(i != widget.rotations.length-1){
+          chartItems.add(SizedBox(
           width: calculatePixel(int.parse(distance), widget.textLeft),
         ));
+        } 
       // }
     }
   }

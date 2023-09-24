@@ -202,7 +202,7 @@ class _SettingsState extends State<Settings> {
                     }),
                     DownButtonIntent: CallbackAction(onInvoke: (intent) {
                       item2Focus.unfocus();
-                      changeFocus(context, item7Focus);
+                      changeFocus(context, item2Focus);
                     }),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
@@ -258,7 +258,7 @@ class _SettingsState extends State<Settings> {
                     }),
                     RightButtonIntent: CallbackAction(onInvoke: (intent) {
                       item5Focus.unfocus();
-                      changeFocus(context, item6Focus);
+                      changeFocus(context, item5Focus);
                     }),
                     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
                       item5Focus.unfocus();
@@ -282,69 +282,69 @@ class _SettingsState extends State<Settings> {
                     image: 'assets/chart/logout.jpg',
                   ),
                 ),
-                Actions(
-                  actions: <Type, Action<Intent>>{
-                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item6Focus.unfocus();
-                      changeFocus(context, item2Focus);
-                    }),
-                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item6Focus.unfocus();
-                      changeFocus(context, item7Focus);
-                    }),
-                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item6Focus.unfocus();
-                      changeFocus(context, item5Focus);
-                    }),
-                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                      // item2Focus.unfocus();
-                      // changeFocus(context, item6Focus);
-                    }),
-                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Helper.removeData('login');
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/login', (Route<dynamic> route) => false);
-                    }),
-                  },
-                  child: MenuItem(
-                    icon: "assets/icons/logout.jpg",
-                    name: 'LOGOUT',
-                    focusNode: item6Focus,
-                    image: 'assets/chart/logout.jpg',
-                  ),
-                ),
-                Actions(
-                  actions: <Type, Action<Intent>>{
-                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item7Focus.unfocus();
-                      changeFocus(context, item3Focus);
-                    }),
-                    RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item7Focus.unfocus();
-                      changeFocus(context, item1Focus);
-                    }),
-                    LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                      item7Focus.unfocus();
-                      changeFocus(context, item6Focus);
-                    }),
-                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                      // item2Focus.unfocus();
-                      // changeFocus(context, item6Focus);
-                    }),
-                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SelectFontScreen()));
-                    }),
-                  },
-                  child: MenuItem(
-                    icon: "assets/icons/callibration.jpg",
-                    name: 'ALL LETTERS',
-                    focusNode: item7Focus,
-                    image: 'assets/chart/logout.jpg',
-                  ),
-                ),
+                // Actions(
+                //   actions: <Type, Action<Intent>>{
+                //     UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item6Focus.unfocus();
+                //       changeFocus(context, item2Focus);
+                //     }),
+                //     RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item6Focus.unfocus();
+                //       changeFocus(context, item1Focus);
+                //     }),
+                //     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item6Focus.unfocus();
+                //       changeFocus(context, item5Focus);
+                //     }),
+                //     DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       // item2Focus.unfocus();
+                //       // changeFocus(context, item6Focus);
+                //     }),
+                //     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       Helper.removeData('login');
+                //       Navigator.of(context).pushNamedAndRemoveUntil(
+                //           '/login', (Route<dynamic> route) => false);
+                //     }),
+                //   },
+                //   child: MenuItem(
+                //     icon: "assets/icons/logout.jpg",
+                //     name: 'LOGOUT',
+                //     focusNode: item6Focus,
+                //     image: 'assets/chart/logout.jpg',
+                //   ),
+                // ),
+                // Actions(
+                //   actions: <Type, Action<Intent>>{
+                //     UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item7Focus.unfocus();
+                //       changeFocus(context, item3Focus);
+                //     }),
+                //     RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item7Focus.unfocus();
+                //       changeFocus(context, item1Focus);
+                //     }),
+                //     LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       item7Focus.unfocus();
+                //       changeFocus(context, item6Focus);
+                //     }),
+                //     DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       // item2Focus.unfocus();
+                //       // changeFocus(context, item6Focus);
+                //     }),
+                //     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                //       Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) => const SelectFontScreen()));
+                //     }),
+                //   },
+                //   child: MenuItem(
+                //     icon: "assets/icons/callibration.jpg",
+                //     name: 'ALL LETTERS',
+                //     focusNode: item7Focus,
+                //     image: 'assets/chart/logout.jpg',
+                //   ),
+                // ),
               ]),
         ));
   }

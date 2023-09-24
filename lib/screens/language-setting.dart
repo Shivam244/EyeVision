@@ -941,7 +941,66 @@ class _ModeSettingState extends State<LanguageSetting> {
                             "Gujrati",
                             style: TextStyle(color: Colors.white),
                           ),
-                          punjabiSelected
+                          gujratiSelected
+                              ? const Icon(Icons.check,
+                                  color: Colors.white, size: 15)
+                              : const Text('')
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Actions(
+                  actions: <Type, Action<Intent>>{
+                    UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item13Focus.unfocus();
+                      changeFocus(context, item12Focus);
+                    }),
+                    DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                      item13Focus.unfocus();
+                      changeFocus(context, item1Focus);
+                    }),
+                    EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                      selectLanguage('Nepali');
+                    }),
+                  },
+                  child: Focus(
+                    focusNode: item13Focus,
+                    child: Container(
+                      width: 500,
+                      height: 30,
+                      alignment: Alignment.center,
+                      decoration: (item13Focus.hasFocus)
+                          ? nepaliSelected
+                              ? const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(250, 16, 85, 4))
+                              : const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(106, 255, 255, 255))
+                          : nepaliSelected
+                              ? const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(251, 4, 22, 1))
+                              : const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Color.fromARGB(88, 0, 0, 0),
+                                ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Nepali",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          nepaliSelected
                               ? const Icon(Icons.check,
                                   color: Colors.white, size: 15)
                               : const Text('')

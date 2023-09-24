@@ -26,27 +26,31 @@ double MM_5 = 1.45;
 // font constants
 getConstant(String font, double fontSize) {
   if (font == 'Tamil') {
-    return fontSize + 28;
+    return fontSize + 90;
   } else if (font == 'Telugu') {
-    return fontSize + 24;
+    return fontSize + 72;
   } else if (font == 'Arabic') {
-    return fontSize + 18;
+    return fontSize + 32;
   } else if (font == 'Assamese') {
-    return fontSize + 26;
+    return fontSize + 46;
   } else if (font == 'Bengali') {
-    return fontSize + 22;
+    return fontSize + 46;
   } else if (font == 'Kannada') {
-    return fontSize + 32;
+    return fontSize + 90;
   } else if (font == 'Malayalam') {
-    return fontSize + 32;
+    return fontSize + 90;
   } else if (font == 'Oriya') {
-    return fontSize + 26;
+    return fontSize + 52;
   } else if (font == 'Punjabi') {
-    return fontSize + 24;
+    return fontSize + 48;
   } else if (font == 'Urdu') {
-    return fontSize + 36;
+    return fontSize + 46;
   } else if (font == 'Gujrati') {
-    return fontSize + 28;
+    return fontSize + 52;
+  } else if (font == 'Hindi') {
+    return fontSize + 52;
+  } else if (font == 'Nepali') {
+    return fontSize + 72;
   } else {
     return fontSize;
   }

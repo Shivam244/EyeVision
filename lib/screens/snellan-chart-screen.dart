@@ -268,9 +268,10 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                         width: MediaQuery.of(context).size.width,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const SizedBox(
-                              height: 50,
+                              height: 120,
                             ),
                             widget.chartItemsList[0],
                             const SizedBox(

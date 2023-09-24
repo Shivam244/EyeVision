@@ -39,7 +39,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   final String _gujrati = 'Jmhvldf';
   final String _kannad = 'MLCtJYD';
   final String _malyalam = 'pmaiUbk';
-  final String _nepali = 'bQPhksy';
+  final String _nepali = '8;nxoeu';
   final String _oriya = 'WnOMbeN';
   final String _punjabi = 'NHlfZoE';
   final String _urdu = 'xmtqaek';
@@ -163,12 +163,12 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
             context,
             MaterialPageRoute(
                 builder: (context) => ChartScreenMixed(type: lang1)));
-      } else if(widget.type == lang1){
+      } else if (widget.type == lang1) {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (context) => ChartScreenMixed(type: lang2)));
-      } else if(widget.type == lang2){
+      } else if (widget.type == lang2) {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -180,26 +180,24 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
             context,
             MaterialPageRoute(
                 builder: (context) => ChartScreenMixed(type: 'Alphabets')));
-      } else if(widget.type == lang1){
+      } else if (widget.type == lang1) {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (context) => ChartScreenMixed(type: 'Numbers')));
-      } else if(widget.type == lang2){
+      } else if (widget.type == lang2) {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (context) => ChartScreenMixed(type: lang1)));
-      } else if(widget.type == lang3){
+      } else if (widget.type == lang3) {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (context) => ChartScreenMixed(type: lang2)));
       } else if (widget.type == 'Alphabets') {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ChartScreen(image: 'E')));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => ChartScreen(image: 'E')));
       }
     }
   }

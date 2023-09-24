@@ -127,7 +127,7 @@ flutter:
     - family: Telugu
       fonts:
         - asset: assets/fonts/BRHTelugu.ttf    
-    - family: Hindi
+    - family: Nepali
       fonts:
         - asset: assets/fonts/EditedAMAA_1.ttf
     - family: Prototype
@@ -169,6 +169,9 @@ flutter:
     - family: Gujrati
       fonts:
         - asset: assets/fonts/Gopika.ttf        
+    - family: Hindi
+      fonts:
+        - asset: assets/fonts/AmrHindiRegular.ttf        
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
