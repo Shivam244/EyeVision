@@ -29,6 +29,7 @@ class _ChartItemState extends State<ChartItem> {
   String mode = 'Normal';
   String distance = '5';
   double constant = 0;
+  bool stateChanged = false;
   @override
   initState() {
     checkMode();
@@ -37,11 +38,16 @@ class _ChartItemState extends State<ChartItem> {
 
   checkMode() async {
     mode = await Helper.getData('mode') ?? '';
-    distance = await Helper.getData('distance') ?? '';
-    var cons = await Helper.getData('constantC') ?? '0.0';
+    distance = await Helper.getData('distance') ?? '5';
+    String cons =
+        await Helper.getData('constant$distance${widget.textLeft}') ?? '0.0';
     constant = double.parse(cons);
-    // constant = 0;
-    print("mode: " + mode + " distance: " + distance );
+    print("mode: " +
+        mode +
+        " distance: " +
+        distance +
+        " constant$distance${widget.textLeft}: " +
+        constant.toString());
     setState(() {});
   }
 
@@ -143,8 +149,7 @@ class _ChartItemState extends State<ChartItem> {
                       style: TextStyle(
                           fontFamily: getFont(),
                           // fontSize: widget.imageSize,
-                          fontSize: calculatePixel(
-                              int.parse(distance), widget.textLeft),
+                          fontSize: widget.imageSize,
                           color: Colors.black),
                       textScaleFactor: 1.0,
                     )),
@@ -164,8 +169,7 @@ class _ChartItemState extends State<ChartItem> {
                     widget.image,
                     style: TextStyle(
                         fontFamily: getFont(),
-                        fontSize: calculatePixel(
-                            int.parse(distance), widget.textLeft),
+                        fontSize: widget.imageSize,
                         color: Colors.black),
                     textScaleFactor: 1.0,
                   )));
@@ -191,7 +195,9 @@ class _ChartItemState extends State<ChartItem> {
       children: [
         Row(
           children: [
-            widget.textLeft == "6/6" ? const Icon(Icons.keyboard_arrow_left): const Text(''),
+            widget.textLeft == "6/6"
+                ? const Icon(Icons.keyboard_arrow_left)
+                : const Text(''),
             Text(widget.textLeft, style: TextStyle(fontSize: 20)),
           ],
         ),
@@ -206,7 +212,9 @@ class _ChartItemState extends State<ChartItem> {
             widget.textRight,
             style: TextStyle(fontSize: 20),
           ),
-          widget.textLeft == "6/60" ? const Icon(Icons.keyboard_arrow_right): const Text('')
+          widget.textLeft == "6/60"
+              ? const Icon(Icons.keyboard_arrow_right)
+              : const Text('')
         ])
       ],
     );

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:eyevision/constants/constants.dart';
 import 'package:eyevision/screens/chart-screen-mixed.dart';
 import 'package:eyevision/utils/chartItem.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +20,34 @@ class ChartScreen extends StatefulWidget {
 
 class _ChartScreenState extends State<ChartScreen> {
   int itemIndex = 0;
-  late ChartItem currentItem;
+  late ChartItem currentItem = ChartItem(
+    textLeft: '6/60',
+    textRight: '20/200',
+    rotations: enableRotation
+        ? chartMode
+            ? 1
+            : 1
+        : -1,
+    image: 'C',
+    imageSize: calculatePixel(int.parse(distance), '6/60'),
+    language: 'C',
+  );
   FocusNode focus = FocusNode();
   bool enableRotation = true;
   bool initialState = true;
   bool chartMode = true;
   bool inverse = false;
+  String mode = 'Normal';
+  String distance = '5';
+  double constant = 0;
+  String cons60 = '0.0';
+  String cons36 = '0.0';
+  String cons24 = '0.0';
+  String cons18 = '0.0';
+  String cons12 = '0.0';
+  String cons9 = '0.0';
+  String cons6 = '0.0';
+  Future<bool>? _dataLoaded;
   changeItem(bool next) {
     if (next) {
       itemIndex++;
@@ -48,7 +71,6 @@ class _ChartScreenState extends State<ChartScreen> {
       content: chartMode ? const Text('Multiple') : const Text('Single'),
       duration: const Duration(milliseconds: 500),
     ));
-    loadImage();
     setState(() {
       initialState = true;
     });
@@ -61,9 +83,25 @@ class _ChartScreenState extends State<ChartScreen> {
         });
   }
 
+  Future<bool> checkMode() async {
+    mode = await Helper.getData('mode') ?? '';
+    distance = await Helper.getData('distance') ?? '5';
+    cons60 = await Helper.getData('constant$distance' '6/60') ?? '0.0';
+    cons36 = await Helper.getData('constant$distance' '6/36') ?? '0.0';
+    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
+    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
+    cons18 = await Helper.getData('constant$distance' '6/18') ?? '0.0';
+    cons9 = await Helper.getData('constant$distance' '6/9') ?? '0.0';
+    cons6 = await Helper.getData('constant$distance' '6/6') ?? '0.0';
+    return true;
+    // setState(() {});
+  }
+
   @override
   initState() {
+    _dataLoaded = checkMode();
     checkInvert();
+    setState(() {});
     super.initState();
   }
 
@@ -78,12 +116,40 @@ class _ChartScreenState extends State<ChartScreen> {
             MaterialPageRoute(
                 builder: (context) => ChartScreenMixed(type: 'Alphabets')));
       }
-    } else{
+    } else {
       if (widget.image == 'E') {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => ChartScreen(image: 'C')));
       }
     }
+  }
+
+  double calculatePixel(int feat, String type) {
+    double calculatedSize = 0;
+    if (type == "6/60") {
+      calculatedSize =
+          feat / 4 * MM_60 * 3.7795275591 * 0.846 + double.parse(cons60);
+    } else if (type == "6/36") {
+      calculatedSize =
+          feat / 4 * MM_36 * 3.7795275591 * 0.846 + double.parse(cons36);
+    } else if (type == "6/24") {
+      calculatedSize =
+          feat / 4 * MM_24 * 3.7795275591 * 0.846 + double.parse(cons24);
+    } else if (type == "6/18") {
+      calculatedSize =
+          feat / 4 * MM_18 * 3.7795275591 * 0.846 + double.parse(cons18);
+    } else if (type == "6/12") {
+      calculatedSize =
+          feat / 4 * MM_12 * 3.7795275591 * 0.846 + double.parse(cons12);
+    } else if (type == "6/9") {
+      calculatedSize =
+          feat / 4 * MM_9 * 3.7795275591 * 0.846 + double.parse(cons9);
+    } else if (type == "6/6") {
+      calculatedSize =
+          feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
+    }
+    double finalSize = getConstant(widget.image, calculatedSize);
+    return finalSize;
   }
 
   setImage(String image) {
@@ -98,7 +164,7 @@ class _ChartScreenState extends State<ChartScreen> {
                     : 1
                 : -1,
             image: image,
-            imageSize: 279.139392,
+            imageSize: calculatePixel(int.parse(distance), '6/60'),
             language: widget.image),
         ChartItem(
             textLeft: '6/36',
@@ -109,7 +175,7 @@ class _ChartScreenState extends State<ChartScreen> {
                     : 1
                 : -1,
             image: image,
-            imageSize: 167.5479733848944,
+            imageSize: calculatePixel(int.parse(distance), '6/36'),
             language: widget.image),
         ChartItem(
             textLeft: '6/24',
@@ -120,7 +186,7 @@ class _ChartScreenState extends State<ChartScreen> {
                     : 1
                 : -1,
             image: image,
-            imageSize: 111.59206787241891,
+            imageSize: calculatePixel(int.parse(distance), '6/24'),
             language: widget.image),
         ChartItem(
             textLeft: '6/18',
@@ -131,7 +197,7 @@ class _ChartScreenState extends State<ChartScreen> {
                     : 1
                 : -1,
             image: image,
-            imageSize: 83.7739866924472,
+            imageSize: calculatePixel(int.parse(distance), '6/18'),
             language: widget.image),
         ChartItem(
             textLeft: '6/12',
@@ -142,7 +208,7 @@ class _ChartScreenState extends State<ChartScreen> {
                     : 1
                 : -1,
             image: image,
-            imageSize: 55.955905512475496,
+            imageSize: calculatePixel(int.parse(distance), '6/12'),
             language: widget.image),
         ChartItem(
             textLeft: '6/6',
@@ -153,7 +219,7 @@ class _ChartScreenState extends State<ChartScreen> {
                     : 1
                 : -1,
             image: image,
-            imageSize: 27.818078130616847,
+            imageSize: calculatePixel(int.parse(distance), '6/6'),
             language: widget.image),
       ];
       initialState = false;
@@ -245,7 +311,22 @@ class _ChartScreenState extends State<ChartScreen> {
     });
   }
 
+  waitForWidget() {
+    return FutureBuilder<bool>(
+        future: _dataLoaded,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasData) {
+            return getWidget();
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
+  }
+
   Widget getWidget() {
+    loadImage();
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(
@@ -276,8 +357,7 @@ class _ChartScreenState extends State<ChartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    loadImage();
     FocusScope.of(context).requestFocus(focus);
-    return inverse ? InvertColors(child: getWidget()) : getWidget();
+    return inverse ? InvertColors(child: waitForWidget()) : waitForWidget();
   }
 }

@@ -38,10 +38,10 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
   checkMode() async {
     mode = await Helper.getData('mode') ?? '';
     distance = await Helper.getData('distance') ?? '';
-    var cons = await Helper.getData('constantC') ?? '0.0';
+    String cons = await Helper.getData('constant$distance') ?? '0.0';
     constant = double.parse(cons);
     // constant = 0;
-    print("mode: " + mode + " distance: " + distance);
+    print("mode: " + mode + " distance: " + distance +" constant: "+ constant.toString());
     setState(() {});
   }
 

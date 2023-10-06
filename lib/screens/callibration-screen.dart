@@ -18,6 +18,9 @@ class CallibrationScreen extends StatefulWidget {
 class _CallibrationScreenState extends State<CallibrationScreen> {
   double distance = 0;
   double constant = 0;
+  String dist = '0';
+  List<String> types = ['6/60', '6/36', '6/24', '6/12', '6/9', '6/6'];
+  int currentType = 0;
   FocusNode item1Focus = FocusNode();
 
   @override
@@ -27,9 +30,11 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   }
 
   checkMode() async {
-    var cons = await Helper.getData('constant${widget.type}') ?? '0.0';
+    dist = await Helper.getData('distance') ?? '5';
+    distance = double.parse(dist);
+    String cons = await Helper.getData('constant$dist${types[currentType]}') ?? '0.0';
     constant = double.parse(cons);
-    distance = constant;
+    print("constant$dist${types[currentType]} : "+ constant.toString());
     setState(() {});
   }
 
@@ -95,6 +100,15 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
     }
   }
 
+  changeType(bool right) {
+    if (right && currentType < 5) {
+      currentType++;
+    } else if (!right && currentType > 0) {
+      currentType--;
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,22 +125,35 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
             child: Actions(
               actions: <Type, Action<Intent>>{
                 UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                  distance = distance + 1;
+                  constant = constant + 1;
                   setState(() {
-                    constant = distance;
+                    // constant = distance;
                   });
                 }),
                 DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                  distance = distance - 1;
+                  constant = constant - 1;
                   setState(() {
-                    constant = distance;
+                    // constant = distance;
                   });
+                }),
+                LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                  checkMode();
+                  changeType(false);
+                }),
+                RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                  checkMode();
+                  changeType(true);
                 }),
                 EnterButtonIntent:
                     CallbackAction<EnterButtonIntent>(onInvoke: (intent) {
-                  Helper.removeData('constant${widget.type}');
-                  Helper.setData('constant${widget.type}', constant.toString());
-                  Navigator.pop(context);
+                  Helper.removeData('constant$dist${types[currentType]}');
+                  Helper.setData(
+                      'constant$dist${types[currentType]}', constant.toString());
+                      print( 'constant$dist${types[currentType]} : '+ constant.toString());
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Callibration Saved'),
+                  ));
+                  // Navigator.pop(context);
                 }),
               },
               child: Focus(
@@ -139,7 +166,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
                         height: constraints.maxHeight,
                         width: MediaQuery.of(context).size.width / 2,
                         color: backgroundColour,
-                        child: Row(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
@@ -151,7 +178,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
                                         onPressed: () =>
                                             {if (distance < 20) distance++},
                                         icon: const Icon(
-                                          Icons.arrow_upward_outlined,
+                                          Icons.keyboard_arrow_up,
                                           color: Color.fromARGB(
                                               137, 216, 215, 215),
                                         ),
@@ -167,7 +194,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
                                           color:
                                               Color.fromARGB(94, 37, 37, 37)),
                                       child: Text(
-                                        "$distance",
+                                        constant.toString(),
                                         style: const TextStyle(
                                             color: Colors.white),
                                       )),
@@ -177,7 +204,48 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
                                           onPressed: () =>
                                               {if (distance > 5) distance--},
                                           icon: const Icon(
-                                            Icons.arrow_downward,
+                                            Icons.keyboard_arrow_down,
+                                            color: Color.fromARGB(
+                                                137, 216, 215, 215),
+                                          ),
+                                          iconSize: 50)),
+                                ]),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height: 100,
+                                      child: IconButton(
+                                        onPressed: () =>
+                                            {if (distance < 20) distance++},
+                                        icon: const Icon(
+                                          Icons.keyboard_arrow_left,
+                                          color: Color.fromARGB(
+                                              137, 216, 215, 215),
+                                        ),
+                                        iconSize: 50,
+                                      )),
+                                  Container(
+                                      height: 30,
+                                      width: 60,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black),
+                                          color:
+                                              Color.fromARGB(94, 37, 37, 37)),
+                                      child: Text(
+                                        types[currentType],
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      )),
+                                  Container(
+                                      height: 100,
+                                      child: IconButton(
+                                          onPressed: () =>
+                                              {if (distance > 5) distance--},
+                                          icon: const Icon(
+                                            Icons.keyboard_arrow_right,
                                             color: Color.fromARGB(
                                                 137, 216, 215, 215),
                                           ),
@@ -196,8 +264,8 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
                             style: TextStyle(
                                 fontFamily: getFont(),
                                 // fontSize: widget.imageSize,
-                                fontSize:
-                                    calculatePixel(int.parse('5'), "6/60"),
+                                fontSize: calculatePixel(
+                                    distance.toInt(), types[currentType]),
                                 color: Colors.black),
                             textScaleFactor: 1.0,
                           ),
