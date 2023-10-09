@@ -32,11 +32,16 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
   double constant = 0;
   checkMode() async {
     mode = await Helper.getData('mode') ?? '';
-    distance = await Helper.getData('distance') ?? '';
-    String cons = await Helper.getData('constant$distance') ?? '0.0';
+    distance = await Helper.getData('distance') ?? '5';
+    String cons =
+        await Helper.getData('constant$distance${widget.textLeft}') ?? '0.0';
     constant = double.parse(cons);
-    // constant = 0;
-    print("mode: " + mode + " distance: " + distance +" constant: "+ constant.toString());
+    print("mode: " +
+        mode +
+        " distance: " +
+        distance +
+        " constant$distance${widget.textLeft}: " +
+        constant.toString());
     setState(() {});
   }
 
@@ -115,7 +120,7 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
                     fontSize:
-                        calculatePixel(int.parse(distance), widget.textLeft),
+                        widget.imageSize,
                     color: Colors.black),
                 textScaleFactor: 1.0,
               )),
@@ -130,7 +135,7 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
               style: TextStyle(
                   fontFamily: getFont(),
                   fontSize:
-                      calculatePixel(int.parse(distance), widget.textLeft),
+                      widget.imageSize,
                   color: Colors.black),
               textScaleFactor: 1.0,
             ),

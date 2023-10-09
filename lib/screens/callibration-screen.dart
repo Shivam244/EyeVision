@@ -19,7 +19,8 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   double distance = 0;
   double constant = 0;
   String dist = '0';
-  List<String> types = ['6/60', '6/36', '6/24', '6/12', '6/9', '6/6'];
+  List<String> types = ['6/60', '6/48', '6/38', '6/30', '6/36', '6/24', '6/19', 
+  '6/15', '6/12', '9.5', '6/9', '7.5', '6/6', '6/5'];
   int currentType = 0;
   FocusNode item1Focus = FocusNode();
 
@@ -46,18 +47,34 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   double calculatePixel(int feat, String type) {
     if (type == "6/60") {
       return feat / 4 * MM_60 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/48") {
+      return feat / 4 * MM_48 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/38") {
+      return feat / 4 * MM_38 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/36") {
       return feat / 4 * MM_36 * 3.7795275591 * 0.846 + constant;
+    }else if (type == "6/30") {
+      return feat / 4 * MM_30 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/24") {
       return feat / 4 * MM_24 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/19") {
+      return feat / 4 * MM_19 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/18") {
       return feat / 4 * MM_18 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/15") {
+      return feat / 4 * MM_15 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/12") {
       return feat / 4 * MM_12 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/9.5") {
+      return feat / 4 * MM_9_5 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/9") {
       return feat / 4 * MM_9 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/7.5") {
+      return feat / 4 * MM_7_5 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/6") {
       return feat / 4 * MM_6 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/5") {
+      return feat / 4 * MM_5 * 3.7795275591 * 0.846 + constant;
     }
     return 0;
   }
@@ -101,7 +118,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   }
 
   changeType(bool right) {
-    if (right && currentType < 5) {
+    if (right && currentType < 13) {
       currentType++;
     } else if (!right && currentType > 0) {
       currentType--;

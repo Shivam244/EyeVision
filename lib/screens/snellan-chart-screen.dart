@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:eyevision/utils/chartItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:invert_colors/invert_colors.dart';
 
 import '../constants/constants.dart';
 import '../utils/chartItem-snellan.dart';
@@ -25,8 +26,27 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
   bool initialState = true;
   List<String> items = ['Letters', 'Numbers'];
   String distance = '5';
+  String mode = 'Normal';
   int currentHorizontalPos = 0;
   int currentVerticalPos = 0;
+  double constant = 0;
+  String cons60 = '0.0';
+  String cons48 = '0.0';
+  String cons38 = '0.0';
+  String cons36 = '0.0';
+  String cons30 = '0.0';
+  String cons24 = '0.0';
+  String cons19 = '0.0';
+  String cons18 = '0.0';
+  String cons15 = '0.0';
+  String cons12 = '0.0';
+  String cons9_5 = '0.0';
+  String cons9 = '0.0';
+  String cons7_5 = '0.0';
+  String cons6 = '0.0';
+  String cons5 = '0.0';
+  Future<bool>? _dataLoaded;
+  bool inverse = false;
   final ScrollController scrollController = ScrollController();
   final ScrollController verticalScrollController = ScrollController();
   changeItem(bool next) {
@@ -49,13 +69,94 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
 
   @override
   initState() {
+    _dataLoaded = checkMode1();
     checkMode();
+    checkInvert();
     super.initState();
+  }
+
+  checkInvert() async {
+    await Helper.getData('inversion').then((value) => {
+          if (value == "invert") {inverse = true},
+          print(value)
+        });
   }
 
   checkMode() async {
     distance = await Helper.getData('distance') ?? '';
     setState(() {});
+  }
+
+  Future<bool> checkMode1() async {
+    mode = await Helper.getData('mode') ?? '';
+    distance = await Helper.getData('distance') ?? '5';
+    cons60 = await Helper.getData('constant$distance' '6/60') ?? '0.0';
+    cons48 = await Helper.getData('constant$distance' '6/48') ?? '0.0';
+    cons38 = await Helper.getData('constant$distance' '6/38') ?? '0.0';
+    cons36 = await Helper.getData('constant$distance' '6/36') ?? '0.0';
+    cons30 = await Helper.getData('constant$distance' '6/30') ?? '0.0';
+    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
+    cons19 = await Helper.getData('constant$distance' '6/19') ?? '0.0';
+    cons18 = await Helper.getData('constant$distance' '6/18') ?? '0.0';
+    cons15 = await Helper.getData('constant$distance' '6/15') ?? '0.0';
+    cons9_5 = await Helper.getData('constant$distance' '6/9.5') ?? '0.0';
+    cons9 = await Helper.getData('constant$distance' '6/9') ?? '0.0';
+    cons7_5 = await Helper.getData('constant$distance' '6/7.5') ?? '0.0';
+    cons6 = await Helper.getData('constant$distance' '6/6') ?? '0.0';
+    return true;
+    // setState(() {});
+  }
+
+  double calculatePixel(int feat, String type) {
+    double calculatedSize = 0;
+    if (type == "6/60") {
+      calculatedSize =
+          feat / 4 * MM_60 * 3.7795275591 * 0.846 + double.parse(cons60);
+    } else if (type == "6/48") {
+      calculatedSize =
+          feat / 4 * MM_48 * 3.7795275591 * 0.846 + double.parse(cons48);
+    } else if (type == "6/38") {
+      calculatedSize =
+          feat / 4 * MM_38 * 3.7795275591 * 0.846 + double.parse(cons38);
+    } else if (type == "6/36") {
+      calculatedSize =
+          feat / 4 * MM_36 * 3.7795275591 * 0.846 + double.parse(cons36);
+    } else if (type == "6/30") {
+      calculatedSize =
+          feat / 4 * MM_30 * 3.7795275591 * 0.846 + double.parse(cons30);
+    } else if (type == "6/24") {
+      calculatedSize =
+          feat / 4 * MM_24 * 3.7795275591 * 0.846 + double.parse(cons24);
+    } else if (type == "6/19") {
+      calculatedSize =
+          feat / 4 * MM_19 * 3.7795275591 * 0.846 + double.parse(cons19);
+    } else if (type == "6/18") {
+      calculatedSize =
+          feat / 4 * MM_18 * 3.7795275591 * 0.846 + double.parse(cons18);
+    } else if (type == "6/15") {
+      calculatedSize =
+          feat / 4 * MM_15 * 3.7795275591 * 0.846 + double.parse(cons15);
+    } else if (type == "6/12") {
+      calculatedSize =
+          feat / 4 * MM_12 * 3.7795275591 * 0.846 + double.parse(cons12);
+    } else if (type == "6/9.5") {
+      calculatedSize =
+          feat / 4 * MM_9_5 * 3.7795275591 * 0.846 + double.parse(cons9_5);
+    } else if (type == "6/9") {
+      calculatedSize =
+          feat / 4 * MM_9 * 3.7795275591 * 0.846 + double.parse(cons9);
+    } else if (type == "6/7.5") {
+      calculatedSize =
+          feat / 4 * MM_7_5 * 3.7795275591 * 0.846 + double.parse(cons7_5);
+    } else if (type == "6/6") {
+      calculatedSize =
+          feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
+    } else if (type == "6/5") {
+      calculatedSize =
+          feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons5);
+    }
+    double finalSize = getConstant(widget.image, calculatedSize);
+    return finalSize;
   }
 
   setImage(String image) {
@@ -66,28 +167,28 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
             textRight: '20/200',
             rotations: enableRotation ? [0] : [-1],
             image: image,
-            imageSize: 279.139392,
+            imageSize: calculatePixel(int.parse(distance), '6/60'),
             language: widget.image),
         ChartItemSnellan(
             textLeft: '6/36',
             textRight: '20/120',
             rotations: enableRotation ? [0, 0] : [-1, -1],
             image: image,
-            imageSize: 167.5479733848944,
+            imageSize: calculatePixel(int.parse(distance), '6/36'),
             language: widget.image),
         ChartItemSnellan(
             textLeft: '6/24',
             textRight: '20/80',
             rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
             image: image,
-            imageSize: 111.59206787241891,
+            imageSize: calculatePixel(int.parse(distance), '6/24'),
             language: widget.image),
         ChartItemSnellan(
             textLeft: '6/18',
             textRight: '20/60',
             rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
             image: image,
-            imageSize: 83.7739866924472,
+            imageSize: calculatePixel(int.parse(distance), '6/18'),
             language: widget.image),
         ChartItemSnellan(
             textLeft: '6/12',
@@ -95,7 +196,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
             rotations:
                 enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: image,
-            imageSize: 55.955905512475496,
+            imageSize: calculatePixel(int.parse(distance), '6/12'),
             language: widget.image),
         ChartItemSnellan(
             textLeft: '6/9',
@@ -104,7 +205,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                 ? [0, 180, 180, 90, 0, 0]
                 : [-1, -1, -1, -1, -1, -1],
             image: image,
-            imageSize: 55.955905512475496,
+            imageSize: calculatePixel(int.parse(distance), '6/9'),
             language: widget.image),
         ChartItemSnellan(
             textLeft: '6/6',
@@ -113,7 +214,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                 ? [0, 15, 270, 180, 90, 0, 0]
                 : [-1, -1, -1, -1, -1, -1, -1],
             image: image,
-            imageSize: 27.818078130616847,
+            imageSize: calculatePixel(int.parse(distance), '6/6'),
             language: widget.image),
         ChartItemSnellan(
             textLeft: '6/5',
@@ -122,7 +223,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                 ? [0, 15, 270, 180, 90, 0, 0, 0]
                 : [-1, -1, -1, -1, -1, -1, -1, -1],
             image: image,
-            imageSize: 27.818078130616847,
+            imageSize: calculatePixel(int.parse(distance), '6/5'),
             language: widget.image),
       ];
       initialState = false;
@@ -158,7 +259,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
               builder: (context) => SnellanChartScreen(
                     image: 'Numbers',
                   )));
-    } else{
+    } else {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -228,10 +329,8 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget getWidget() {
     loadImage();
-    FocusScope.of(context).requestFocus(focus);
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(
@@ -315,36 +414,56 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
         ));
   }
 
-  double calculatePixel(int feat, String type) {
-    if (type == "6/60") {
-      return feat / 4 * MM_60 * 3.7795275591 * 0.846;
-    } else if (type == "6/48") {
-      return feat / 4 * MM_48 * 3.7795275591 * 0.846;
-    } else if (type == "6/38") {
-      return feat / 4 * MM_38 * 3.7795275591 * 0.846;
-    } else if (type == "6/36") {
-      return feat / 4 * MM_36 * 3.7795275591 * 0.846;
-    } else if (type == "6/30") {
-      return feat / 4 * MM_30 * 3.7795275591 * 0.846;
-    } else if (type == "6/24") {
-      return feat / 4 * MM_24 * 3.7795275591 * 0.846;
-    } else if (type == "6/19") {
-      return feat / 4 * MM_19 * 3.7795275591 * 0.846;
-    } else if (type == "6/18") {
-      return feat / 4 * MM_18 * 3.7795275591 * 0.846;
-    } else if (type == "6/15") {
-      return feat / 4 * MM_15 * 3.7795275591 * 0.846;
-    } else if (type == "6/12") {
-      return feat / 4 * MM_12 * 3.7795275591 * 0.846;
-    } else if (type == "6/9.5") {
-      return feat / 4 * MM_9_5 * 3.7795275591 * 0.846;
-    } else if (type == "6/9") {
-      return feat / 4 * MM_9 * 3.7795275591 * 0.846;
-    } else if (type == "6/7.5") {
-      return feat / 4 * MM_7_5 * 3.7795275591 * 0.846;
-    } else if (type == "6/6") {
-      return feat / 4 * MM_6 * 3.7795275591 * 0.846;
-    }
-    return 0;
+  waitForWidget() {
+    return FutureBuilder<bool>(
+        future: _dataLoaded,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasData) {
+            return getWidget();
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
   }
+
+  @override
+  Widget build(BuildContext context) {
+    // FocusScope.of(context).requestFocus(focus);
+    return inverse ? InvertColors(child: waitForWidget()) : waitForWidget();
+  }
+
+  // double calculatePixel(int feat, String type) {
+  //   if (type == "6/60") {
+  //     return feat / 4 * MM_60 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/48") {
+  //     return feat / 4 * MM_48 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/38") {
+  //     return feat / 4 * MM_38 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/36") {
+  //     return feat / 4 * MM_36 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/30") {
+  //     return feat / 4 * MM_30 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/24") {
+  //     return feat / 4 * MM_24 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/19") {
+  //     return feat / 4 * MM_19 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/18") {
+  //     return feat / 4 * MM_18 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/15") {
+  //     return feat / 4 * MM_15 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/12") {
+  //     return feat / 4 * MM_12 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/9.5") {
+  //     return feat / 4 * MM_9_5 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/9") {
+  //     return feat / 4 * MM_9 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/7.5") {
+  //     return feat / 4 * MM_7_5 * 3.7795275591 * 0.846;
+  //   } else if (type == "6/6") {
+  //     return feat / 4 * MM_6 * 3.7795275591 * 0.846;
+  //   }
+  //   return 0;
+  // }
 }

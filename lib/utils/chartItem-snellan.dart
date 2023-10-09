@@ -137,7 +137,7 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
                     fontSize:
-                        calculatePixel(int.parse(distance), widget.textLeft),
+                        widget.imageSize,
                     color: Colors.black),
                 textScaleFactor: 1.0,
               )),
@@ -153,7 +153,7 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
               style: TextStyle(
                   fontFamily: getFont(),
                   fontSize:
-                      calculatePixel(int.parse(distance), widget.textLeft),
+                      widget.imageSize,
                   color: Colors.black),
               textScaleFactor: 1.0,
             )));

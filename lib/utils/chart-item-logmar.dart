@@ -134,7 +134,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
                     fontSize:
-                        calculatePixel(int.parse(distance), widget.textLeft),
+                        widget.imageSize,
                     color: Colors.black),
                 textScaleFactor: 1.0,
               )),
@@ -150,7 +150,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
               style: TextStyle(
                   fontFamily: getFont(),
                   fontSize:
-                      calculatePixel(int.parse(distance), widget.textLeft),
+                      widget.imageSize,
                   color: Colors.black),
               textScaleFactor: 1.0,
             )));

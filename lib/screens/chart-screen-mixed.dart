@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:invert_colors/invert_colors.dart';
 
+import '../constants/constants.dart';
 import '../utils/chartItem.dart';
 import '../utils/helper.dart';
 import 'login.dart';
@@ -50,8 +51,20 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   String lang1 = 'Hindi';
   String lang2 = 'Tamil';
   String lang3 = 'Telugu';
+  double constant = 0;
+  String mode = 'Normal';
+  String distance = '5';
+  String cons60 = '0.0';
+  String cons36 = '0.0';
+  String cons24 = '0.0';
+  String cons18 = '0.0';
+  String cons12 = '0.0';
+  String cons9 = '0.0';
+  String cons6 = '0.0';
+  Future<bool>? _dataLoaded;
   @override
   void initState() {
+    _dataLoaded = checkMode();
     checkInvert();
     loadImage();
     super.initState();
@@ -128,6 +141,20 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     setState(() {
       initialState = true;
     });
+  }
+
+  Future<bool> checkMode() async {
+    mode = await Helper.getData('mode') ?? '';
+    distance = await Helper.getData('distance') ?? '5';
+    cons60 = await Helper.getData('constant$distance' '6/60') ?? '0.0';
+    cons36 = await Helper.getData('constant$distance' '6/36') ?? '0.0';
+    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
+    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
+    cons18 = await Helper.getData('constant$distance' '6/18') ?? '0.0';
+    cons9 = await Helper.getData('constant$distance' '6/9') ?? '0.0';
+    cons6 = await Helper.getData('constant$distance' '6/6') ?? '0.0';
+    return true;
+    // setState(() {});
   }
 
   getLanguages() async {
@@ -272,43 +299,71 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     return images;
   }
 
+  double calculatePixel(int feat, String type) {
+    double calculatedSize = 0;
+    if (type == "6/60") {
+      calculatedSize =
+          feat / 4 * MM_60 * 3.7795275591 * 0.846 + double.parse(cons60);
+    } else if (type == "6/36") {
+      calculatedSize =
+          feat / 4 * MM_36 * 3.7795275591 * 0.846 + double.parse(cons36);
+    } else if (type == "6/24") {
+      calculatedSize =
+          feat / 4 * MM_24 * 3.7795275591 * 0.846 + double.parse(cons24);
+    } else if (type == "6/18") {
+      calculatedSize =
+          feat / 4 * MM_18 * 3.7795275591 * 0.846 + double.parse(cons18);
+    } else if (type == "6/12") {
+      calculatedSize =
+          feat / 4 * MM_12 * 3.7795275591 * 0.846 + double.parse(cons12);
+    } else if (type == "6/9") {
+      calculatedSize =
+          feat / 4 * MM_9 * 3.7795275591 * 0.846 + double.parse(cons9);
+    } else if (type == "6/6") {
+      calculatedSize =
+          feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
+    }
+    double finalSize = getConstant(widget.type, calculatedSize);
+    return finalSize;
+  }
+
   setImage() {
     List<ChartItemMixed> chartItemsList = [
       ChartItemMixed(
           textLeft: '6/60',
           textRight: '20/200',
           images: chartMode ? generateItems(1) : generateItems(1),
-          imageSize: 279.139392,
+          imageSize: calculatePixel(int.parse(distance), '6/60'),
           type: widget.type),
       ChartItemMixed(
           textLeft: '6/36',
           textRight: '20/120',
           images: chartMode ? generateItems(2) : generateItems(1),
-          imageSize: 167.5479733848944,
+          imageSize: calculatePixel(int.parse(distance), '6/36'),
           type: widget.type),
       ChartItemMixed(
           textLeft: '6/24',
           textRight: '20/80',
           images: chartMode ? generateItems(3) : generateItems(1),
-          imageSize: 111.59206787241891,
+          imageSize: calculatePixel(int.parse(distance), '6/24'),
           type: widget.type),
       ChartItemMixed(
           textLeft: '6/18',
           textRight: '20/60',
           images: chartMode ? generateItems(4) : generateItems(1),
-          imageSize: 83.7739866924472,
+          imageSize: calculatePixel(int.parse(distance), '6/18'),
           type: widget.type),
       ChartItemMixed(
           textLeft: '6/12',
           textRight: '20/40',
           images: chartMode ? generateItems(5) : generateItems(1),
-          imageSize: 55.955905512475496,
+          imageSize: calculatePixel(int.parse(distance), '6/12'),
           type: widget.type),
       ChartItemMixed(
           textLeft: '6/6',
           textRight: '20/20',
           images: chartMode ? generateItems(6) : generateItems(1),
-          imageSize: 27.818078130616847,
+          imageSize: calculatePixel(int.parse(distance), '6/6'),
           type: widget.type),
     ];
     return chartItemsList;
@@ -319,7 +374,22 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     currentItem = widget.chartItemsList[itemIndex];
   }
 
+  waitForWidget() {
+    return FutureBuilder<bool>(
+        future: _dataLoaded,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasData) {
+            return getWidget();
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
+  }
+
   getWidget() {
+    loadImage();
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(
@@ -352,6 +422,6 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   Widget build(BuildContext context) {
     // loadImage();
     FocusScope.of(context).requestFocus(focus);
-    return inverse ? InvertColors(child: getWidget()) : getWidget();
+    return inverse ? InvertColors(child: waitForWidget()) : waitForWidget();
   }
 }

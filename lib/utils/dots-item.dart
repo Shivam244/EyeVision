@@ -88,7 +88,7 @@ class _ChartItemMixedState extends State<DotsItem> {
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
                     fontSize:
-                        calculatePixel(int.parse(distance), widget.textLeft),
+                        widget.imageSize,
                     color: Colors.black),
                 textScaleFactor: 1.0,
               )),
@@ -108,7 +108,7 @@ class _ChartItemMixedState extends State<DotsItem> {
                 widget.images[i],
                 style: TextStyle(
                     fontFamily: getFont(),
-                    fontSize: calculatePixel(int.parse(distance), widget.textLeft),
+                    fontSize: widget.imageSize,
                     color: Colors.black),
                 textScaleFactor: 1.0,
               ),
