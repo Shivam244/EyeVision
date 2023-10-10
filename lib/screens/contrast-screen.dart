@@ -264,7 +264,7 @@ class _ContrastScreenState extends State<ContrastScreen> {
       return widget.chartItemsList;
   }
 
-  final String _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  final String _chars = 'NRKDZHS';
   final String _numbers = '1234567890';
   final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';

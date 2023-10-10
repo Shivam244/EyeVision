@@ -62,9 +62,11 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   String cons9 = '0.0';
   String cons6 = '0.0';
   Future<bool>? _dataLoaded;
+  List<String> usedItems = [];
   @override
   void initState() {
     _dataLoaded = checkMode();
+    getLanguages();
     checkInvert();
     loadImage();
     super.initState();
@@ -106,6 +108,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       length, (_) => _telugu.codeUnitAt(_rnd.nextInt(_telugu.length))));
 
   changeItem(bool next) {
+    usedItems = [];
     if (next) {
       itemIndex++;
       if (itemIndex >= widget.chartItemsList.length) {
@@ -233,69 +236,166 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     List<String> images = [];
     if (widget.type == 'Alphabets') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomString(1));
+        String randomString = getRandomString(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Numbers') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomNumber(1));
+        String randomString = getRandomNumber(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Allen') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomSymbol(1));
+        String randomString = getRandomSymbol(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Hindi') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomHindi(1));
+        String randomString = getRandomHindi(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Arabic') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomArabic(1));
+        String randomString = getRandomArabic(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Assamese') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomAssamese(1));
+        String randomString = getRandomAssamese(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Bengali') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomBengali(1));
+        String randomString = getRandomBengali(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Gujrati') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomGujrati(1));
+        String randomString = getRandomGujrati(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Kannada') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomKannad(1));
+        String randomString = getRandomKannad(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Malayalam') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomMalayalam(1));
+        String randomString = getRandomMalayalam(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Nepali') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomNepali(1));
+        String randomString = getRandomNepali(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Punjabi') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomPunjabi(1));
+        String randomString = getRandomPunjabi(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Oriya') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomOriya(1));
+        String randomString = getRandomOriya(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Urdu') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomUrdu(1));
+        String randomString = getRandomOriya(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Tamil') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomTamil(1));
+        String randomString = getRandomTamil(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (widget.type == 'Telugu') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomTelugu(1));
+        String randomString = getRandomTelugu(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     }
+    usedItems = [];
     return images;
   }
 
@@ -324,6 +424,11 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
           feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
     }
     double finalSize = getConstant(widget.type, calculatedSize);
+    print('-----------------' +
+        type +
+        ': ' +
+        finalSize.toString() +
+        '-----------------');
     return finalSize;
   }
 

@@ -144,8 +144,7 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
                       style: TextStyle(
                           fontFamily: getFont(),
                           // fontSize: widget.imageSize,
-                          fontSize: calculatePixel(
-                              int.parse(distance), widget.textLeft),
+                          fontSize: widget.imageSize,
                           color: Colors.black),
                       textScaleFactor: 1.0,
                     )),
@@ -165,8 +164,7 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
                     widget.image[i],
                     style: TextStyle(
                         fontFamily: getFont(),
-                        fontSize: calculatePixel(
-                            int.parse(distance), widget.textLeft),
+                        fontSize: widget.imageSize,
                         color: Colors.black),
                     textScaleFactor: 1.0,
                   )));

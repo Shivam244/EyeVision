@@ -1,7 +1,9 @@
 import 'dart:math';
 
+import 'package:eyevision/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:invert_colors/invert_colors.dart';
 
 import '../utils/chartItem-single.dart';
 import '../utils/chartItem.dart';
@@ -28,6 +30,18 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   String lang3 = 'Telugu';
   List<String> items = [];
   int itemTypeIndex = 0;
+  bool inverse = false;
+  String mode = 'Normal';
+  String distance = '5';
+  double constant = 0;
+  String cons60 = '0.0';
+  String cons36 = '0.0';
+  String cons24 = '0.0';
+  String cons18 = '0.0';
+  String cons12 = '0.0';
+  String cons9 = '0.0';
+  String cons6 = '0.0';
+  Future<bool>? _dataLoaded;
   changeItem(bool next) {
     if (next) {
       itemIndex++;
@@ -78,8 +92,59 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   @override
   initState() {
     getLanguages();
-
+    _dataLoaded = checkMode();
+    checkInvert();
+    setState(() {});
     super.initState();
+  }
+
+  checkInvert() async {
+    await Helper.getData('inversion').then((value) => {
+          if (value == "invert") {inverse = true},
+          print(value)
+        });
+  }
+
+  Future<bool> checkMode() async {
+    mode = await Helper.getData('mode') ?? '';
+    distance = await Helper.getData('distance') ?? '5';
+    cons60 = await Helper.getData('constant$distance' '6/60') ?? '0.0';
+    cons36 = await Helper.getData('constant$distance' '6/36') ?? '0.0';
+    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
+    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
+    cons18 = await Helper.getData('constant$distance' '6/18') ?? '0.0';
+    cons9 = await Helper.getData('constant$distance' '6/9') ?? '0.0';
+    cons6 = await Helper.getData('constant$distance' '6/6') ?? '0.0';
+    return true;
+    // setState(() {});
+  }
+
+  double calculatePixel(int feat, String type) {
+    double calculatedSize = 0;
+    if (type == "6/60") {
+      calculatedSize =
+          feat / 4 * MM_60 * 3.7795275591 * 0.846 + double.parse(cons60);
+    } else if (type == "6/36") {
+      calculatedSize =
+          feat / 4 * MM_36 * 3.7795275591 * 0.846 + double.parse(cons36);
+    } else if (type == "6/24") {
+      calculatedSize =
+          feat / 4 * MM_24 * 3.7795275591 * 0.846 + double.parse(cons24);
+    } else if (type == "6/18") {
+      calculatedSize =
+          feat / 4 * MM_18 * 3.7795275591 * 0.846 + double.parse(cons18);
+    } else if (type == "6/12") {
+      calculatedSize =
+          feat / 4 * MM_12 * 3.7795275591 * 0.846 + double.parse(cons12);
+    } else if (type == "6/9") {
+      calculatedSize =
+          feat / 4 * MM_9 * 3.7795275591 * 0.846 + double.parse(cons9);
+    } else if (type == "6/6") {
+      calculatedSize =
+          feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
+    }
+    double finalSize = getConstant('Letters', calculatedSize);
+    return finalSize;
   }
 
   setImage(String image1) {
@@ -90,28 +155,28 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
             textRight: '20/200',
             rotations: enableRotation ? [0] : [-1],
             image: generateItems(1),
-            imageSize: 279.139392,
+            imageSize: calculatePixel(int.parse(distance), '6/60'),
             language: image),
         ChartItemSingle(
             textLeft: '6/36',
             textRight: '20/120',
             rotations: enableRotation ? [0, 0] : [-1, -1],
             image: generateItems(2),
-            imageSize: 167.5479733848944,
+            imageSize: calculatePixel(int.parse(distance), '6/36'),
             language: image),
         ChartItemSingle(
             textLeft: '6/24',
             textRight: '20/80',
             rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
             image: generateItems(3),
-            imageSize: 111.59206787241891,
+            imageSize: calculatePixel(int.parse(distance), '6/24'),
             language: image),
         ChartItemSingle(
             textLeft: '6/18',
             textRight: '20/60',
             rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
             image: generateItems(4),
-            imageSize: 83.7739866924472,
+            imageSize: calculatePixel(int.parse(distance), '6/18'),
             language: image),
         ChartItemSingle(
             textLeft: '6/12',
@@ -119,7 +184,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
             rotations:
                 enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: generateItems(5),
-            imageSize: 55.955905512475496,
+            imageSize: calculatePixel(int.parse(distance), '6/12'),
             language: image1),
         ChartItemSingle(
             textLeft: '6/6',
@@ -128,7 +193,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
                 ? [0, 15, 270, 180, 90, 0]
                 : [-1, -1, -1, -1, -1, -1],
             image: generateItems(6),
-            imageSize: 27.818078130616847,
+            imageSize: calculatePixel(int.parse(distance), '6/6'),
             language: image1),
       ];
       initialState = false;
@@ -138,7 +203,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     // }
   }
 
-  final String _chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  final String _chars = 'NRKDZHS';
   final String _numbers = '2345679';
   final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
@@ -325,8 +390,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
+  getWidget(){
     loadImage();
     FocusScope.of(context).requestFocus(focus);
     return Scaffold(
@@ -387,5 +451,25 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
                     );
                   }),
                 ))));
+  }
+
+  waitForWidget() {
+    return FutureBuilder<bool>(
+        future: _dataLoaded,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasData) {
+            return getWidget();
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    FocusScope.of(context).requestFocus(focus);
+    return inverse ? InvertColors(child: waitForWidget()) : waitForWidget();
   }
 }

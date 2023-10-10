@@ -31,8 +31,17 @@ class _ChartItemMixedState extends State<DotsItem> {
   bool initialState = true;
   checkMode() async {
     mode = await Helper.getData('mode') ?? '';
-    distance = await Helper.getData('distance') ?? '';
-    print("mode: " + mode + " distance: " + distance);
+    distance = await Helper.getData('distance') ?? '5';
+    String cons =
+        await Helper.getData('constant$distance${widget.textLeft}') ?? '0.0';
+    var constant = double.parse(cons);
+    print("mode: " +
+        mode +
+        " distance: " +
+        distance +
+        " constant$distance${widget.textLeft}: " +
+        constant.toString());
+    setState(() {});
   }
 
   double calculatePixel(int feat, String type) {
