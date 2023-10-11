@@ -423,12 +423,12 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
       calculatedSize =
           feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
     }
-    double finalSize = getConstant(widget.type, calculatedSize);
-    print('-----------------' +
-        type +
-        ': ' +
-        finalSize.toString() +
-        '-----------------');
+    double finalSize = getConstantWithDistance(widget.type, calculatedSize, type);
+    // print('-----------------' +
+    //     type +
+    //     ': ' +
+    //     finalSize.toString() +
+    //     '-----------------');
     return finalSize;
   }
 

@@ -42,7 +42,9 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   String cons9 = '0.0';
   String cons6 = '0.0';
   Future<bool>? _dataLoaded;
+  List<String> usedItems = [];
   changeItem(bool next) {
+    usedItems = [];
     if (next) {
       itemIndex++;
       if (itemIndex >= widget.chartItemsList.length) {
@@ -72,6 +74,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   }
 
   changeItemType(bool next) {
+    usedItems = [];
     if (next) {
       if (itemTypeIndex == items.length - 1) return;
       itemTypeIndex++;
@@ -111,7 +114,6 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     cons60 = await Helper.getData('constant$distance' '6/60') ?? '0.0';
     cons36 = await Helper.getData('constant$distance' '6/36') ?? '0.0';
     cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
-    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
     cons18 = await Helper.getData('constant$distance' '6/18') ?? '0.0';
     cons9 = await Helper.getData('constant$distance' '6/9') ?? '0.0';
     cons6 = await Helper.getData('constant$distance' '6/6') ?? '0.0';
@@ -143,61 +145,61 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
       calculatedSize =
           feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
     }
-    double finalSize = getConstant('Letters', calculatedSize);
+    double finalSize = getConstantWithDistance(image, calculatedSize, type);
     return finalSize;
   }
 
   setImage(String image1) {
     // if (initialState) {
-      List<ChartItemSingle> chartItemsList = [
-        ChartItemSingle(
-            textLeft: '6/60',
-            textRight: '20/200',
-            rotations: enableRotation ? [0] : [-1],
-            image: generateItems(1),
-            imageSize: calculatePixel(int.parse(distance), '6/60'),
-            language: image),
-        ChartItemSingle(
-            textLeft: '6/36',
-            textRight: '20/120',
-            rotations: enableRotation ? [0, 0] : [-1, -1],
-            image: generateItems(2),
-            imageSize: calculatePixel(int.parse(distance), '6/36'),
-            language: image),
-        ChartItemSingle(
-            textLeft: '6/24',
-            textRight: '20/80',
-            rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
-            image: generateItems(3),
-            imageSize: calculatePixel(int.parse(distance), '6/24'),
-            language: image),
-        ChartItemSingle(
-            textLeft: '6/18',
-            textRight: '20/60',
-            rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
-            image: generateItems(4),
-            imageSize: calculatePixel(int.parse(distance), '6/18'),
-            language: image),
-        ChartItemSingle(
-            textLeft: '6/12',
-            textRight: '20/40',
-            rotations:
-                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
-            image: generateItems(5),
-            imageSize: calculatePixel(int.parse(distance), '6/12'),
-            language: image1),
-        ChartItemSingle(
-            textLeft: '6/6',
-            textRight: '20/20',
-            rotations: enableRotation
-                ? [0, 15, 270, 180, 90, 0]
-                : [-1, -1, -1, -1, -1, -1],
-            image: generateItems(6),
-            imageSize: calculatePixel(int.parse(distance), '6/6'),
-            language: image1),
-      ];
-      initialState = false;
-      return chartItemsList;
+    List<ChartItemSingle> chartItemsList = [
+      ChartItemSingle(
+          textLeft: '6/60',
+          textRight: '20/200',
+          rotations: enableRotation ? [0] : [-1],
+          image: generateItems(1),
+          imageSize: calculatePixel(int.parse(distance), '6/60'),
+          language: image),
+      ChartItemSingle(
+          textLeft: '6/36',
+          textRight: '20/120',
+          rotations: enableRotation ? [0, 0] : [-1, -1],
+          image: generateItems(2),
+          imageSize: calculatePixel(int.parse(distance), '6/36'),
+          language: image),
+      ChartItemSingle(
+          textLeft: '6/24',
+          textRight: '20/80',
+          rotations: enableRotation ? [270, 270, 0] : [-1, -1, -1],
+          image: generateItems(3),
+          imageSize: calculatePixel(int.parse(distance), '6/24'),
+          language: image),
+      ChartItemSingle(
+          textLeft: '6/18',
+          textRight: '20/60',
+          rotations: enableRotation ? [0, 270, 90, 0] : [-1, -1, -1, -1],
+          image: generateItems(4),
+          imageSize: calculatePixel(int.parse(distance), '6/18'),
+          language: image),
+      ChartItemSingle(
+          textLeft: '6/12',
+          textRight: '20/40',
+          rotations:
+              enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+          image: generateItems(5),
+          imageSize: calculatePixel(int.parse(distance), '6/12'),
+          language: image),
+      ChartItemSingle(
+          textLeft: '6/6',
+          textRight: '20/20',
+          rotations: enableRotation
+              ? [0, 15, 270, 180, 90, 0]
+              : [-1, -1, -1, -1, -1, -1],
+          image: generateItems(6),
+          imageSize: calculatePixel(int.parse(distance), '6/6'),
+          language: image),
+    ];
+    initialState = false;
+    return chartItemsList;
     // } else {
     //   return widget.chartItemsList;
     // }
@@ -205,20 +207,19 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
 
   final String _chars = 'NRKDZHS';
   final String _numbers = '2345679';
-  final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
-  final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
-  final String _hindi =
-      'एइईउऊऐओऔअंऋॠकखघएनचछजझटठधऔरथदधएनपफभएमवाईरएलवीशषसहक्षज्ञ';
-  final String _arabic = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _asamese = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _bengali = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _gujrati = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _kannad = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _malyalam = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _nepali = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _oriya = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _punjabi = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-  final String _urdu = 'qwertyuiopasdfghjklzxcvbnm';
+  final String _hindi = 'nmpPTgq';
+  final String _tamil = 'trlfagk';
+  final String _telugu = 'vYLEndg';
+  final String _arabic = 'axhPkVX';
+  final String _asamese = 'PhAWonj';
+  final String _bengali = 'AicWofk';
+  final String _gujrati = 'Jmhvldf';
+  final String _kannad = 'MLCtJYD';
+  final String _malyalam = 'pmaiUbk';
+  final String _nepali = '8;nxoeu';
+  final String _oriya = 'WnOMbeN';
+  final String _punjabi = 'NHlfZoE';
+  final String _urdu = 'xmtqaek';
   final Random _rnd = Random();
 
   String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
@@ -305,61 +306,160 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     List<String> images = [];
     if (image == 'Letters') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomString(1));
+        String randomString = getRandomString(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Numbers') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomNumber(1));
+        String randomString = getRandomNumber(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Hindi') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomHindi(1));
-      }
-    } else if (image == 'Assamese') {
-      for (int i = 0; i < count; i++) {
-        images.add(getRandomAssamese(1));
+        String randomString = getRandomHindi(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Arabic') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomArabic(1));
+        String randomString = getRandomArabic(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
+      }
+    } else if (image == 'Assamese') {
+      for (int i = 0; i < count; i++) {
+        String randomString = getRandomAssamese(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Bengali') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomBengali(1));
+        String randomString = getRandomBengali(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
-    } else if (image == 'Malayalam') {
+    } else if (image == 'Gujrati') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomMalayalam(1));
+        String randomString = getRandomGujrati(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Kannada') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomKannad(1));
+        String randomString = getRandomKannad(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
+      }
+    } else if (image == 'Malayalam') {
+      for (int i = 0; i < count; i++) {
+        String randomString = getRandomMalayalam(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
+      }
+    } else if (image == 'Nepali') {
+      for (int i = 0; i < count; i++) {
+        String randomString = getRandomNepali(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Punjabi') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomPunjabi(1));
+        String randomString = getRandomPunjabi(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Oriya') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomOriya(1));
+        String randomString = getRandomOriya(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Urdu') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomUrdu(1));
+        String randomString = getRandomOriya(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Tamil') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomTamil(1));
+        String randomString = getRandomTamil(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else if (image == 'Telugu') {
       for (int i = 0; i < count; i++) {
-        images.add(getRandomTelugu(1));
+        String randomString = getRandomTelugu(1);
+        if (!usedItems.contains(randomString)) {
+          images.add(randomString);
+          usedItems.add(randomString);
+        } else {
+          i--;
+        }
       }
     } else {
       for (int i = 0; i < count; i++) {
         images.add(image);
       }
     }
+    usedItems = [];
     return images;
   }
 
@@ -390,7 +490,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     });
   }
 
-  getWidget(){
+  getWidget() {
     loadImage();
     FocusScope.of(context).requestFocus(focus);
     return Scaffold(

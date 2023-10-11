@@ -56,6 +56,220 @@ getConstant(String font, double fontSize) {
   }
 }
 
+getConstantWithDistance(String font, double fontSize, String distance) {
+  if (font == 'Tamil') {
+    if (distance == '6/60') {
+      return fontSize + 85;
+    } else if (distance == '6/36') {
+      return fontSize + 50;
+    } else if (distance == '6/24') {
+      return fontSize + 32;
+    } else if (distance == '6/18') {
+      return fontSize + 22;
+    } else if (distance == '6/12') {
+      return fontSize + 14;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Telugu') {
+    if (distance == '6/60') {
+      return fontSize + 69;
+    } else if (distance == '6/36') {
+      return fontSize + 40;
+    } else if (distance == '6/24') {
+      return fontSize + 30;
+    } else if (distance == '6/18') {
+      return fontSize + 21;
+    } else if (distance == '6/12') {
+      return fontSize + 13;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Arabic') {
+    if (distance == '6/60') {
+      return fontSize + 32;
+    } else if (distance == '6/36') {
+      return fontSize + 21;
+    } else if (distance == '6/24') {
+      return fontSize + 14;
+    } else if (distance == '6/18') {
+      return fontSize + 10;
+    } else if (distance == '6/12') {
+      return fontSize + 6;
+    } else if (distance == '6/6') {
+      return fontSize + 2;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Assamese') {
+    if (distance == '6/60') {
+      return fontSize + 46;
+    } else if (distance == '6/36') {
+      return fontSize + 35;
+    } else if (distance == '6/24') {
+      return fontSize + 24;
+    } else if (distance == '6/18') {
+      return fontSize + 18;
+    } else if (distance == '6/12') {
+      return fontSize + 12;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Bengali') {
+    if (distance == '6/60') {
+      return fontSize + 46;
+    } else if (distance == '6/36') {
+      return fontSize + 35;
+    } else if (distance == '6/24') {
+      return fontSize + 24;
+    } else if (distance == '6/18') {
+      return fontSize + 18;
+    } else if (distance == '6/12') {
+      return fontSize + 12;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Kannada') {
+    if (distance == '6/60') {
+      return fontSize + 90;
+    } else if (distance == '6/36') {
+      return fontSize + 55;
+    } else if (distance == '6/24') {
+      return fontSize + 32;
+    } else if (distance == '6/18') {
+      return fontSize + 24;
+    } else if (distance == '6/12') {
+      return fontSize + 12;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Malayalam') {
+    if (distance == '6/60') {
+      return fontSize + 90;
+    } else if (distance == '6/36') {
+      return fontSize + 55;
+    } else if (distance == '6/24') {
+      return fontSize + 32;
+    } else if (distance == '6/18') {
+      return fontSize + 24;
+    } else if (distance == '6/12') {
+      return fontSize + 12;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Oriya') {
+    if (distance == '6/60') {
+      return fontSize + 52;
+    } else if (distance == '6/36') {
+      return fontSize + 35;
+    } else if (distance == '6/24') {
+      return fontSize + 26;
+    } else if (distance == '6/18') {
+      return fontSize + 19;
+    } else if (distance == '6/12') {
+      return fontSize + 11;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Punjabi') {
+    if (distance == '6/60') {
+      return fontSize + 46;
+    } else if (distance == '6/36') {
+      return fontSize + 35;
+    } else if (distance == '6/24') {
+      return fontSize + 24;
+    } else if (distance == '6/18') {
+      return fontSize + 18;
+    } else if (distance == '6/12') {
+      return fontSize + 12;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Urdu') {
+    if (distance == '6/60') {
+      return fontSize + 46;
+    } else if (distance == '6/36') {
+      return fontSize + 35;
+    } else if (distance == '6/24') {
+      return fontSize + 24;
+    } else if (distance == '6/18') {
+      return fontSize + 18;
+    } else if (distance == '6/12') {
+      return fontSize + 12;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Gujrati') {
+    if (distance == '6/60') {
+      return fontSize + 52;
+    } else if (distance == '6/36') {
+      return fontSize + 35;
+    } else if (distance == '6/24') {
+      return fontSize + 26;
+    } else if (distance == '6/18') {
+      return fontSize + 19;
+    } else if (distance == '6/12') {
+      return fontSize + 11;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Hindi') {
+    if (distance == '6/60') {
+      return fontSize + 52;
+    } else if (distance == '6/36') {
+      return fontSize + 35;
+    } else if (distance == '6/24') {
+      return fontSize + 26;
+    } else if (distance == '6/18') {
+      return fontSize + 19;
+    } else if (distance == '6/12') {
+      return fontSize + 11;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else if (font == 'Nepali') {
+    if (distance == '6/60') {
+      return fontSize + 69;
+    } else if (distance == '6/36') {
+      return fontSize + 40;
+    } else if (distance == '6/24') {
+      return fontSize + 30;
+    } else if (distance == '6/18') {
+      return fontSize + 21;
+    } else if (distance == '6/12') {
+      return fontSize + 13;
+    } else if (distance == '6/6') {
+      return fontSize + 6;
+    } else {
+      return fontSize;
+    }
+  } else {
+    return fontSize;
+  }
+}
+
 //Contact details
 String phoneNumber = '+91 1234567890';
 String email = 'test@gmail.com';
