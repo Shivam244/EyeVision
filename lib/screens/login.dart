@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:animate_gradient/animate_gradient.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -44,6 +45,8 @@ class _LoginPageState extends State<LoginPage> {
   String login = 'false';
   String deviceId = '';
   String encodedPassword = '';
+  final Random _rnd = Random();
+  final String _chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   // FocusNode? userNameFocus;
   // FocusNode? passwordFocus;
   // FocusNode? submitButtonFocus;
@@ -71,10 +74,22 @@ class _LoginPageState extends State<LoginPage> {
         });
   }
 
+  String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
+      length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+
   void _getId() async {
-    var deviceInfo = DeviceInfoPlugin();
-    var androidDeviceInfo = await deviceInfo.androidInfo;
-    deviceId = androidDeviceInfo.id;
+    // var deviceInfo = DeviceInfoPlugin();
+    // var androidDeviceInfo = await deviceInfo.androidInfo;
+    await Helper.getData('deviceId').then((value) {
+      if (value == '' || value == null) {
+        deviceId = getRandomString(6);
+        Helper.setData('deviceId', deviceId);
+      } else {
+        deviceId = value;
+      }
+    });
+
+    print(deviceId);
     String encodedId = base64.encode(utf8.encode(deviceId));
     encodedPassword = encodedId.substring(0, 8);
     print(encodedPassword);
@@ -88,6 +103,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
+    // ServicesBinding.instance.keyboard.addHandler(_onKey);
     _getId();
     print("Device id is: $deviceId");
     super.initState();
@@ -119,6 +135,17 @@ class _LoginPageState extends State<LoginPage> {
     userNameFocus?.dispose();
     passwordFocus?.dispose();
     submitButtonFocus?.dispose();
+  }
+
+  bool _onKey(KeyEvent event) {
+    var key = event.logicalKey.keyLabel;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(key),
+      duration: const Duration(microseconds: 500),
+    ));
+    print(event);
+    print(key);
+    return true;
   }
 
   @override

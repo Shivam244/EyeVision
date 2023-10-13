@@ -91,19 +91,19 @@ class _LogmarChartState extends State<LogmarChartScreen> {
   Future<bool> checkMode1() async {
     mode = await Helper.getData('mode') ?? '';
     distance = await Helper.getData('distance') ?? '5';
-    cons60 = await Helper.getData('constant$distance' '6/60') ?? '0.0';
-    cons48 = await Helper.getData('constant$distance' '6/48') ?? '0.0';
-    cons38 = await Helper.getData('constant$distance' '6/38') ?? '0.0';
-    cons36 = await Helper.getData('constant$distance' '6/36') ?? '0.0';
-    cons30 = await Helper.getData('constant$distance' '6/30') ?? '0.0';
-    cons24 = await Helper.getData('constant$distance' '6/24') ?? '0.0';
-    cons19 = await Helper.getData('constant$distance' '6/19') ?? '0.0';
-    cons18 = await Helper.getData('constant$distance' '6/18') ?? '0.0';
-    cons15 = await Helper.getData('constant$distance' '6/15') ?? '0.0';
-    cons9_5 = await Helper.getData('constant$distance' '6/9.5') ?? '0.0';
-    cons9 = await Helper.getData('constant$distance' '6/9') ?? '0.0';
-    cons7_5 = await Helper.getData('constant$distance' '6/7.5') ?? '0.0';
-    cons6 = await Helper.getData('constant$distance' '6/6') ?? '0.0';
+    cons60 = await Helper.getData('constant10' '6/60') ?? '0.0';
+    cons48 = await Helper.getData('constant10' '6/48') ?? '0.0';
+    cons38 = await Helper.getData('constant10' '6/38') ?? '0.0';
+    cons36 = await Helper.getData('constant10' '6/36') ?? '0.0';
+    cons30 = await Helper.getData('constant10' '6/30') ?? '0.0';
+    cons24 = await Helper.getData('constant10' '6/24') ?? '0.0';
+    cons19 = await Helper.getData('constant10' '6/19') ?? '0.0';
+    cons18 = await Helper.getData('constant10' '6/18') ?? '0.0';
+    cons15 = await Helper.getData('constant10' '6/15') ?? '0.0';
+    cons9_5 = await Helper.getData('constant10' '6/9.5') ?? '0.0';
+    cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
+    cons7_5 = await Helper.getData('constant10' '6/7.5') ?? '0.0';
+    cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
     return true;
     // setState(() {});
   }
@@ -111,47 +111,47 @@ class _LogmarChartState extends State<LogmarChartScreen> {
   double calculatePixel(int feat, String type) {
     double calculatedSize = 0;
     if (type == "6/60") {
-      calculatedSize =
-          feat / 4 * MM_60 * 3.7795275591 * 0.846 + double.parse(cons60);
+      calculatedSize = feat / 4 * MM_60 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons60));
     } else if (type == "6/48") {
-      calculatedSize =
-          feat / 4 * MM_48 * 3.7795275591 * 0.846 + double.parse(cons48);
+      calculatedSize = feat / 4 * MM_48 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons48));
     } else if (type == "6/38") {
-      calculatedSize =
-          feat / 4 * MM_38 * 3.7795275591 * 0.846 + double.parse(cons38);
+      calculatedSize = feat / 4 * MM_38 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons38));
     } else if (type == "6/36") {
-      calculatedSize =
-          feat / 4 * MM_36 * 3.7795275591 * 0.846 + double.parse(cons36);
+      calculatedSize = feat / 4 * MM_36 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons36));
     } else if (type == "6/30") {
-      calculatedSize =
-          feat / 4 * MM_30 * 3.7795275591 * 0.846 + double.parse(cons30);
+      calculatedSize = feat / 4 * MM_30 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons30));
     } else if (type == "6/24") {
-      calculatedSize =
-          feat / 4 * MM_24 * 3.7795275591 * 0.846 + double.parse(cons24);
+      calculatedSize = feat / 4 * MM_24 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons24));
     } else if (type == "6/19") {
-      calculatedSize =
-          feat / 4 * MM_19 * 3.7795275591 * 0.846 + double.parse(cons19);
+      calculatedSize = feat / 4 * MM_19 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons19));
     } else if (type == "6/18") {
-      calculatedSize =
-          feat / 4 * MM_18 * 3.7795275591 * 0.846 + double.parse(cons18);
+      calculatedSize = feat / 4 * MM_18 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons18));
     } else if (type == "6/15") {
-      calculatedSize =
-          feat / 4 * MM_15 * 3.7795275591 * 0.846 + double.parse(cons15);
+      calculatedSize = feat / 4 * MM_15 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons15));
     } else if (type == "6/12") {
-      calculatedSize =
-          feat / 4 * MM_12 * 3.7795275591 * 0.846 + double.parse(cons12);
+      calculatedSize = feat / 4 * MM_12 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons12));
     } else if (type == "6/9.5") {
-      calculatedSize =
-          feat / 4 * MM_9_5 * 3.7795275591 * 0.846 + double.parse(cons9_5);
+      calculatedSize = feat / 4 * MM_9_5 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons9_5));
     } else if (type == "6/9") {
-      calculatedSize =
-          feat / 4 * MM_9 * 3.7795275591 * 0.846 + double.parse(cons9);
+      calculatedSize = feat / 4 * MM_9 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons9));
     } else if (type == "6/7.5") {
-      calculatedSize =
-          feat / 4 * MM_7_5 * 3.7795275591 * 0.846 + double.parse(cons7_5);
+      calculatedSize = feat / 4 * MM_7_5 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons7_5));
     } else if (type == "6/6") {
-      calculatedSize =
-          feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
+      calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons6));
     }
     double finalSize = getConstant(widget.image, calculatedSize);
     return finalSize;
@@ -488,7 +488,6 @@ class _LogmarChartState extends State<LogmarChartScreen> {
     // FocusScope.of(context).requestFocus(focus);
     return inverse ? InvertColors(child: waitForWidget()) : waitForWidget();
   }
-
 
   // double calculatePixel(int feat, String type) {
   //   if (type == "6/60") {

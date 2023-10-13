@@ -81,6 +81,7 @@ class _ArrowChartScreenState extends State<ArrowChartScreen> {
     }
     currentItem = widget.chartItemsList[itemIndex];
     arrowIndex = 0;
+    loadImage();
     setState(() {});
   }
 
@@ -296,7 +297,7 @@ class _ArrowChartScreenState extends State<ArrowChartScreen> {
   }
 
   getWidget() {
-    loadImage();
+    // loadImage();
     FocusScope.of(context).requestFocus(focus);
     return Scaffold(
         backgroundColor: Colors.white,

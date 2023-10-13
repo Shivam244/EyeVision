@@ -475,7 +475,7 @@ class _MenuPageState extends State<MenuPage> {
                     icon: "assets/icons/pediatric.jpg",
                     name: 'PEDIATRIC',
                     focusNode: item8Focus,
-                    image: 'assets/icons/ishihara.jpg',                    
+                    image: 'assets/icons/ishihara.jpg',
                   ),
                 ),
                 Actions(
@@ -502,7 +502,7 @@ class _MenuPageState extends State<MenuPage> {
                           MaterialPageRoute(
                               builder: (context) => SnellanChartScreen(
                                     image: 'Letters',
-                                  )));                            
+                                  )));
                     }),
                   },
                   child: MenuItem(
@@ -663,8 +663,7 @@ class _MenuPageState extends State<MenuPage> {
                       item14Focus.unfocus();
                       changeFocus(context, item14Focus);
                     }),
-                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {
-                    }),
+                    Numpad8ButtonIntent: CallbackAction(onInvoke: (intent) {}),
                     EnterButtonIntent: CallbackAction(onInvoke: (intent) {
                       Navigator.push(
                           context,
@@ -794,8 +793,7 @@ class _MenuPageState extends State<MenuPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ContactUs(
-                                    )));
+                              builder: (context) => const ContactUs()));
                     }),
                   },
                   child: MenuItem(

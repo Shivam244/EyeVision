@@ -40,6 +40,23 @@ class _PediatricSubMenuState extends State<PediatricSubMenu> {
     setState(() {});
   }
 
+  @override
+  void initState() {
+    // ServicesBinding.instance.keyboard.addHandler(_onKey);
+    super.initState();
+  }
+
+  bool _onKey(KeyEvent event) {
+    var key = event.logicalKey.keyLabel;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(key),
+      duration: const Duration(microseconds: 500),
+    ));
+    print(event);
+    print(key);
+    return true;
+  }
+
   ScrollController scrollController = ScrollController();
 
   @override

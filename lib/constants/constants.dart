@@ -270,6 +270,45 @@ getConstantWithDistance(String font, double fontSize, String distance) {
   }
 }
 
+convertConstant(String distance, double constant) {
+  switch (distance) {
+    case '5':
+      return constant * 0.5;
+    case '6':
+    return constant * 0.6;
+    case '7':
+    return constant * 0.7;
+    case '8':
+    return constant * 0.8;
+    case '9':
+    return constant * 0.9;
+    case '10':
+    return constant * 1;
+    case '11':
+    return constant * 1.1;
+    case '12':
+    return constant * 1.2;
+    case '13':
+    return constant * 1.3;
+    case '14':
+    return constant * 1.4;
+    case '15':
+    return constant * 1.5;
+    case '16':
+    return constant * 1.6;
+    case '17':
+    return constant * 1.7;
+    case '18':
+    return constant * 1.8;
+    case '19':
+    return constant * 1.9;
+    case '20':
+    return constant * 2;
+    default:
+      return constant;
+  }
+}
+
 //Contact details
 String phoneNumber = '+91 1234567890';
 String email = 'test@gmail.com';

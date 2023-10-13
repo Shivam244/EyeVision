@@ -20,7 +20,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   double constant = 0;
   String dist = '0';
   List<String> types = ['6/60', '6/48', '6/38', '6/36', '6/30', '6/24', '6/19', '6/18', 
-  '6/15', '6/12', '9.5', '6/9', '7.5', '6/6', '6/5'];
+  '6/15', '6/12', '6/9.5', '6/9', '6/7.5', '6/6', '6/5'];
   int currentType = 0;
   FocusNode item1Focus = FocusNode();
 
@@ -31,7 +31,8 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   }
 
   checkMode() async {
-    dist = await Helper.getData('distance') ?? '5';
+    // dist = await Helper.getData('distance') ?? '5';
+    dist = '10';
     distance = double.parse(dist);
     String cons = await Helper.getData('constant$dist${types[currentType]}') ?? '0.0';
     constant = double.parse(cons);
@@ -118,7 +119,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   }
 
   changeType(bool right) {
-    if (right && currentType < 13) {
+    if (right && currentType < 14) {
       currentType++;
     } else if (!right && currentType > 0) {
       currentType--;

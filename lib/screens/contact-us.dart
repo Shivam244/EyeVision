@@ -58,9 +58,12 @@ class _LoginPageState extends State<ContactUs> {
   }
 
   void _getId() async {
-    var deviceInfo = DeviceInfoPlugin();
-    var androidDeviceInfo = await deviceInfo.androidInfo;
-    deviceId = androidDeviceInfo.id;
+    await Helper.getData('deviceId').then((value) {
+      if (value != '' && value != null) {
+        // deviceId = getRandomString(6);
+        deviceId = value;
+      }
+    });
     String encodedId = base64.encode(utf8.encode(deviceId));
     encodedPassword = encodedId.substring(0, 8);
     print(encodedPassword);
@@ -271,8 +274,7 @@ class _LoginPageState extends State<ContactUs> {
                                     ),
                                     Text(phoneNumber,
                                         style: const TextStyle(
-                                            color:
-                                                Colors.greenAccent,
+                                            color: Colors.greenAccent,
                                             fontSize: 40,
                                             fontWeight: FontWeight.bold)),
                                   ],
@@ -313,7 +315,8 @@ class _LoginPageState extends State<ContactUs> {
                                       width: 10,
                                     ),
                                     Flexible(
-                                      child: Text(address, softWrap: true,
+                                      child: Text(address,
+                                          softWrap: true,
                                           style: const TextStyle(
                                               color: Colors.greenAccent,
                                               fontSize: 30,
