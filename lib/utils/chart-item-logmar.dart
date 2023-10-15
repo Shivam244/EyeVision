@@ -86,8 +86,8 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
     }
   }
 
-  final String _chars = 'CDHKNORSVZ';
-  final String _numbers = '1234567890';
+  String _chars = 'CDHKNORSVZ';
+  String _numbers = '1234567890';
   final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
   final String _hindi =
@@ -106,13 +106,19 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
 
   generateItems(int count) {
     if (widget.image == 'Alphabets') {
-      return getRandomString(1);
+      String randomString = getRandomString(count);
+      _chars = _chars.replaceAll(randomString, '');
+      return randomString;
     } else if (widget.image == 'Numbers') {
-      return getRandomNumber(1);
+      String randomNumber = getRandomNumber(count);
+      _numbers = _numbers.replaceAll(randomNumber, '');
+      return randomNumber;
     } else if (widget.image == 'Hindi') {
       return getRandomHindi(1);
     } else {
-      return getRandomString(1);
+      String randomString = getRandomString(count);
+      _chars = _chars.replaceAll(randomString, '');
+      return randomString;
     }
   }
 
@@ -129,7 +135,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
                   : AlwaysStoppedAnimation(next() / 360),
               // child: Image.asset(widget.image, height: widget.imageSize,)));
               child: Text(
-                getRandomString(1),
+                generateItems(1),
                 style: TextStyle(
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
@@ -146,7 +152,7 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
                 : AlwaysStoppedAnimation(next() / 360),
             // child: Image.asset(widget.image, height: widget.imageSize,)));
             child: Text(
-              getRandomString(1),
+              generateItems(1),
               style: TextStyle(
                   fontFamily: getFont(),
                   fontSize:
@@ -167,6 +173,8 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
         } 
       // }
     }
+      _chars = 'CDHKNORSVZ';
+      _numbers = '1234567890';
   }
 
   final _random = Random();

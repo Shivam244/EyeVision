@@ -153,15 +153,16 @@ class _LoginPageState extends State<ContactUs> {
                           children: [
                             Row(
                               children: [
+                                // Container(
+                                //   padding: const EdgeInsets.symmetric(
+                                //       vertical: 20, horizontal: 20),
+                                //   child: Image.asset(
+                                //     'assets/images/visionlogo.png',
+                                //     height: 50,
+                                //   ),
+                                // ),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 20, horizontal: 20),
-                                  child: Image.asset(
-                                    'assets/images/visionlogo.png',
-                                    height: 50,
-                                  ),
-                                ),
-                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                                   child: Text(
                                     'ACUITY VISION CHART',
                                     style: GoogleFonts.bebasNeue(
@@ -251,55 +252,21 @@ class _LoginPageState extends State<ContactUs> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  'CONTACT US',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold),
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 20, ),
+                                  child: Image.asset(
+                                    'assets/images/visionlogo.png',
+                                    height: 70,
+                                  ),
                                 ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.phone,
-                                      color: Colors.white,
-                                      size: 40,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(phoneNumber,
-                                        style: const TextStyle(
-                                            color: Colors.greenAccent,
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.bold)),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.email,
-                                      color: Colors.white,
-                                      size: 40,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(email,
-                                        style: const TextStyle(
-                                            color: Colors.greenAccent,
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold)),
-                                  ],
-                                ),
+                                // const Text(
+                                //   'CONTACT US',
+                                //   style: TextStyle(
+                                //       color: Colors.white,
+                                //       fontSize: 30,
+                                //       fontWeight: FontWeight.bold),
+                                // ),
                                 const SizedBox(
                                   height: 10,
                                 ),
@@ -324,6 +291,50 @@ class _LoginPageState extends State<ContactUs> {
                                     ),
                                   ],
                                 ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.email,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(email,
+                                        style: const TextStyle(
+                                            color: Colors.greenAccent,
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.phone,
+                                      color: Colors.white,
+                                      size: 40,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(phoneNumber,
+                                        style: const TextStyle(
+                                            color: Colors.greenAccent,
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.bold)),
+                                  ],
+                                ),
+                                
+                                
                               ],
                             )
                           ],

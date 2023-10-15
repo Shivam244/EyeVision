@@ -4,8 +4,7 @@ import 'package:eyevision/utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class ChartItemSnellan extends StatefulWidget {
-  const 
-  ChartItemSnellan(
+  const ChartItemSnellan(
       {super.key,
       required this.textLeft,
       required this.textRight,
@@ -89,8 +88,8 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
     }
   }
 
-  final String _chars = 'CDEFLOPTZ';
-  final String _numbers = '1234567890';
+  String _chars = 'CDEFLOPTZ';
+  String _numbers = '1234567890';
   final String _tamil = 'அஆஇஈஉஊஎஏஐஒஓஔகஙசஞடணதநனபமயரறலளழவ';
   final String _telugu = 'అఆఇఈఉఊఋఌఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరఱలళఴవశషసహ';
   final String _hindi =
@@ -109,9 +108,13 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
 
   generateItems(int count) {
     if (widget.image == 'Alphabets') {
-      return getRandomString(1);
+      String randomString = getRandomString(count);
+      _chars = _chars.replaceAll(randomString, '');
+      return randomString;
     } else if (widget.image == 'Numbers') {
-      return getRandomNumber(1);
+      String randomNumber = getRandomNumber(count);
+      _numbers = _numbers.replaceAll(randomNumber, '');
+      return randomNumber;
     } else if (widget.image == 'Hindi') {
       return getRandomHindi(1);
     } else {
@@ -136,8 +139,7 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
                 style: TextStyle(
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
-                    fontSize:
-                        widget.imageSize,
+                    fontSize: widget.imageSize,
                     color: Colors.black),
                 textScaleFactor: 1.0,
               )),
@@ -152,8 +154,7 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
               generateItems(1),
               style: TextStyle(
                   fontFamily: getFont(),
-                  fontSize:
-                      widget.imageSize,
+                  fontSize: widget.imageSize,
                   color: Colors.black),
               textScaleFactor: 1.0,
             )));
@@ -164,6 +165,8 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
         ));
       }
     }
+    _chars = 'CDEFLOPTZ';
+    _numbers = '1234567890';
   }
 
   final _random = Random();
@@ -180,7 +183,9 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            widget.image == 'Alphabets' ? const Text('') :const Icon(Icons.keyboard_arrow_left),
+            widget.image == 'Alphabets'
+                ? const Text('')
+                : const Icon(Icons.keyboard_arrow_left),
             Text(widget.textLeft, style: TextStyle(fontSize: 20)),
           ],
         ),
@@ -195,7 +200,9 @@ class _ChartItemSnellan extends State<ChartItemSnellan> {
             widget.textRight,
             style: TextStyle(fontSize: 20),
           ),
-          widget.image == 'Numbers' ? const Text('') :const Icon(Icons.keyboard_arrow_right)
+          widget.image == 'Numbers'
+              ? const Text('')
+              : const Icon(Icons.keyboard_arrow_right)
         ]),
       ],
     );

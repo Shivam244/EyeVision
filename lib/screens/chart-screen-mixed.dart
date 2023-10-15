@@ -66,9 +66,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   @override
   void initState() {
     _dataLoaded = checkMode();
-    getLanguages();
-    checkInvert();
-    loadImage();
+    
     super.initState();
   }
 
@@ -156,8 +154,10 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     cons12 = await Helper.getData('constant10' '6/12') ?? '0.0';
     cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
     cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
+    await getLanguages();
+    await checkInvert();
+    loadImage();
     return true;
-    // setState(() {});
   }
 
   getLanguages() async {
@@ -491,7 +491,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
         future: _dataLoaded,
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.hasData) {
-            loadImage();
+            // loadImage();
             return getWidget();
           } else {
             return const Center(
