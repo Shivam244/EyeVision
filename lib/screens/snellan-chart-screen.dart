@@ -103,6 +103,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
     cons7_5 = await Helper.getData('constant10' '6/7.5') ?? '0.0';
     cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
+    cons5 = await Helper.getData('constant10' '6/5') ?? '0.0';
     return true;
     // setState(() {});
   }

@@ -19,25 +19,80 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   double distance = 0;
   double constant = 0;
   String dist = '0';
-  List<String> types = ['6/60', '6/48', '6/38', '6/36', '6/30', '6/24', '6/19', '6/18', 
-  '6/15', '6/12', '6/9.5', '6/9', '6/7.5', '6/6', '6/5'];
+  List<String> types = [
+    '6/60',
+    '6/48',
+    '6/38',
+    '6/36',
+    '6/30',
+    '6/24',
+    '6/19',
+    '6/18',
+    '6/15',
+    '6/12',
+    '6/9.5',
+    '6/9',
+    '6/7.5',
+    '6/6',
+    '6/5'
+  ];
   int currentType = 0;
   FocusNode item1Focus = FocusNode();
+  String cons60 = '0.0';
+  String cons48 = '0.0';
+  String cons38 = '0.0';
+  String cons36 = '0.0';
+  String cons30 = '0.0';
+  String cons24 = '0.0';
+  String cons19 = '0.0';
+  String cons18 = '0.0';
+  String cons15 = '0.0';
+  String cons12 = '0.0';
+  String cons9_5 = '0.0';
+  String cons9 = '0.0';
+  String cons7_5 = '0.0';
+  String cons6 = '0.0';
+  String cons5 = '0.0';
+  Future<bool>? _dataLoaded;
 
   @override
   void initState() {
     checkMode();
+    _dataLoaded = checkMode1();
     super.initState();
   }
 
-  checkMode() async {
+  Future<bool> checkMode() async {
     // dist = await Helper.getData('distance') ?? '5';
     dist = '10';
     distance = double.parse(dist);
-    String cons = await Helper.getData('constant$dist${types[currentType]}') ?? '0.0';
+    String cons =
+        await Helper.getData('constant$dist${types[currentType]}') ?? '0.0';
     constant = double.parse(cons);
-    print("constant$dist${types[currentType]} : "+ constant.toString());
-    setState(() {});
+    print("constant$dist${types[currentType]} : " + constant.toString());
+    return true;
+    // setState(() {});
+  }
+
+  Future<bool> checkMode1() async {
+    dist = '10';
+    cons60 = await Helper.getData('constant10' '6/60') ?? '0.0';
+    cons48 = await Helper.getData('constant10' '6/48') ?? '0.0';
+    cons38 = await Helper.getData('constant10' '6/38') ?? '0.0';
+    cons36 = await Helper.getData('constant10' '6/36') ?? '0.0';
+    cons30 = await Helper.getData('constant10' '6/30') ?? '0.0';
+    cons24 = await Helper.getData('constant10' '6/24') ?? '0.0';
+    cons19 = await Helper.getData('constant10' '6/19') ?? '0.0';
+    cons18 = await Helper.getData('constant10' '6/18') ?? '0.0';
+    cons15 = await Helper.getData('constant10' '6/15') ?? '0.0';
+    cons9_5 = await Helper.getData('constant10' '6/9.5') ?? '0.0';
+    cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
+    cons7_5 = await Helper.getData('constant10' '6/7.5') ?? '0.0';
+    cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
+    cons5 = await Helper.getData('constant10' '6/5') ?? '0.0';
+    constant = double.parse(cons60);
+    return true;
+    // setState(() {});
   }
 
   final Random _rnd = Random();
@@ -54,7 +109,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
       return feat / 4 * MM_38 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/36") {
       return feat / 4 * MM_36 * 3.7795275591 * 0.846 + constant;
-    }else if (type == "6/30") {
+    } else if (type == "6/30") {
       return feat / 4 * MM_30 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/24") {
       return feat / 4 * MM_24 * 3.7795275591 * 0.846 + constant;
@@ -124,11 +179,127 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
     } else if (!right && currentType > 0) {
       currentType--;
     }
+    getCurrentCons();
     setState(() {});
   }
 
-  @override
-  Widget build(BuildContext context) {
+  getCurrentCons() {
+    switch (currentType) {
+      case 0:
+        constant = double.parse(cons60);
+        break;
+      case 1:
+        constant = double.parse(cons48);
+        break;
+      case 2:
+        constant = double.parse(cons38);
+        break;
+      case 3:
+        constant = double.parse(cons36);
+        break;
+      case 4:
+        constant = double.parse(cons30);
+        break;
+      case 5:
+        constant = double.parse(cons24);
+        break;
+      case 6:
+        constant = double.parse(cons19);
+        break;
+      case 7:
+        constant = double.parse(cons18);
+        break;
+      case 8:
+        constant = double.parse(cons15);
+        break;
+      case 9:
+        constant = double.parse(cons12);
+        break;
+      case 10:
+        constant = double.parse(cons9_5);
+        break;
+      case 11:
+        constant = double.parse(cons9);
+        break;
+      case 12:
+        constant = double.parse(cons7_5);
+        break;
+      case 13:
+        constant = double.parse(cons6);
+        break;
+      case 14:
+        constant = double.parse(cons5);
+        break;
+      default:
+    }
+  }
+
+  setCurrentCons() {
+    switch (currentType) {
+      case 0:
+        cons60 = constant.toString();
+        break;
+      case 1:
+        cons48 = constant.toString();
+        break;
+      case 2:
+        cons38 = constant.toString();
+        break;
+      case 3:
+        cons36 = constant.toString();
+        break;
+      case 4:
+        cons30 = constant.toString();
+        break;
+      case 5:
+        cons24 = constant.toString();
+        break;
+      case 6:
+        cons19 = constant.toString();
+        break;
+      case 7:
+        cons18 = constant.toString();
+        break;
+      case 8:
+        cons15 = constant.toString();
+        break;
+      case 9:
+        cons12 = constant.toString();
+        break;
+      case 10:
+        cons9_5 = constant.toString();
+        break;
+      case 11:
+        cons9 = constant.toString();
+        break;
+      case 12:
+        cons7_5 = constant.toString();
+        break;
+      case 13:
+        cons6 = constant.toString();
+        break;
+      case 14:
+        cons5 = constant.toString();
+        break;
+      default:
+    }
+  }
+
+  waitForWidget() {
+    return FutureBuilder<bool>(
+        future: _dataLoaded,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.hasData) {
+            return getWidget();
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        });
+  }
+
+  getWidget() {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Shortcuts(
@@ -155,19 +326,21 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
                   });
                 }),
                 LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                  checkMode();
+                  // checkMode();
                   changeType(false);
                 }),
                 RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                  checkMode();
+                  // checkMode();
                   changeType(true);
                 }),
                 EnterButtonIntent:
                     CallbackAction<EnterButtonIntent>(onInvoke: (intent) {
                   Helper.removeData('constant$dist${types[currentType]}');
-                  Helper.setData(
-                      'constant$dist${types[currentType]}', constant.toString());
-                      print( 'constant$dist${types[currentType]} : '+ constant.toString());
+                  Helper.setData('constant$dist${types[currentType]}',
+                      constant.toString());
+                  setCurrentCons();
+                  print('constant$dist${types[currentType]} : ' +
+                      constant.toString());
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Callibration Saved'),
                   ));
@@ -294,5 +467,10 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
                 }),
               ),
             )));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return waitForWidget();
   }
 }
