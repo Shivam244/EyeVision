@@ -79,6 +79,8 @@ class _ChartItemSingleState extends State<ChartItemSingle> {
       calculatedSize = feat / 4 * MM_9 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/6") {
       calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/4") {
+      calculatedSize = feat / 4 * MM_4 * 3.7795275591 * 0.846 + constant;
     }
     double finalSize = getConstant(widget.language, calculatedSize);
     return finalSize;

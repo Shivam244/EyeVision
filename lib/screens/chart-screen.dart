@@ -47,6 +47,7 @@ class _ChartScreenState extends State<ChartScreen> {
   String cons12 = '0.0';
   String cons9 = '0.0';
   String cons6 = '0.0';
+  String cons4 = '0.0';
   Future<bool>? _dataLoaded;
   changeItem(bool next) {
     if (next) {
@@ -93,6 +94,7 @@ class _ChartScreenState extends State<ChartScreen> {
     cons12 = await Helper.getData('constant10' '6/12') ?? '0.0';
     cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
     cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
+    cons4 = await Helper.getData('constant10' '6/4') ?? '0.0';
     return true;
     // setState(() {});
   }
@@ -160,6 +162,9 @@ class _ChartScreenState extends State<ChartScreen> {
     } else if (type == "6/6") {
       calculatedSize =
           feat / 4 * MM_6 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons6));
+    } else if (type == "6/4") {
+      calculatedSize =
+          feat / 4 * MM_4 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons4));
     }
     double finalSize = getConstant(widget.image, calculatedSize);
     return finalSize;
@@ -245,6 +250,17 @@ class _ChartScreenState extends State<ChartScreen> {
             image: image,
             imageSize: calculatePixel(int.parse(distance), '6/6'),
             language: widget.image),
+        ChartItem(
+            textLeft: '6/4',
+            textRight: '20/12',
+            rotations: enableRotation
+                ? chartMode
+                    ? 8
+                    : 1
+                : -1,
+            image: image,
+            imageSize: calculatePixel(int.parse(distance), '6/4'),
+            language: widget.image)
       ];
       initialState = false;
       return chartItemsList;

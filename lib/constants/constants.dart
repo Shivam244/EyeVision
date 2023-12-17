@@ -22,6 +22,7 @@ double MM_9 = 2.62;
 double MM_7_5 = 2.4;
 double MM_6 = 1.74;
 double MM_5 = 1.45;
+double MM_4 = 1.16;
 
 // font constants
 getConstant(String font, double fontSize) {
@@ -70,6 +71,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 14;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -86,6 +89,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 13;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -102,6 +107,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 6;
     } else if (distance == '6/6') {
       return fontSize + 2;
+    } else if (distance == '6/4') {
+      return fontSize + 0;
     } else {
       return fontSize;
     }
@@ -118,6 +125,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 12;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -134,6 +143,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 12;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -150,6 +161,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 12;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -166,6 +179,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 12;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -182,6 +197,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 11;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -198,6 +215,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 12;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -214,6 +233,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 12;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -230,6 +251,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 11;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -246,6 +269,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 11;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -262,6 +287,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 13;
     } else if (distance == '6/6') {
       return fontSize + 6;
+    } else if (distance == '6/4') {
+      return fontSize + 2;
     } else {
       return fontSize;
     }
@@ -272,38 +299,40 @@ getConstantWithDistance(String font, double fontSize, String distance) {
 
 convertConstant(String distance, double constant) {
   switch (distance) {
+    case '4':
+      return constant * 0.4;
     case '5':
       return constant * 0.5;
     case '6':
-    return constant * 0.6;
+      return constant * 0.6;
     case '7':
-    return constant * 0.7;
+      return constant * 0.7;
     case '8':
-    return constant * 0.8;
+      return constant * 0.8;
     case '9':
-    return constant * 0.9;
+      return constant * 0.9;
     case '10':
-    return constant * 1;
+      return constant * 1;
     case '11':
-    return constant * 1.1;
+      return constant * 1.1;
     case '12':
-    return constant * 1.2;
+      return constant * 1.2;
     case '13':
-    return constant * 1.3;
+      return constant * 1.3;
     case '14':
-    return constant * 1.4;
+      return constant * 1.4;
     case '15':
-    return constant * 1.5;
+      return constant * 1.5;
     case '16':
-    return constant * 1.6;
+      return constant * 1.6;
     case '17':
-    return constant * 1.7;
+      return constant * 1.7;
     case '18':
-    return constant * 1.8;
+      return constant * 1.8;
     case '19':
-    return constant * 1.9;
+      return constant * 1.9;
     case '20':
-    return constant * 2;
+      return constant * 2;
     default:
       return constant;
   }

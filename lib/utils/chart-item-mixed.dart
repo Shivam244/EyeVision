@@ -61,6 +61,8 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
       calculatedSize = feat / 4 * MM_9 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/6") {
       calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/4") {
+      calculatedSize = feat / 4 * MM_4 * 3.7795275591 * 0.846 + constant;
     }
     double finalSize = getConstant(widget.type, calculatedSize);
     return finalSize;
@@ -158,7 +160,7 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
       children: [
         Row(
           children: [
-            widget.textLeft == "6/6" ? const Icon(Icons.keyboard_arrow_left): const Text(''),
+            widget.textLeft == "6/4" ? const Icon(Icons.keyboard_arrow_left): const Text(''),
             Text(widget.textLeft, style: TextStyle(fontSize: 20)),
           ],
         ),

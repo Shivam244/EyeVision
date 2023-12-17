@@ -34,7 +34,8 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
     '6/9',
     '6/7.5',
     '6/6',
-    '6/5'
+    '6/5',
+    '6/4'
   ];
   int currentType = 0;
   FocusNode item1Focus = FocusNode();
@@ -53,6 +54,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   String cons7_5 = '0.0';
   String cons6 = '0.0';
   String cons5 = '0.0';
+  String cons4 = '0.0';
   Future<bool>? _dataLoaded;
 
   @override
@@ -90,6 +92,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
     cons7_5 = await Helper.getData('constant10' '6/7.5') ?? '0.0';
     cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
     cons5 = await Helper.getData('constant10' '6/5') ?? '0.0';
+    cons4 = await Helper.getData('constant10' '6/4') ?? '0.0';
     constant = double.parse(cons60);
     return true;
     // setState(() {});
@@ -131,6 +134,8 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
       return feat / 4 * MM_6 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/5") {
       return feat / 4 * MM_5 * 3.7795275591 * 0.846 + constant;
+    } else if (type == "6/4") {
+      return feat / 4 * MM_4 * 3.7795275591 * 0.846 + constant;
     }
     return 0;
   }
@@ -174,7 +179,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   }
 
   changeType(bool right) {
-    if (right && currentType < 14) {
+    if (right && currentType < 15) {
       currentType++;
     } else if (!right && currentType > 0) {
       currentType--;
@@ -230,6 +235,9 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
       case 14:
         constant = double.parse(cons5);
         break;
+      case 15:
+        constant = double.parse(cons4);
+        break;
       default:
     }
   }
@@ -280,6 +288,9 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
         break;
       case 14:
         cons5 = constant.toString();
+        break;
+      case 15:
+        cons4 = constant.toString();
         break;
       default:
     }

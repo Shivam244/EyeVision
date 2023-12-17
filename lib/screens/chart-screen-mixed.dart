@@ -61,6 +61,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
   String cons12 = '0.0';
   String cons9 = '0.0';
   String cons6 = '0.0';
+  String cons4 = '0.0';
   Future<bool>? _dataLoaded;
   List<String> usedItems = [];
   @override
@@ -154,6 +155,7 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     cons12 = await Helper.getData('constant10' '6/12') ?? '0.0';
     cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
     cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
+    cons4 = await Helper.getData('constant10' '6/4') ?? '0.0';
     await getLanguages();
     await checkInvert();
     loadImage();
@@ -422,6 +424,9 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
     } else if (type == "6/6") {
       calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 +
           convertConstant(distance, double.parse(cons6));
+    } else if (type == "6/4") {
+      calculatedSize = feat / 4 * MM_4 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons4));
     }
     double finalSize =
         getConstantWithDistance(widget.type, calculatedSize, type);
@@ -476,6 +481,12 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
           textRight: '20/20',
           images: chartMode ? generateItems(7) : generateItems(1),
           imageSize: calculatePixel(int.parse(distance), '6/6'),
+          type: widget.type),
+          ChartItemMixed(
+          textLeft: '6/4',
+          textRight: '20/12',
+          images: chartMode ? generateItems(7) : generateItems(1),
+          imageSize: calculatePixel(int.parse(distance), '6/4'),
           type: widget.type),
     ];
     return chartItemsList;

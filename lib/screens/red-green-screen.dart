@@ -41,6 +41,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
   String cons12 = '0.0';
   String cons9 = '0.0';
   String cons6 = '0.0';
+  String cons4 = '0.0';
   Future<bool>? _dataLoaded;
   List<String> usedItems = [];
   changeItem(bool next) {
@@ -118,6 +119,7 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     cons12 = await Helper.getData('constant10' '6/12') ?? '0.0';
     cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
     cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
+    cons4 = await Helper.getData('constant10' '6/4') ?? '0.0';
     return true;
     // setState(() {});
   }
@@ -145,6 +147,9 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
     } else if (type == "6/6") {
       calculatedSize =
           feat / 4 * MM_6 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons6));
+    } else if (type == "6/4") {
+      calculatedSize =
+          feat / 4 * MM_4 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons4));
     }
     double finalSize = getConstantWithDistance(image, calculatedSize, type);
     return finalSize;
@@ -197,6 +202,15 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
               : [-1, -1, -1, -1, -1, -1],
           image: generateItems(6),
           imageSize: calculatePixel(int.parse(distance), '6/6'),
+          language: image),
+      ChartItemSingle(
+          textLeft: '6/4',
+          textRight: '20/12',
+          rotations: enableRotation
+              ? [0, 15, 270, 180, 90, 0]
+              : [-1, -1, -1, -1, -1, -1],
+          image: generateItems(6),
+          imageSize: calculatePixel(int.parse(distance), '6/4'),
           language: image),
     ];
     initialState = false;
