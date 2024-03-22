@@ -49,6 +49,7 @@ class _ArrowChartScreenState extends State<ArrowChartScreen> {
   String cons12 = '0.0';
   String cons9 = '0.0';
   String cons6 = '0.0';
+  String cons4 = '0.0';
   Future<bool>? _dataLoaded;
   @override
   void initState() {
@@ -102,6 +103,7 @@ class _ArrowChartScreenState extends State<ArrowChartScreen> {
     cons18 = await Helper.getData('constant$distance' '6/18') ?? '0.0';
     cons9 = await Helper.getData('constant$distance' '6/9') ?? '0.0';
     cons6 = await Helper.getData('constant$distance' '6/6') ?? '0.0';
+    cons4 = await Helper.getData('constant$distance' '6/4') ?? '0.0';
     return true;
     // setState(() {});
   }
@@ -163,6 +165,9 @@ class _ArrowChartScreenState extends State<ArrowChartScreen> {
     } else if (type == "6/6") {
       calculatedSize =
           feat / 4 * MM_6 * 3.7795275591 * 0.846 + double.parse(cons6);
+    } else if (type == "6/4") {
+      calculatedSize =
+          feat / 4 * MM_4 * 3.7795275591 * 0.846 + double.parse(cons4);
     }
     double finalSize = getConstant(widget.type, calculatedSize);
     return finalSize;
@@ -218,6 +223,14 @@ class _ArrowChartScreenState extends State<ArrowChartScreen> {
         type: widget.type,
         arrowIndex: arrowIndex,
       ),
+      ArrowChartItem(
+        textLeft: '6/4',
+        textRight: '20/12',
+        images: generateItems(7),
+        imageSize: calculatePixel(int.parse(distance), '6/4'),
+        type: widget.type,
+        arrowIndex: arrowIndex,
+      ),
     ];
     return chartItemsList;
   }
@@ -270,6 +283,14 @@ class _ArrowChartScreenState extends State<ArrowChartScreen> {
         textRight: '20/20',
         images: chartItemsListOld[5].images,
         imageSize: calculatePixel(int.parse(distance), '6/6'),
+        type: widget.type,
+        arrowIndex: arrowIndex,
+      ),
+      ArrowChartItem(
+        textLeft: '6/4',
+        textRight: '20/12',
+        images: chartItemsListOld[6].images,
+        imageSize: calculatePixel(int.parse(distance), '6/4'),
         type: widget.type,
         arrowIndex: arrowIndex,
       ),

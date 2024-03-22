@@ -48,6 +48,7 @@ class _LogmarChartState extends State<LogmarChartScreen> {
   String cons9 = '0.0';
   String cons7_5 = '0.0';
   String cons6 = '0.0';
+  String cons4 = '0.0';
   Future<bool>? _dataLoaded;
   bool inverse = false;
   changeItem(bool next) {
@@ -104,6 +105,7 @@ class _LogmarChartState extends State<LogmarChartScreen> {
     cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
     cons7_5 = await Helper.getData('constant10' '6/7.5') ?? '0.0';
     cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
+    cons4 = await Helper.getData('constant10' '6/4') ?? '0.0';
     return true;
     // setState(() {});
   }
@@ -152,6 +154,9 @@ class _LogmarChartState extends State<LogmarChartScreen> {
     } else if (type == "6/6") {
       calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 +
           convertConstant(distance, double.parse(cons6));
+    } else if (type == "6/4") {
+      calculatedSize = feat / 4 * MM_4 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons4));
     }
     double finalSize = getConstant(widget.image, calculatedSize);
     return finalSize;
@@ -247,6 +252,14 @@ class _LogmarChartState extends State<LogmarChartScreen> {
                 enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
             image: image,
             imageSize: calculatePixel(int.parse(distance), '6/6'),
+            language: widget.image),
+        ChartItemLogmar(
+            textLeft: '6/4',
+            textRight: '0',
+            rotations:
+                enableRotation ? [0, 180, 180, 90, 0] : [-1, -1, -1, -1, -1],
+            image: image,
+            imageSize: calculatePixel(int.parse(distance), '6/4'),
             language: widget.image),
       ];
       initialState = false;
@@ -456,6 +469,13 @@ class _LogmarChartState extends State<LogmarChartScreen> {
                               ),
                               SizedBox(
                                 child: widget.chartItemsList[10],
+                              ),
+                              SizedBox(
+                                height: calculatePixel(int.parse(distance),
+                                    widget.chartItemsList[10].textLeft),
+                              ),
+                              SizedBox(
+                                child: widget.chartItemsList[11],
                               ),
                               const SizedBox(
                                 height: 50,

@@ -70,6 +70,8 @@ class _ChartItemSnellan extends State<ChartItemLogmar> {
       return feat / 4 * MM_7_5 * 3.7795275591 * 0.846;
     } else if (type == "6/6") {
       return feat / 4 * MM_6 * 3.7795275591 * 0.846;
+    } else if (type == "6/4") {
+      return feat / 4 * MM_4 * 3.7795275591 * 0.846;
     }
     return 0;
   }

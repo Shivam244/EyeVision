@@ -45,6 +45,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
   String cons7_5 = '0.0';
   String cons6 = '0.0';
   String cons5 = '0.0';
+  String cons4 = '0.0';
   Future<bool>? _dataLoaded;
   bool inverse = false;
   final ScrollController scrollController = ScrollController();
@@ -104,6 +105,7 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
     cons7_5 = await Helper.getData('constant10' '6/7.5') ?? '0.0';
     cons6 = await Helper.getData('constant10' '6/6') ?? '0.0';
     cons5 = await Helper.getData('constant10' '6/5') ?? '0.0';
+    cons4 = await Helper.getData('constant10' '6/4') ?? '0.0';
     return true;
     // setState(() {});
   }
@@ -111,50 +113,54 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
   double calculatePixel(int feat, String type) {
     double calculatedSize = 0;
     if (type == "6/60") {
-      calculatedSize =
-          feat / 4 * MM_60 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons60));
+      calculatedSize = feat / 4 * MM_60 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons60));
     } else if (type == "6/48") {
-      calculatedSize =
-          feat / 4 * MM_48 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons48));
+      calculatedSize = feat / 4 * MM_48 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons48));
     } else if (type == "6/38") {
-      calculatedSize =convertConstant(distance, 
-          feat / 4) * MM_38 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons38));
+      calculatedSize =
+          convertConstant(distance, feat / 4) * MM_38 * 3.7795275591 * 0.846 +
+              convertConstant(distance, double.parse(cons38));
     } else if (type == "6/36") {
-      calculatedSize =
-          feat / 4 * MM_36 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons36));
+      calculatedSize = feat / 4 * MM_36 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons36));
     } else if (type == "6/30") {
-      calculatedSize =
-          feat / 4 * MM_30 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons30));
+      calculatedSize = feat / 4 * MM_30 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons30));
     } else if (type == "6/24") {
-      calculatedSize =
-          feat / 4 * MM_24 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons24));
+      calculatedSize = feat / 4 * MM_24 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons24));
     } else if (type == "6/19") {
-      calculatedSize =
-          feat / 4 * MM_19 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons19));
+      calculatedSize = feat / 4 * MM_19 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons19));
     } else if (type == "6/18") {
-      calculatedSize =
-          feat / 4 * MM_18 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons18));
+      calculatedSize = feat / 4 * MM_18 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons18));
     } else if (type == "6/15") {
-      calculatedSize =
-          feat / 4 * MM_15 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons15));
+      calculatedSize = feat / 4 * MM_15 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons15));
     } else if (type == "6/12") {
-      calculatedSize =
-          feat / 4 * MM_12 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons12));
+      calculatedSize = feat / 4 * MM_12 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons12));
     } else if (type == "6/9.5") {
-      calculatedSize =
-          feat / 4 * MM_9_5 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons9_5));
+      calculatedSize = feat / 4 * MM_9_5 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons9_5));
     } else if (type == "6/9") {
-      calculatedSize =
-          feat / 4 * MM_9 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons9));
+      calculatedSize = feat / 4 * MM_9 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons9));
     } else if (type == "6/7.5") {
-      calculatedSize =
-          feat / 4 * MM_7_5 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons7_5));
+      calculatedSize = feat / 4 * MM_7_5 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons7_5));
     } else if (type == "6/6") {
-      calculatedSize =
-          feat / 4 * MM_6 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons6));
+      calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons6));
     } else if (type == "6/5") {
-      calculatedSize =
-          feat / 4 * MM_5 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons5));
+      calculatedSize = feat / 4 * MM_5 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons5));
+    } else if (type == "6/4") {
+      calculatedSize = feat / 4 * MM_4 * 3.7795275591 * 0.846 +
+          convertConstant(distance, double.parse(cons4));
     }
     double finalSize = getConstant(widget.image, calculatedSize);
     return finalSize;
@@ -225,6 +231,15 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                 : [-1, -1, -1, -1, -1, -1, -1, -1],
             image: image,
             imageSize: calculatePixel(int.parse(distance), '6/5'),
+            language: widget.image),
+        ChartItemSnellan(
+            textLeft: '6/4',
+            textRight: '20/12',
+            rotations: enableRotation
+                ? [0, 15, 270, 180, 90, 0, 0, 0, 0]
+                : [-1, -1, -1, -1, -1, -1, -1, -1, -1],
+            image: image,
+            imageSize: calculatePixel(int.parse(distance), '6/4'),
             language: widget.image),
       ];
       initialState = false;
@@ -402,6 +417,10 @@ class _SnellanChartScreen extends State<SnellanChartScreen> {
                               height: 20,
                             ),
                             widget.chartItemsList[7],
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            widget.chartItemsList[8],
                             const SizedBox(
                               height: 50,
                             ),
