@@ -69,6 +69,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 22;
     } else if (distance == '6/12') {
       return fontSize + 14;
+    } else if (distance == '6/9') {
+      return fontSize + 10;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -87,6 +89,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 21;
     } else if (distance == '6/12') {
       return fontSize + 13;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -105,6 +109,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 10;
     } else if (distance == '6/12') {
       return fontSize + 6;
+    } else if (distance == '6/9') {
+      return fontSize + 3.5;
     } else if (distance == '6/6') {
       return fontSize + 2;
     } else if (distance == '6/4') {
@@ -123,6 +129,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 18;
     } else if (distance == '6/12') {
       return fontSize + 12;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -141,6 +149,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 18;
     } else if (distance == '6/12') {
       return fontSize + 12;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -159,6 +169,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 24;
     } else if (distance == '6/12') {
       return fontSize + 12;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -177,6 +189,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 24;
     } else if (distance == '6/12') {
       return fontSize + 12;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -195,6 +209,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 19;
     } else if (distance == '6/12') {
       return fontSize + 11;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -213,6 +229,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 18;
     } else if (distance == '6/12') {
       return fontSize + 12;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -231,6 +249,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 18;
     } else if (distance == '6/12') {
       return fontSize + 12;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -249,6 +269,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 19;
     } else if (distance == '6/12') {
       return fontSize + 11;
+    } else if (distance == '6/9') {
+      return fontSize + 8;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -267,6 +289,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 19;
     } else if (distance == '6/12') {
       return fontSize + 11;
+    } else if (distance == '6/9') {
+      return fontSize + 8;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
@@ -285,6 +309,8 @@ getConstantWithDistance(String font, double fontSize, String distance) {
       return fontSize + 21;
     } else if (distance == '6/12') {
       return fontSize + 13;
+    } else if (distance == '6/9') {
+      return fontSize + 9;
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
