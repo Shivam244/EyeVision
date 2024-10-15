@@ -23,6 +23,7 @@ double MM_7_5 = 2.4;
 double MM_6 = 1.74;
 double MM_5 = 1.45;
 double MM_4 = 1.16;
+// double MM_4 = 1.36;
 
 // font constants
 getConstant(String font, double fontSize) {
@@ -74,7 +75,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -94,7 +95,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -134,7 +135,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -154,7 +155,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -174,7 +175,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -194,7 +195,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -214,7 +215,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -234,7 +235,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -254,7 +255,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -274,7 +275,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -294,7 +295,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
@@ -314,7 +315,7 @@ getConstantWithDistance(String font, double fontSize, String distance) {
     } else if (distance == '6/6') {
       return fontSize + 6;
     } else if (distance == '6/4') {
-      return fontSize + 2;
+      return fontSize + 5;
     } else {
       return fontSize;
     }
