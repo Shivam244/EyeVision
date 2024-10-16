@@ -366,6 +366,6 @@ convertConstant(String distance, double constant) {
 }
 
 //Contact details
-String phoneNumber = '+91 1234567890';
-String email = 'test@gmail.com';
-String address = '111 Kolar, Bhopal, MP';
+String phoneNumber = '+91 xxxxxxxxxx';
+String email = 'xxxxxxxxxx';
+String address = 'xxxxxxxxxxxxxxx';

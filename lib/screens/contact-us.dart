@@ -237,7 +237,7 @@ class _LoginPageState extends State<ContactUs> {
                                 ),
                                 Container(
                                   child: Text(
-                                    deviceId,
+                                    deviceId.toUpperCase(),
                                     style: const TextStyle(
                                         color: Colors.greenAccent,
                                         fontWeight: FontWeight.bold),

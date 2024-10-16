@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
     // var androidDeviceInfo = await deviceInfo.androidInfo;
     await Helper.getData('deviceId').then((value) {
       if (value == '' || value == null) {
-        deviceId = getRandomString(6);
+        deviceId = getRandomString(6).toUpperCase();
         Helper.setData('deviceId', deviceId);
       } else {
         deviceId = value;
@@ -272,7 +272,7 @@ class _LoginPageState extends State<LoginPage> {
                             // ),
                             Container(
                               child: Text(
-                                'DEVICE ID:    ${deviceId}',
+                                'DEVICE ID:    ${deviceId.toUpperCase()}',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
