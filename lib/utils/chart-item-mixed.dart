@@ -121,8 +121,7 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
                 style: TextStyle(
                     fontFamily: getFont(),
                     // fontSize: widget.imageSize,
-                    fontSize:
-                        widget.imageSize,
+                    fontSize: widget.imageSize,
                     color: Colors.black),
                 textScaleFactor: 1.0,
               )),
@@ -136,8 +135,7 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
               widget.images[i],
               style: TextStyle(
                   fontFamily: getFont(),
-                  fontSize:
-                      widget.imageSize,
+                  fontSize: widget.imageSize,
                   color: Colors.black),
               textScaleFactor: 1.0,
             ),
@@ -154,29 +152,83 @@ class _ChartItemMixedState extends State<ChartItemMixed> {
 
   @override
   Widget build(BuildContext context) {
-    createChart();
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    createChart(); // Make sure chartItems is updated
+
+    return Stack(
       children: [
-        Row(
-          children: [
-            widget.textLeft == "6/4" ? const Icon(Icons.keyboard_arrow_left): const Text(''),
-            Text(widget.textLeft, style: TextStyle(fontSize: 20)),
-          ],
-        ),
-        Center(
-            child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: chartItems,
-        )),
-        Row(children: [
-          Text(
-            widget.textRight,
-            style: TextStyle(fontSize: 20),
+        // 1) Center the entire row in the middle of the screen
+        Positioned.fill(
+          child: Center(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              // This row spans the full width
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // ----------------- LEFT SIDE -----------------
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        // Show arrow icon only if textLeft == "6/4"
+                        if (widget.textLeft == "6/4")
+                          const Icon(Icons.keyboard_arrow_left),
+
+                        // Show textLeft if not empty
+                        if (widget.textLeft.isNotEmpty)
+                          Text(
+                            widget.textLeft,
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                      ],
+                    ),
+                  ),
+
+                  // -------------- CENTER CHART ITEMS -------------
+                  // This row is only as wide as needed, ignoring any leftover space
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: chartItems,
+                  ),
+
+                  // ----------------- RIGHT SIDE -----------------
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // Show textRight if not empty
+                        if (widget.textRight.isNotEmpty)
+                          Text(
+                            widget.textRight,
+                            style: const TextStyle(fontSize: 20),
+                          ),
+
+                        // Show arrow icon only if textLeft == "6/60"
+                        if (widget.textLeft == "6/60")
+                          const Icon(Icons.keyboard_arrow_right),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-          widget.textLeft == "6/60" ? const Icon(Icons.keyboard_arrow_right): const Text('')
-        ])
+        ),
+
+        // 2) Floating red text pinned to the bottom-left corner
+        Positioned(
+          left: 10,
+          bottom: 10,
+          child: Text(
+            '${distance}ft',
+            style: const TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+            ),
+          ),
+        ),
       ],
     );
   }

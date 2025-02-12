@@ -207,7 +207,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -273,7 +273,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -339,7 +339,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -405,7 +405,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -471,7 +471,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -537,7 +537,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -603,7 +603,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -669,7 +669,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -735,7 +735,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -801,7 +801,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -860,7 +860,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -919,7 +919,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
@@ -978,7 +978,7 @@ class _ModeSettingState extends State<LanguageSetting> {
                               ? const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
-                                  color: Color.fromARGB(250, 16, 85, 4))
+                                  color: Colors.blue)
                               : const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),

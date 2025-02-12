@@ -111,256 +111,208 @@ class _LoginPageState extends State<ContactUs> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    // if (initialFocus) {
-    //   FocusScope.of(context).requestFocus(passwordFocus);
-    // }
-    print(MediaQuery.of(context).size.height);
-    print(MediaQuery.of(context).size.width);
-    return Scaffold(
-      backgroundColor: backgroundColour,
-      body: Center(
-          child: SafeArea(
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: backgroundColour,
+    body: Center(
+      child: SafeArea(
         child: Container(
           height: MediaQuery.of(context).size.height - 100,
           width: MediaQuery.of(context).size.width - 60,
-          decoration:
-              const BoxDecoration(boxShadow: [BoxShadow(blurRadius: 15)]),
-          child: AnimateGradient(
-            primaryBegin: Alignment.topLeft,
-            primaryEnd: Alignment.bottomLeft,
-            secondaryBegin: Alignment.bottomLeft,
-            secondaryEnd: Alignment.topRight,
-            duration: const Duration(seconds: 10),
-            primaryColors: const [
-              Colors.black,
-              Color.fromRGBO(147, 182, 184, 0.612),
-              Colors.black,
-            ],
-            secondaryColors: const [
-              Colors.black,
-              Color.fromRGBO(147, 182, 184, 0.612),
-              Colors.black,
-            ],
-            child: Container(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
+          decoration: const BoxDecoration(
+            boxShadow: [BoxShadow(blurRadius: 15)],
+          ),
+          child: Stack(
+            children: [
+              /// 1) The animated gradient background
+              AnimateGradient(
+                primaryBegin: Alignment.topLeft,
+                primaryEnd: Alignment.bottomLeft,
+                secondaryBegin: Alignment.bottomLeft,
+                secondaryEnd: Alignment.topRight,
+                duration: const Duration(seconds: 10),
+                primaryColors: [
+                  backgroundColour,
+                  Color.fromARGB(255, 2, 104, 189),
+                  backgroundColour,
+                ],
+                secondaryColors: [
+                  backgroundColour,
+                  Color.fromARGB(255, 2, 104, 189),
+                  backgroundColour,
+                ],  
+                child: const SizedBox.expand(),
+              ),
+
+              /// 2) The background image, lightly overlaid
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: const AssetImage('assets/images/eyechartlogin2.png'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.03),
+                      BlendMode.dstATop,
+                    ),
+                  ),
+                ),
+              ),
+
+              /// 3) The main content in the center
+              Center(
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        /// Top Row: Title
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Row(
-                              children: [
-                                // Container(
-                                //   padding: const EdgeInsets.symmetric(
-                                //       vertical: 20, horizontal: 20),
-                                //   child: Image.asset(
-                                //     'assets/images/visionlogo.png',
-                                //     height: 50,
-                                //   ),
-                                // ),
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                                  child: Text(
-                                    'ACUITY VISION CHART',
-                                    style: GoogleFonts.bebasNeue(
-                                        textStyle: const TextStyle(
-                                            color: Colors.white, fontSize: 30)),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 20,
+                                horizontal: 20,
+                              ),
+                              child: Text(
+                                'ACUITY VISION CHART',
+                                style: GoogleFonts.bebasNeue(
+                                  textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
                                   ),
-                                )
-                              ],
+                                ),
+                              ),
                             ),
-                            // Actions(
-                            //   actions: <Type, Action<Intent>>{
-                            //     DownButtonIntent:
-                            //         CallbackAction<DownButtonIntent>(
-                            //             onInvoke: (intent) => changeFocus(
-                            //                 context, passwordFocus!)),
-                            //   },
-                            //   // child: Focus(
-                            //   // focusNode: userNameFocus,
-                            //   child: Container(
-                            //     // decoration: !(userNameFocus?.hasFocus ?? false)
-                            //     //     ? null
-                            //     //     : const BoxDecoration(
-                            //     //         color: Color.fromARGB(55, 255, 255, 255),
-                            //     //         borderRadius:
-                            //     //             BorderRadius.all(Radius.circular(5))),
-                            //     width: 350,
-                            //     child: TextFormField(
-                            //       controller: usernameController,
-                            //       onChanged: (value) => {username = value},
-                            //       focusNode: userNameFocus,
-                            //       autofocus: true,
-                            //       textInputAction: TextInputAction.next,
-                            //       onFieldSubmitted: (value) {
-                            //         userNameFocus.unfocus();
-                            //         changeFocus(context, passwordFocus);
-                            //       },
-                            //       style: const TextStyle(
-                            //           color: Colors.white,
-                            //           fontWeight: FontWeight.w300),
-                            //       decoration: const InputDecoration(
-                            //         hintText: 'Enter Username',
-                            //         hintStyle: TextStyle(color: Colors.white),
-                            //         labelText: 'Username',
-                            //         labelStyle: TextStyle(color: Colors.white),
-                            //         focusColor: Colors.blueGrey,
-                            //         focusedBorder: OutlineInputBorder(
-                            //             borderSide: BorderSide(
-                            //                 color: Color.fromARGB(
-                            //                     117, 255, 255, 255))),
-                            //         enabledBorder: UnderlineInputBorder(
-                            //           borderSide:
-                            //               BorderSide(color: Colors.white),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ),
-                            //   // ),
+                          ],
+                        ),
+
+                        /// Device ID Row
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'DEVICE ID: ',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              deviceId.toUpperCase(),
+                              style: const TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 25),
+
+                        /// Logo + Contact Info
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            /// Logo
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: Image.asset(
+                                'assets/images/visionlogo.png',
+                                height: 70,
+                              ),
+                            ),
+                            // If you want a "CONTACT US" heading, uncomment below:
+                            // const Text(
+                            //   'CONTACT US',
+                            //   style: TextStyle(
+                            //       color: Colors.white,
+                            //       fontSize: 30,
+                            //       fontWeight: FontWeight.bold),
                             // ),
-                            // const SizedBox(
-                            //   height: 10,
-                            // ),
+
+                            /// Address
+                            const SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  child: const Text(
-                                    'DEVICE ID:    ',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                                const Icon(
+                                  Icons.pin_drop,
+                                  color: Colors.white,
+                                  size: 40,
                                 ),
-                                Container(
+                                const SizedBox(width: 10),
+                                Flexible(
                                   child: Text(
-                                    deviceId.toUpperCase(),
+                                    address,
+                                    softWrap: true,
                                     style: const TextStyle(
-                                        color: Colors.greenAccent,
-                                        fontWeight: FontWeight.bold),
+                                      color: Colors.blue,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
 
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            Column(
+                            /// Email
+                            const SizedBox(height: 10),
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  padding: const EdgeInsets.only(
-                                      bottom: 20, ),
-                                  child: Image.asset(
-                                    'assets/images/visionlogo.png',
-                                    height: 70,
+                                const Icon(
+                                  Icons.email,
+                                  color: Colors.white,
+                                  size: 40,
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  email,
+                                  style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                // const Text(
-                                //   'CONTACT US',
-                                //   style: TextStyle(
-                                //       color: Colors.white,
-                                //       fontSize: 30,
-                                //       fontWeight: FontWeight.bold),
-                                // ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.pin_drop,
-                                      color: Colors.white,
-                                      size: 40,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Flexible(
-                                      child: Text(address,
-                                          softWrap: true,
-                                          style: const TextStyle(
-                                              color: Colors.greenAccent,
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.bold)),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.email,
-                                      color: Colors.white,
-                                      size: 40,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(email,
-                                        style: const TextStyle(
-                                            color: Colors.greenAccent,
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold)),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.phone,
-                                      color: Colors.white,
-                                      size: 40,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(phoneNumber,
-                                        style: const TextStyle(
-                                            color: Colors.greenAccent,
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.bold)),
-                                  ],
-                                ),
-                                
-                                
                               ],
-                            )
+                            ),
+
+                            /// Phone
+                            const SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.phone,
+                                  color: Colors.white,
+                                  size: 40,
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  phoneNumber,
+                                  style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                  const VerticalDivider(width: 1.0),
-                  Expanded(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      child: Center(
-                        child: Image.asset(
-                          'assets/images/eyechartlogin2.png',
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
-      )),
-    );
-  }
+      ),
+    ),
+  );
+}
+
 }

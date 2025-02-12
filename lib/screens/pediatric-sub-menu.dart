@@ -1,3 +1,4 @@
+import 'package:eyevision/bricks/Widgets%20Example/gradient_blue_to_dark_blue.dart';
 import 'package:eyevision/screens/arrow-char-screen.dart';
 import 'package:eyevision/screens/chart-screen-mixed.dart';
 import 'package:eyevision/screens/chart-screen.dart';
@@ -64,66 +65,78 @@ class _PediatricSubMenuState extends State<PediatricSubMenu> {
     if (initialFocus) {
       FocusScope.of(context).requestFocus(item1Focus);
     }
-    Helper.getData('mode').then((value) => print(value));
-    return Scaffold(
-        backgroundColor: backgroundColour,
-        appBar: AppBar(
-            backgroundColor: Colors.black,
-            iconTheme: const IconThemeData(color: Colors.white),
-            title: Shortcuts(
-              shortcuts: <LogicalKeySet, Intent>{
-                LogicalKeySet(LogicalKeyboardKey.select): EnterButtonIntent(),
-                LogicalKeySet(LogicalKeyboardKey.arrowUp): UpButtonIntent(),
-                LogicalKeySet(LogicalKeyboardKey.arrowDown): DownButtonIntent(),
-                LogicalKeySet(LogicalKeyboardKey.arrowLeft): LeftButtonIntent(),
-                LogicalKeySet(LogicalKeyboardKey.arrowRight):
-                    RightButtonIntent(),
-                LogicalKeySet(LogicalKeyboardKey.goBack): AbortButtonIntent()
-              },
-              child: Row(
-                children: [
-                  Image.asset('assets/gif/giphy-unscreen.gif', height: 55),
-                  const Padding(padding: EdgeInsets.only(left: 10.0)),
-                  const Text(
-                    'ACUITY VISION CHART',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const Padding(padding: EdgeInsets.only(left: 520.0)),
-                  Actions(
-                      actions: <Type, Action<Intent>>{
-                        // UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                        //   item1Focus.unfocus();
-                        //   changeFocus(context, modeFocus);
-                        // }),
-                        RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                          modeFocus.unfocus();
-                          changeFocus(context, item3Focus);
-                        }),
-                        LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                          modeFocus.unfocus();
-                          changeFocus(context, item1Focus);
-                        }),
-                        DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                          modeFocus.unfocus();
-                          changeFocus(context, item1Focus);
-                        }),
-                        EnterButtonIntent: CallbackAction(onInvoke: (intent) {
-                          // Navigator.of(context).pushNamed('/chart');
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Settings()));
-                        }),
-                      },
-                      child: IconButton(
-                        onPressed: () => {},
-                        icon: const Icon(Icons.settings),
-                        focusNode: modeFocus,
-                        focusColor: const Color.fromARGB(80, 255, 255, 255),
-                      ))
-                ],
-              ),
-            )),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: gradient4(),
+      ),
+      child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: const IconThemeData(color: Colors.white),
+              title: Shortcuts(
+                shortcuts: <LogicalKeySet, Intent>{
+                  LogicalKeySet(LogicalKeyboardKey.select): EnterButtonIntent(),
+                  LogicalKeySet(LogicalKeyboardKey.arrowUp): UpButtonIntent(),
+                  LogicalKeySet(LogicalKeyboardKey.arrowDown):
+                      DownButtonIntent(),
+                  LogicalKeySet(LogicalKeyboardKey.arrowLeft):
+                      LeftButtonIntent(),
+                  LogicalKeySet(LogicalKeyboardKey.arrowRight):
+                      RightButtonIntent(),
+                  LogicalKeySet(LogicalKeyboardKey.goBack): AbortButtonIntent()
+                },
+                child: Row(
+                  children: [
+                    // Image.asset('assets/gif/giphy-unscreen.gif', height: 55),
+                    // const Padding(padding: EdgeInsets.only(left: 10.0)),
+                    const Text(
+                      'ACUITY VISION CHART',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    // const Padding(padding: EdgeInsets.only(left: 520.0)),
+                    const Spacer(),
+                    Actions(
+                        actions: <Type, Action<Intent>>{
+                          // UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                          //   item1Focus.unfocus();
+                          //   changeFocus(context, modeFocus);
+                          // }),
+                          RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                            modeFocus.unfocus();
+                            changeFocus(context, item1Focus);
+                          }),
+                          LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                            modeFocus.unfocus();
+                            changeFocus(context, item1Focus);
+                          }),
+                          DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                            modeFocus.unfocus();
+                            changeFocus(context, item3Focus);
+                          }),
+                          EnterButtonIntent: CallbackAction(onInvoke: (intent) {
+                            // Navigator.of(context).pushNamed('/chart');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Settings()));
+                          }),
+                        },
+                        child: IconButton(
+                          onPressed: () => {},
+                          icon: const Icon(Icons.settings_applications),
+                          iconSize: 50,
+                          focusNode: modeFocus,
+                          focusColor: Colors.black,
+                        ))
+                  ],
+                ),
+              )),
         body: Shortcuts(
           shortcuts: <LogicalKeySet, Intent>{
             LogicalKeySet(LogicalKeyboardKey.select): EnterButtonIntent(),
@@ -135,7 +148,7 @@ class _PediatricSubMenuState extends State<PediatricSubMenu> {
           },
           child: GridView.count(
               controller: scrollController,
-              crossAxisCount: 4,
+              crossAxisCount: 6,
               scrollDirection: Axis.vertical,
               crossAxisSpacing: 30,
               mainAxisSpacing: 30,
@@ -165,7 +178,7 @@ class _PediatricSubMenuState extends State<PediatricSubMenu> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/allen.jpg",
+                    icon: "assets/icons/new/allen.jpg",
                     name: 'ALLEN PRESCHOOL',
                     focusNode: item1Focus,
                     image: 'assets/chart/mirror-icon.jpg',
@@ -197,7 +210,7 @@ class _PediatricSubMenuState extends State<PediatricSubMenu> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/animal.jpg",
+                    icon: "assets/icons/new/images.jpg",
                     name: 'IMAGES',
                     focusNode: item2Focus,
                     image: 'assets/chart/distance-icon.png',
@@ -230,14 +243,15 @@ class _PediatricSubMenuState extends State<PediatricSubMenu> {
                     }),
                   },
                   child: MenuItem(
-                    icon: "assets/icons/allen.jpg",
+                    icon: "assets/icons/new/allen.jpg",
                     name: 'ALLEN SYMBOLS',
                     focusNode: item3Focus,
                     image: 'assets/chart/logout.jpg',
                   ),
                 ),
               ]),
-        ));
+        ))
+    );
   }
 
   @override

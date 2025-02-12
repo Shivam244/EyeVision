@@ -2,7 +2,8 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-var backgroundColour = const Color.fromRGBO(79, 96, 97, 100);
+// var backgroundColour = const Color.fromRGBO(79, 96, 97, 100);
+var backgroundColour = const Color.fromARGB(255, 4, 48, 114);
 
 // 1ft = 1.74mm
 // 6ft  60mm = 60 * 3.7795275591 * 0.846;

@@ -29,7 +29,7 @@ class _MenuItemState extends State<MenuItem> {
           decoration: widget.focusNode.hasFocus
               ? BoxDecoration(
                   // color: Color.fromARGB(40, 255, 255, 255),
-                  color: Colors.white,
+                  color: Colors.black,
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   boxShadow: [
                     BoxShadow(blurRadius: 4, blurStyle: BlurStyle.outer)
@@ -62,7 +62,7 @@ class _MenuItemState extends State<MenuItem> {
                   //     border: Border.all(color: Colors.blue, width: 2)),
                   child: Image.asset(
                     widget.icon,
-                    height: 80,
+                    // height: 80,
                     fit: BoxFit.cover,
                     // width: double.infinity,
                     // colorBlendMode: BlendMode.difference,
@@ -70,7 +70,7 @@ class _MenuItemState extends State<MenuItem> {
                   ),
                 ),
               ),
-              const Padding(padding: EdgeInsets.only(top: 1)),
+              // const Padding(padding: EdgeInsets.only(top: 1)),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.transparent
@@ -78,7 +78,7 @@ class _MenuItemState extends State<MenuItem> {
                 child: Text(
                   widget.name,
                   style: TextStyle(
-                    color: widget.focusNode.hasFocus ? Colors.black : Colors.white,
+                    color: widget.focusNode.hasFocus ? Colors.white : Colors.white,
                     fontFamily: 'Poppins',
                     fontSize: 10,
                     fontWeight: FontWeight.w700,

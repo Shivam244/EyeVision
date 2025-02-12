@@ -206,7 +206,7 @@ class _MenuPageState extends State<MenuPage> {
                           icon: const Icon(Icons.settings_applications),
                           iconSize: 50,
                           focusNode: modeFocus,
-                          focusColor: const Color.fromARGB(80, 255, 255, 255),
+                          focusColor: Colors.black,
                         ))
                   ],
                 ),
@@ -289,7 +289,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/E.jpg",
+                      icon: "assets/icons/new/E.jpg",
                       name: 'THUMBLING E',
                       focusNode: item2Focus,
                       image: 'assets/chart/snellenE.png',
@@ -322,7 +322,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/abc.png",
+                      icon: "assets/icons/new/abc.jpg",
                       name: 'ALPHABETS',
                       focusNode: item3Focus,
                       image: 'Letters',
@@ -356,7 +356,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/numbers.png",
+                      icon: "assets/icons/new/numbers.jpg",
                       name: 'NUMERICS',
                       focusNode: item4Focus,
                       image: 'Numbers',
@@ -488,7 +488,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/pediatric.jpg",
+                      icon: "assets/icons/new/pediatric.jpg",
                       name: 'PEDIATRIC',
                       focusNode: item8Focus,
                       image: 'assets/icons/ishihara.jpg',
@@ -522,7 +522,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/snellan.jpg",
+                      icon: "assets/icons/new/snellan.jpg",
                       name: 'SNELLAN',
                       focusNode: item9Focus,
                       image: 'assets/icons/ishihara.jpg',
@@ -589,7 +589,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/dots.jpg",
+                      icon: "assets/icons/new/dots.jpg",
                       name: 'DOTS',
                       focusNode: item11Focus,
                       image: 'assets/icons/ishihara.jpg',
@@ -621,7 +621,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/rg.png",
+                      icon: "assets/icons/new/rg.jpg",
                       name: 'RED GREEN',
                       focusNode: item12Focus,
                       image: 'assets/icons/ishihara.jpg',
@@ -689,7 +689,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/misc.png",
+                      icon: "assets/icons/new/fix.jpg",
                       name: 'MISC',
                       focusNode: item14Focus,
                       image: 'assets/icons/ishihara.jpg',
@@ -721,7 +721,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/ishara.jpg",
+                      icon: "assets/icons/new/ishara.jpg",
                       name: 'ISHIHARA',
                       focusNode: item15Focus,
                       image: 'assets/icons/ishihara.jpg',
@@ -782,7 +782,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/educational.jpg",
+                      icon: "assets/icons/new/educational.jpg",
                       name: 'EDUCATIONAL',
                       focusNode: item17Focus,
                       image: 'assets/icons/ishihara.jpg',
@@ -814,7 +814,7 @@ class _MenuPageState extends State<MenuPage> {
                       }),
                     },
                     child: MenuItem(
-                      icon: "assets/icons/contactus.png",
+                      icon: "assets/icons/new/contact.jpg",
                       name: 'CONTACT US',
                       focusNode: item18Focus,
                       image: 'assets/icons/ishihara.jpg',
