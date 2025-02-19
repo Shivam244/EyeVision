@@ -41,12 +41,12 @@ dependencies:
   shared_preferences: ^2.0.15
   device_info_plus: ^9.0.3
   invert_colors: ^0.0.4
-  win32: ^5.10.1
+  win32: ^4.0.0
 
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  # flutter_test:
+  #   sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -54,13 +54,19 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.14.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 flutter_native_splash:
-  color: "#4F6061"
-  image: assets/images/visionlogo.png
+  color: "#043072"
+  image: assets/images/logo.jpeg
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: assets/images/logo.jpeg
   # branding: assets/branding-development.png
   # color_dark: "#121212"
   # image_dark: assets/logo-development.png

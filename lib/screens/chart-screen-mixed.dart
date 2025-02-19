@@ -403,30 +403,30 @@ class _ChartScreenMixedState extends State<ChartScreenMixed> {
 
   double calculatePixel(int feat, String type) {
     double calculatedSize = 0;
-    if (type == "6/60") {
-      calculatedSize = feat / 4 * MM_60 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons60));
+        if (type == "6/60") {
+      calculatedSize =
+          feat / 4 * MM_60 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons60) -47) ;
     } else if (type == "6/36") {
-      calculatedSize = feat / 4 * MM_36 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons36));
+      calculatedSize =
+          feat / 4 * MM_36 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons36) -24);
     } else if (type == "6/24") {
-      calculatedSize = feat / 4 * MM_24 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons24));
+      calculatedSize =
+          feat / 4 * MM_24 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons24) -19);
     } else if (type == "6/18") {
-      calculatedSize = feat / 4 * MM_18 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons18));
+      calculatedSize =
+          feat / 4 * MM_18 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons18) -14);
     } else if (type == "6/12") {
-      calculatedSize = feat / 4 * MM_12 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons12));
+      calculatedSize =
+          feat / 4 * MM_12 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons12) -10);
     } else if (type == "6/9") {
-      calculatedSize = feat / 4 * MM_9 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons9));
+      calculatedSize =
+          feat / 4 * MM_9 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons9) -8);
     } else if (type == "6/6") {
-      calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons6));
+      calculatedSize =
+          feat / 4 * MM_6 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons6) -5);
     } else if (type == "6/4") {
-      calculatedSize = feat / 4 * MM_4 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons4));
+      calculatedSize =
+          feat / 4 * MM_4 * 3.7795275591 * 0.846 + convertConstant(distance, double.parse(cons4) -3);
     }
     double finalSize =
         getConstantWithDistance(widget.type, calculatedSize, type);

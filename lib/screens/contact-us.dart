@@ -219,7 +219,7 @@ Widget build(BuildContext context) {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 20),
                               child: Image.asset(
-                                'assets/images/visionlogo.png',
+                                'assets/images/logo.jpeg',
                                 height: 70,
                               ),
                             ),

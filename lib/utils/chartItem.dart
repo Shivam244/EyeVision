@@ -73,6 +73,7 @@ class _ChartItemState extends State<ChartItem> {
   double calculatePixel(int feat, String type) {
     double calculatedSize = 0;
     if (type == "6/60") {
+      constant = constant - 47;
       calculatedSize = feat / 4 * MM_60 * 3.7795275591 * 0.846 + constant;
     } else if (type == "6/36") {
       calculatedSize = feat / 4 * MM_36 * 3.7795275591 * 0.846 + constant;
@@ -89,6 +90,7 @@ class _ChartItemState extends State<ChartItem> {
     } else if (type == "6/4") {
       calculatedSize = feat / 4 * MM_4 * 3.7795275591 * 0.846 + constant;
     }
+    print("New COnstant: " + constant.toString());
     double finalSize = getConstant(widget.language, calculatedSize);
     return finalSize;
   }
@@ -260,7 +262,7 @@ class _ChartItemState extends State<ChartItem> {
           left: 10,
           bottom: 10,
           child: Text(
-           '${distance}ft',
+            '${distance}ft',
             style: const TextStyle(
               color: Colors.red,
               fontWeight: FontWeight.bold,
