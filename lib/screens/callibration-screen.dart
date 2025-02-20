@@ -87,6 +87,7 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
     cons19 = await Helper.getData('constant10' '6/19') ?? '0.0';
     cons18 = await Helper.getData('constant10' '6/18') ?? '0.0';
     cons15 = await Helper.getData('constant10' '6/15') ?? '0.0';
+    cons12 = await Helper.getData('constant10' '6/12') ?? '0.0';
     cons9_5 = await Helper.getData('constant10' '6/9.5') ?? '0.0';
     cons9 = await Helper.getData('constant10' '6/9') ?? '0.0';
     cons7_5 = await Helper.getData('constant10' '6/7.5') ?? '0.0';
