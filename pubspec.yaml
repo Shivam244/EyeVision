@@ -65,8 +65,8 @@ flutter_native_splash:
 
 flutter_icons:
   android: true
-  ios: true
-  image_path: assets/images/logo.jpeg
+  image_path: assets/images/logo_bg.png
+  adaptive_icon_background: "#ffffff"
   # branding: assets/branding-development.png
   # color_dark: "#121212"
   # image_dark: assets/logo-development.png

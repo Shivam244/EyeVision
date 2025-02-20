@@ -34,13 +34,41 @@ class _PediatricScreenState extends State<PediatricScreen> {
     List<ChartItem> chartItemsList = [];
     if (name == "Pediatric") {
       chartItemsList = [
-        // const ChartItem(
-        //     textLeft: '',
-        //     textRight: '',
-        //     rotations: 1,
-        //     image: 'assets/chart/pediatric/1.jpg',
-        //     imageSize: 510,
-        //     language: ''),
+        const ChartItem(
+            textLeft: '',
+            textRight: '',
+            rotations: 1,
+            image: 'assets/chart/pediatric/1a.png',
+            imageSize: 510,
+            language: ''),
+        const ChartItem(
+            textLeft: '',
+            textRight: '',
+            rotations: 1,
+            image: 'assets/chart/pediatric/2a.gif',
+            imageSize: 510,
+            language: ''),
+        const ChartItem(
+            textLeft: '',
+            textRight: '',
+            rotations: 1,
+            image: 'assets/chart/pediatric/3a.gif',
+            imageSize: 510,
+            language: ''),
+        const ChartItem(
+            textLeft: '',
+            textRight: '',
+            rotations: 1,
+            image: 'assets/chart/pediatric/4a.gif',
+            imageSize: 510,
+            language: ''),
+        const ChartItem(
+            textLeft: '',
+            textRight: '',
+            rotations: 1,
+            image: 'assets/chart/pediatric/5a.gif',
+            imageSize: 510,
+            language: ''),
         const ChartItem(
             textLeft: '',
             textRight: '',
@@ -48,13 +76,13 @@ class _PediatricScreenState extends State<PediatricScreen> {
             image: 'assets/chart/pediatric/1.png',
             imageSize: 510,
             language: ''),
-        const ChartItem(
-            textLeft: '',
-            textRight: '',
-            rotations: 1,
-            image: 'assets/chart/pediatric/2.jpg',
-            imageSize: 510,
-            language: ''),
+        // const ChartItem(
+        //     textLeft: '',
+        //     textRight: '',
+        //     rotations: 1,
+        //     image: 'assets/chart/pediatric/2.jpg',
+        //     imageSize: 510,
+        //     language: ''),
         const ChartItem(
             textLeft: '',
             textRight: '',
@@ -62,13 +90,13 @@ class _PediatricScreenState extends State<PediatricScreen> {
             image: 'assets/chart/pediatric/2.png',
             imageSize: 510,
             language: ''),
-        const ChartItem(
-            textLeft: '',
-            textRight: '',
-            rotations: 1,
-            image: 'assets/chart/pediatric/3.jpg',
-            imageSize: 510,
-            language: ''),
+        // const ChartItem(
+        //     textLeft: '',
+        //     textRight: '',
+        //     rotations: 1,
+        //     image: 'assets/chart/pediatric/3.jpg',
+        //     imageSize: 510,
+        //     language: ''),
         const ChartItem(
             textLeft: '',
             textRight: '',

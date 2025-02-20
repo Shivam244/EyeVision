@@ -114,49 +114,49 @@ class _LogmarChartState extends State<LogmarChartScreen> {
     double calculatedSize = 0;
     if (type == "6/60") {
       calculatedSize = feat / 4 * MM_60 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons60));
+          convertConstant(distance, double.parse(cons60) -47);
     } else if (type == "6/48") {
       calculatedSize = feat / 4 * MM_48 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons48));
+          convertConstant(distance, double.parse(cons48) -38);
     } else if (type == "6/38") {
       calculatedSize = feat / 4 * MM_38 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons38));
+          convertConstant(distance, double.parse(cons38) -31);
     } else if (type == "6/36") {
       calculatedSize = feat / 4 * MM_36 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons36));
+          convertConstant(distance, double.parse(cons36) -24);
     } else if (type == "6/30") {
       calculatedSize = feat / 4 * MM_30 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons30));
+          convertConstant(distance, double.parse(cons30) -15);
     } else if (type == "6/24") {
       calculatedSize = feat / 4 * MM_24 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons24));
+          convertConstant(distance, double.parse(cons24) -19);
     } else if (type == "6/19") {
       calculatedSize = feat / 4 * MM_19 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons19));
+          convertConstant(distance, double.parse(cons19) -14);
     } else if (type == "6/18") {
       calculatedSize = feat / 4 * MM_18 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons18));
+          convertConstant(distance, double.parse(cons18) -14);
     } else if (type == "6/15") {
       calculatedSize = feat / 4 * MM_15 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons15));
+          convertConstant(distance, double.parse(cons15) -12);
     } else if (type == "6/12") {
       calculatedSize = feat / 4 * MM_12 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons12));
+          convertConstant(distance, double.parse(cons12) -10);
     } else if (type == "6/9.5") {
       calculatedSize = feat / 4 * MM_9_5 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons9_5));
+          convertConstant(distance, double.parse(cons9_5) -7);
     } else if (type == "6/9") {
       calculatedSize = feat / 4 * MM_9 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons9));
+          convertConstant(distance, double.parse(cons9) -8);
     } else if (type == "6/7.5") {
       calculatedSize = feat / 4 * MM_7_5 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons7_5));
+          convertConstant(distance, double.parse(cons7_5) -9);
     } else if (type == "6/6") {
       calculatedSize = feat / 4 * MM_6 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons6));
+          convertConstant(distance, double.parse(cons6) -5);
     } else if (type == "6/4") {
       calculatedSize = feat / 4 * MM_4 * 3.7795275591 * 0.846 +
-          convertConstant(distance, double.parse(cons4));
+          convertConstant(distance, double.parse(cons4) -3.5);
     }
     double finalSize = getConstant(widget.image, calculatedSize);
     return finalSize;
