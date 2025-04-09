@@ -97,17 +97,19 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _getId() async {
+    final unique8Chars = await getSecureAndroidId();
+    deviceId = unique8Chars;
     // var deviceInfo = DeviceInfoPlugin();
     // var androidDeviceInfo = await deviceInfo.androidInfo;
-    await Helper.getData('deviceId').then((value) async {
-      if (value == '' || value == null) {
-        final unique8Chars = await getSecureAndroidId();
-        deviceId = unique8Chars; // or just unique8Chars
-        await Helper.setData('deviceId', deviceId);
-      } else {
-        deviceId = value;
-      }
-    });
+    // await Helper.getData('deviceId').then((value) async {
+    //   if (value == '' || value == null) {
+    //     final unique8Chars = await getSecureAndroidId();
+    //     deviceId = unique8Chars; // or just unique8Chars
+    //     await Helper.setData('deviceId', deviceId);
+    //   } else {
+    //     deviceId = value;
+    //   }
+    // });
 
     print(deviceId);
     // String encodedId = base64.encode(utf8.encode(deviceId));
@@ -214,210 +216,218 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    backgroundColor: backgroundColour,
-    body: Center(
-      child: SafeArea(
-        child: Container(
-          height: MediaQuery.of(context).size.height - 100,
-          width: MediaQuery.of(context).size.width - 60,
-          decoration: const BoxDecoration(
-            boxShadow: [BoxShadow(blurRadius: 15)],
-          ),
-          child: Stack(
-            children: [
-              /// 1) The animated gradient background
-              AnimateGradient(
-                primaryBegin: Alignment.topLeft,
-                primaryEnd: Alignment.bottomLeft,
-                secondaryBegin: Alignment.bottomLeft,
-                secondaryEnd: Alignment.topRight,
-                duration: const Duration(seconds: 10),
-                primaryColors: [
-                  backgroundColour,
-                  Color.fromARGB(255, 2, 104, 189),
-                  backgroundColour,
-                ],
-                secondaryColors: [
-                  backgroundColour,
-                  Color.fromARGB(255, 2, 104, 189),
-                  backgroundColour,
-                ],
-                // Provide a child so it can fill the entire area if needed
-                child: const SizedBox.expand(),
-              ),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: backgroundColour,
+      body: Center(
+        child: SafeArea(
+          child: Container(
+            height: MediaQuery.of(context).size.height - 100,
+            width: MediaQuery.of(context).size.width - 60,
+            decoration: const BoxDecoration(
+              boxShadow: [BoxShadow(blurRadius: 15)],
+            ),
+            child: Stack(
+              children: [
+                /// 1) The animated gradient background
+                AnimateGradient(
+                  primaryBegin: Alignment.topLeft,
+                  primaryEnd: Alignment.bottomLeft,
+                  secondaryBegin: Alignment.bottomLeft,
+                  secondaryEnd: Alignment.topRight,
+                  duration: const Duration(seconds: 10),
+                  primaryColors: [
+                    backgroundColour,
+                    Color.fromARGB(255, 2, 104, 189),
+                    backgroundColour,
+                  ],
+                  secondaryColors: [
+                    backgroundColour,
+                    Color.fromARGB(255, 2, 104, 189),
+                    backgroundColour,
+                  ],
+                  // Provide a child so it can fill the entire area if needed
+                  child: const SizedBox.expand(),
+                ),
 
-              /// 2) The background image overlaid on top of the gradient
-              ///    Using a light colorFilter so the gradient remains visible.
-              Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: const AssetImage('assets/images/eyechartlogin2.png'),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.03),
-                      BlendMode.dstATop,
+                /// 2) The background image overlaid on top of the gradient
+                ///    Using a light colorFilter so the gradient remains visible.
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image:
+                          const AssetImage('assets/images/eyechartlogin2.png'),
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        Colors.white.withOpacity(0.03),
+                        BlendMode.dstATop,
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              /// 3) The main content (logo, title, form) in the center
-              Shortcuts(
-                shortcuts: <LogicalKeySet, Intent>{
-                  LogicalKeySet(LogicalKeyboardKey.select): EnterButtonIntent(),
-                  LogicalKeySet(LogicalKeyboardKey.arrowUp): UpButtonIntent(),
-                  LogicalKeySet(LogicalKeyboardKey.arrowDown): DownButtonIntent(),
-                  LogicalKeySet(LogicalKeyboardKey.arrowLeft): LeftButtonIntent(),
-                  LogicalKeySet(LogicalKeyboardKey.arrowRight): RightButtonIntent(),
-                  LogicalKeySet(LogicalKeyboardKey.goBack): AbortButtonIntent(),
-                },
-                child: Center(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        /// Top Row: Logo + Title
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 20, horizontal: 20),
-                              child: Image.asset(
-                                'assets/images/logo.jpeg',
-                                height: 50,
-                              ),
-                            ),
-                            Text(
-                              'ACUITY VISION CHART',
-                              style: GoogleFonts.bebasNeue(
-                                textStyle: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        /// Device ID
-                        Text(
-                          'DEVICE ID: ${deviceId.toUpperCase()}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-                        const SizedBox(height: 40),
-
-                        /// The Form
-                        Form(
-                          key: _formKey,
-                          child: Column(
+                /// 3) The main content (logo, title, form) in the center
+                Shortcuts(
+                  shortcuts: <LogicalKeySet, Intent>{
+                    LogicalKeySet(LogicalKeyboardKey.select):
+                        EnterButtonIntent(),
+                    LogicalKeySet(LogicalKeyboardKey.arrowUp): UpButtonIntent(),
+                    LogicalKeySet(LogicalKeyboardKey.arrowDown):
+                        DownButtonIntent(),
+                    LogicalKeySet(LogicalKeyboardKey.arrowLeft):
+                        LeftButtonIntent(),
+                    LogicalKeySet(LogicalKeyboardKey.arrowRight):
+                        RightButtonIntent(),
+                    LogicalKeySet(LogicalKeyboardKey.goBack):
+                        AbortButtonIntent(),
+                  },
+                  child: Center(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          /// Top Row: Logo + Title
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
-                              /// Password Field
-                              Actions(
-                                actions: <Type, Action<Intent>>{
-                                  DownButtonIntent:
-                                      CallbackAction<DownButtonIntent>(
-                                    onInvoke: (intent) => changeFocus(
-                                      context,
-                                      submitButtonFocus,
-                                    ),
-                                  ),
-                                },
-                                child: SizedBox(
-                                  width: 350,
-                                  child: TextFormField(
-                                    controller: passwordController,
-                                    obscureText: true,
-                                    focusNode: passwordFocus,
-                                    autofocus: true,
-                                    onChanged: (value) {
-                                      password = value;
-                                    },
-                                    onFieldSubmitted: (value) {
-                                      passwordFocus.unfocus();
-                                      changeFocus(context, submitButtonFocus);
-                                    },
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                    decoration: const InputDecoration(
-                                      hintText: 'Enter Password',
-                                      hintStyle: TextStyle(color: Colors.white),
-                                      labelText: 'Password',
-                                      labelStyle: TextStyle(color: Colors.white),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color.fromARGB(
-                                              118, 255, 255, 255),
-                                        ),
-                                      ),
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 20, horizontal: 20),
+                                child: Image.asset(
+                                  'assets/images/logo.jpeg',
+                                  height: 50,
                                 ),
                               ),
-                              const SizedBox(height: 20),
-
-                              /// Submit Button
-                              Actions(
-                                actions: <Type, Action<Intent>>{
-                                  EnterButtonIntent:
-                                      CallbackAction<EnterButtonIntent>(
-                                    onInvoke: (intent) => submitForm(),
-                                  ),
-                                  UpButtonIntent: CallbackAction<UpButtonIntent>(
-                                    onInvoke: (intent) =>
-                                        changeFocus(context, passwordFocus),
-                                  ),
-                                },
-                                child: Container(
-                                  decoration:
-                                      !(submitButtonFocus.hasFocus)
-                                          ? null
-                                          : BoxDecoration(
-                                              color: const Color.fromARGB(
-                                                  40, 255, 255, 255),
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                            ),
-                                  child: TextButton(
-                                    focusNode: submitButtonFocus,
-                                    onPressed: submitForm,
-                                    style: TextButton.styleFrom(
-                                      foregroundColor: Colors.white,
-                                      backgroundColor: backgroundColour,
-                                      shadowColor: Colors.black,
-                                      elevation: 8,
-                                      fixedSize: const Size(200, 40),
-                                    ),
-                                    child: const Text('LOGIN'),
+                              Text(
+                                'ACUITY VISION CHART',
+                                style: GoogleFonts.bebasNeue(
+                                  textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                      ],
+
+                          /// Device ID
+                          Text(
+                            'DEVICE ID: ${deviceId.toUpperCase()}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                          const SizedBox(height: 40),
+
+                          /// The Form
+                          Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                /// Password Field
+                                Actions(
+                                  actions: <Type, Action<Intent>>{
+                                    DownButtonIntent:
+                                        CallbackAction<DownButtonIntent>(
+                                      onInvoke: (intent) => changeFocus(
+                                        context,
+                                        submitButtonFocus,
+                                      ),
+                                    ),
+                                  },
+                                  child: SizedBox(
+                                    width: 350,
+                                    child: TextFormField(
+                                      controller: passwordController,
+                                      obscureText: true,
+                                      focusNode: passwordFocus,
+                                      autofocus: true,
+                                      onChanged: (value) {
+                                        password = value;
+                                      },
+                                      onFieldSubmitted: (value) {
+                                        passwordFocus.unfocus();
+                                        changeFocus(context, submitButtonFocus);
+                                      },
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                      decoration: const InputDecoration(
+                                        hintText: 'Enter Password',
+                                        hintStyle:
+                                            TextStyle(color: Colors.white),
+                                        labelText: 'Password',
+                                        labelStyle:
+                                            TextStyle(color: Colors.white),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color.fromARGB(
+                                                118, 255, 255, 255),
+                                          ),
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+
+                                /// Submit Button
+                                Actions(
+                                  actions: <Type, Action<Intent>>{
+                                    EnterButtonIntent:
+                                        CallbackAction<EnterButtonIntent>(
+                                      onInvoke: (intent) => submitForm(),
+                                    ),
+                                    UpButtonIntent:
+                                        CallbackAction<UpButtonIntent>(
+                                      onInvoke: (intent) =>
+                                          changeFocus(context, passwordFocus),
+                                    ),
+                                  },
+                                  child: Container(
+                                    decoration: !(submitButtonFocus.hasFocus)
+                                        ? null
+                                        : BoxDecoration(
+                                            color: const Color.fromARGB(
+                                                40, 255, 255, 255),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                    child: TextButton(
+                                      focusNode: submitButtonFocus,
+                                      onPressed: submitForm,
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.white,
+                                        backgroundColor: backgroundColour,
+                                        shadowColor: Colors.black,
+                                        elevation: 8,
+                                        fixedSize: const Size(200, 40),
+                                      ),
+                                      child: const Text('LOGIN'),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 }

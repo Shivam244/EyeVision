@@ -1,4 +1,4 @@
-package com.example.eyevision
+package com.smart.chart
 
 import android.view.KeyEvent
 import android.widget.Toast
