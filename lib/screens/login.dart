@@ -115,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
     //   Navigator.pushNamed(context, "/menu");
     //   Helper.setData('login', 'true');
     // }
-    if (password == encodedPassword) {
+   if (password.toLowerCase() == encodedPassword.toLowerCase()){
       formValid = true;
       Navigator.pushNamed(context, "/menu");
       Helper.setData('login', 'true');
@@ -302,7 +302,7 @@ class _LoginPageState extends State<LoginPage> {
                                 //         borderRadius:
                                 //             BorderRadius.all(Radius.circular(5))),
                                 child: TextFormField(
-                                  obscureText: true,
+                                  obscureText: false,
                                   controller: passwordController,
                                   onChanged: (value) => {password = value},
                                   focusNode: passwordFocus,

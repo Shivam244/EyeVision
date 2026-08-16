@@ -195,6 +195,15 @@ class _RedGreenScreenState extends State<RedGreenScreen> {
           imageSize: calculatePixel(int.parse(distance), '6/12'),
           language: image),
       ChartItemSingle(
+          textLeft: '6/9',
+          textRight: '20/30',
+          rotations: enableRotation
+              ? [0, 15, 270, 180, 90, 0]
+              : [-1, -1, -1, -1, -1, -1],
+          image: generateItems(6),
+          imageSize: calculatePixel(int.parse(distance), '6/9'),
+          language: image),
+      ChartItemSingle(
           textLeft: '6/6',
           textRight: '20/20',
           rotations: enableRotation

@@ -114,6 +114,22 @@ class _AstigChartScreenState extends State<MiscChartScreen> {
           imageSize: 510,
           background: "black",
           language: ''),  
+      const MiscChartItem(
+          textLeft: '',
+          textRight: '',
+          rotations:  [0],
+          image: 'assets/chart/misc/misc1.jpg',
+          imageSize: 510,
+          background: "black",
+          language: ''),  
+      const MiscChartItem(
+          textLeft: '',
+          textRight: '',
+          rotations:  [0],
+          image: 'assets/chart/misc/misc2.jpg',
+          imageSize: 510,
+          background: "black",
+          language: ''),  
     ];
     return chartItemsList;
   }

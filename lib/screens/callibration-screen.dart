@@ -16,6 +16,7 @@ class CallibrationScreen extends StatefulWidget {
 }
 
 class _CallibrationScreenState extends State<CallibrationScreen> {
+  bool isSaving = false;
   double distance = 0;
   double constant = 0;
   String dist = '0';
@@ -314,171 +315,190 @@ class _CallibrationScreenState extends State<CallibrationScreen> {
   getWidget() {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Shortcuts(
-            shortcuts: <LogicalKeySet, Intent>{
-              LogicalKeySet(LogicalKeyboardKey.select): EnterButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.arrowUp): UpButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.arrowDown): DownButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.arrowLeft): LeftButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.arrowRight): RightButtonIntent(),
-              LogicalKeySet(LogicalKeyboardKey.goBack): AbortButtonIntent()
-            },
-            child: Actions(
-              actions: <Type, Action<Intent>>{
-                UpButtonIntent: CallbackAction(onInvoke: (intent) {
-                  constant = constant + 1;
-                  setState(() {
-                    // constant = distance;
-                  });
-                }),
-                DownButtonIntent: CallbackAction(onInvoke: (intent) {
-                  constant = constant - 1;
-                  setState(() {
-                    // constant = distance;
-                  });
-                }),
-                LeftButtonIntent: CallbackAction(onInvoke: (intent) {
-                  // checkMode();
-                  changeType(false);
-                }),
-                RightButtonIntent: CallbackAction(onInvoke: (intent) {
-                  // checkMode();
-                  changeType(true);
-                }),
-                EnterButtonIntent:
-                    CallbackAction<EnterButtonIntent>(onInvoke: (intent) {
-                  Helper.removeData('constant$dist${types[currentType]}');
-                  Helper.setData('constant$dist${types[currentType]}',
-                      constant.toString());
-                  setCurrentCons();
-                  print('constant$dist${types[currentType]} : ' +
-                      constant.toString());
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Callibration Saved'),
-                  ));
-                  // Navigator.pop(context);
-                }),
+        body: Stack(children: [
+          Shortcuts(
+              shortcuts: <LogicalKeySet, Intent>{
+                LogicalKeySet(LogicalKeyboardKey.select): EnterButtonIntent(),
+                LogicalKeySet(LogicalKeyboardKey.arrowUp): UpButtonIntent(),
+                LogicalKeySet(LogicalKeyboardKey.arrowDown): DownButtonIntent(),
+                LogicalKeySet(LogicalKeyboardKey.arrowLeft): LeftButtonIntent(),
+                LogicalKeySet(LogicalKeyboardKey.arrowRight):
+                    RightButtonIntent(),
+                LogicalKeySet(LogicalKeyboardKey.goBack): AbortButtonIntent()
               },
-              child: Focus(
-                focusNode: item1Focus,
-                child: LayoutBuilder(builder:
-                    (BuildContext context, BoxConstraints constraints) {
-                  return Row(
-                    children: [
-                      Container(
-                        height: constraints.maxHeight,
-                        width: MediaQuery.of(context).size.width / 2,
-                        color: backgroundColour,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                      height: 100,
-                                      child: IconButton(
-                                        onPressed: () =>
-                                            {if (distance < 20) distance++},
-                                        icon: const Icon(
-                                          Icons.keyboard_arrow_up,
-                                          color: Color.fromARGB(
-                                              137, 216, 215, 215),
-                                        ),
-                                        iconSize: 50,
-                                      )),
-                                  Container(
-                                      height: 30,
-                                      width: 60,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: Colors.black),
-                                          color:
-                                              Color.fromARGB(94, 37, 37, 37)),
-                                      child: Text(
-                                        constant.toString(),
-                                        style: const TextStyle(
-                                            color: Colors.white),
-                                      )),
-                                  Container(
-                                      height: 100,
-                                      child: IconButton(
+              child: Actions(
+                actions: <Type, Action<Intent>>{
+                  UpButtonIntent: CallbackAction(onInvoke: (intent) {
+                    constant = constant + 1;
+                    setState(() {
+                      // constant = distance;
+                    });
+                  }),
+                  DownButtonIntent: CallbackAction(onInvoke: (intent) {
+                    constant = constant - 1;
+                    setState(() {
+                      // constant = distance;
+                    });
+                  }),
+                  LeftButtonIntent: CallbackAction(onInvoke: (intent) {
+                    // checkMode();
+                    changeType(false);
+                  }),
+                  RightButtonIntent: CallbackAction(onInvoke: (intent) {
+                    // checkMode();
+                    changeType(true);
+                  }),
+                  EnterButtonIntent: CallbackAction<EnterButtonIntent>(
+                      onInvoke: (intent) async {
+                    setState(() {
+                      isSaving = true;
+                    });
+                    await Helper.removeData(
+                        'constant$dist${types[currentType]}');
+                    await Helper.setData('constant$dist${types[currentType]}',
+                        constant.toString());
+                    setCurrentCons();
+                    print('constant$dist${types[currentType]} : ' +
+                        constant.toString());
+
+                    setState(() {
+                      isSaving = false;
+                    });
+
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Callibration Saved'),
+                    ));
+                    // Navigator.pop(context);
+                  }),
+                },
+                child: Focus(
+                  focusNode: item1Focus,
+                  child: LayoutBuilder(builder:
+                      (BuildContext context, BoxConstraints constraints) {
+                    return Row(
+                      children: [
+                        Container(
+                          height: constraints.maxHeight,
+                          width: MediaQuery.of(context).size.width / 2,
+                          color: backgroundColour,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                        height: 100,
+                                        child: IconButton(
                                           onPressed: () =>
-                                              {if (distance > 5) distance--},
+                                              {if (distance < 20) distance++},
                                           icon: const Icon(
-                                            Icons.keyboard_arrow_down,
+                                            Icons.keyboard_arrow_up,
                                             color: Color.fromARGB(
                                                 137, 216, 215, 215),
                                           ),
-                                          iconSize: 50)),
-                                ]),
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                      height: 100,
-                                      child: IconButton(
-                                        onPressed: () =>
-                                            {if (distance < 20) distance++},
-                                        icon: const Icon(
-                                          Icons.keyboard_arrow_left,
-                                          color: Color.fromARGB(
-                                              137, 216, 215, 215),
-                                        ),
-                                        iconSize: 50,
-                                      )),
-                                  Container(
-                                      height: 30,
-                                      width: 60,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: Colors.black),
-                                          color:
-                                              Color.fromARGB(94, 37, 37, 37)),
-                                      child: Text(
-                                        types[currentType],
-                                        style: const TextStyle(
-                                            color: Colors.white),
-                                      )),
-                                  Container(
-                                      height: 100,
-                                      child: IconButton(
+                                          iconSize: 50,
+                                        )),
+                                    Container(
+                                        height: 30,
+                                        width: 60,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            color:
+                                                Color.fromARGB(94, 37, 37, 37)),
+                                        child: Text(
+                                          constant.toString(),
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        )),
+                                    Container(
+                                        height: 100,
+                                        child: IconButton(
+                                            onPressed: () =>
+                                                {if (distance > 5) distance--},
+                                            icon: const Icon(
+                                              Icons.keyboard_arrow_down,
+                                              color: Color.fromARGB(
+                                                  137, 216, 215, 215),
+                                            ),
+                                            iconSize: 50)),
+                                  ]),
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                        height: 100,
+                                        child: IconButton(
                                           onPressed: () =>
-                                              {if (distance > 5) distance--},
+                                              {if (distance < 20) distance++},
                                           icon: const Icon(
-                                            Icons.keyboard_arrow_right,
+                                            Icons.keyboard_arrow_left,
                                             color: Color.fromARGB(
                                                 137, 216, 215, 215),
                                           ),
-                                          iconSize: 50)),
-                                ]),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: constraints.maxHeight,
-                        width: MediaQuery.of(context).size.width / 2,
-                        color: Colors.white,
-                        child: Center(
-                          child: Text(
-                            widget.type == 'C' ? 'C' : getRandomString(1),
-                            style: TextStyle(
-                                fontFamily: getFont(),
-                                // fontSize: widget.imageSize,
-                                fontSize: calculatePixel(
-                                    distance.toInt(), types[currentType]),
-                                color: Colors.black),
-                            textScaleFactor: 1.0,
+                                          iconSize: 50,
+                                        )),
+                                    Container(
+                                        height: 30,
+                                        width: 60,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            border:
+                                                Border.all(color: Colors.black),
+                                            color:
+                                                Color.fromARGB(94, 37, 37, 37)),
+                                        child: Text(
+                                          types[currentType],
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        )),
+                                    Container(
+                                        height: 100,
+                                        child: IconButton(
+                                            onPressed: () =>
+                                                {if (distance > 5) distance--},
+                                            icon: const Icon(
+                                              Icons.keyboard_arrow_right,
+                                              color: Color.fromARGB(
+                                                  137, 216, 215, 215),
+                                            ),
+                                            iconSize: 50)),
+                                  ]),
+                            ],
                           ),
                         ),
-                      )
-                    ],
-                  );
-                }),
+                        Container(
+                          height: constraints.maxHeight,
+                          width: MediaQuery.of(context).size.width / 2,
+                          color: Colors.white,
+                          child: Center(
+                            child: Text(
+                              widget.type == 'C' ? 'C' : getRandomString(1),
+                              style: TextStyle(
+                                  fontFamily: getFont(),
+                                  // fontSize: widget.imageSize,
+                                  fontSize: calculatePixel(
+                                      distance.toInt(), types[currentType]),
+                                  color: Colors.black),
+                              textScaleFactor: 1.0,
+                            ),
+                          ),
+                        )
+                      ],
+                    );
+                  }),
+                ),
+              )),
+          if (isSaving)
+            Container(
+              color: Colors.black54,
+              child: const Center(
+                child: CircularProgressIndicator(),
               ),
-            )));
+            ),
+        ]));
   }
 
   @override

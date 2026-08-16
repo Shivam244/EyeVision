@@ -199,6 +199,12 @@ class _ChartScreenMixedState extends State<DotsChartScreen> {
           imageSize: calculatePixel(int.parse(distance), '6/12'),
           type: widget.type),
       DotsItem(
+          textLeft: '6/9',
+          textRight: '20/30',
+          images: chartMode ? generateItems(5) : generateItems(1),
+          imageSize: calculatePixel(int.parse(distance), '6/9'),
+          type: widget.type),
+      DotsItem(
           textLeft: '6/6',
           textRight: '20/20',
           images: chartMode ? generateItems(6) : generateItems(1),
